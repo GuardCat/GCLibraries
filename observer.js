@@ -39,26 +39,9 @@ class EventList {
 		e.type = event;
 		this.list[event].forEach( (ev) => ev(e, ...args) ); 
 	}
-	  
-	timerun(event, time) {
-	  if ( !this.has(event) ) return false;
-	  let events = this._paging(this.list[event]);
-	  setTimeout( 
-		  function step() {
-			  let result = events.next();
-			  if (result.done) return true;
-			  result.value();
-			  setTimeout(step, time);
-		  },
-	  time);
-	}
   
 	has(event) {
 		return event in this.list;
-	}
-	
-	*_paging (arr) {
-		for(let el of arr) yield el;
 	}
 }
 
