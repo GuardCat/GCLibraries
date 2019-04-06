@@ -59,7 +59,7 @@ class Observer {
 		return fn ? this.list.del(event, fn) : this.list.drop(event);
 	}
 	
-	publish(event, e, ...args) {
+	publish(event, e = { }, ...args) {
 		return this.list.run(event, e, ...args) ;
 	}
 }
