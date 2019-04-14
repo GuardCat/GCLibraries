@@ -1,4 +1,4 @@
-function asyncForEach (arr, worker, step = 1) {	
+function asyncForEach (arr, worker, step = 1, watcher) {	
 	return new Promise ( (resolve, reject) => {
 		let 
 			max = arr.length,
@@ -21,19 +21,20 @@ function asyncForEach (arr, worker, step = 1) {
 	} )
 }
 
-function asyncCycle (iterator, step = 1) {	
+function asyncCycle (iterator, step = 1, watcher) {	
 	return new Promise ( (resolve, reject) => {
-		let result = {};
+		let result = {}, count = 0;
 	
 		function cycle( ){
 			if (result.done) {
 				resolve(result);
 			} else {
 				for(let i = 0; i < step; i++) {
+					count++;
 					result = !result.done ? iterator.next() : result;
-					if (result.done) break
-//					console.log(result)
+					if (result.done) break;
 				}
+				if (watcher) watcher(count);
 				setTimeout(cycle, 0);
 			}
 		}
@@ -51,10 +52,14 @@ console.log(1);
 asyncForEach(a, sum).then(console.log)
 
 function* pusher(arr, n) {
-	for (let i = 0; i < n; i += 2) {
+	for (let i = 0; i < n; i++) {
 		yield( arr.push(i) );
 	}
 	return arr
 }
 
-asyncCycle(pusher([], 10000), 5).then(console.log, console.log)
+function watcher(n) {
+	console.log( (n / 10000 * 100).toFixed(0) )
+}
+
+asyncCycle(pusher([], 10000), 5, watcher);
