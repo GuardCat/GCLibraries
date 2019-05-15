@@ -1,3 +1,4 @@
+/*jshint es5: true, esnext: true, loopfunc: true, browser: true, devel: true*/
 /*
 Функция разбирает значение location.search.
 * @return object объект, ключи которого: параметры до знака =,
@@ -13,7 +14,6 @@ function getSearchParams( ) {
 	rows = ls.split("&");
 
 	rows.forEach( (el) => {
-		console.log(el)
 		values = el.split("=");
 		result[ values[0] ] = values[1];
 	} );
