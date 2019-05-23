@@ -1,7 +1,7 @@
 /*jshint es5: true, esnext: true, loopfunc: true, browser: true, devel: true*/
 /*
 Функция разбирает значение location.search.
-* @return object объект, ключи которого: параметры до знака «=», а значения — после. 
+* @return object объект, ключи которого — параметры до знака «=», а значения — после. 
 */
 
 function getSearchParams( ) {
