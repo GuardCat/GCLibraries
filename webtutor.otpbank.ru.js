@@ -103,7 +103,7 @@ const wtBase = {
 	}
 };
 
-wtBase.set("test", 250).
+wtBase.set({test: 250}).
 	then( i => console.info(i.status) ).
 	catch( e => console.error(e) )
 ;
