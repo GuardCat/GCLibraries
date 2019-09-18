@@ -11,15 +11,11 @@ const tinyJSON = {
 	},
 
 	deflate: (obj) => {
-		let result = [ ], entry;
-		for (let key in obj) {
-			entry = { };
-			if (!obj.hasOwnProperty(key)) continue;
-			entry
-		}
-		return arr.reduce( (result, key) => {
+		let result = [ ], entries = Object.keys(obj);
 
-		}, { })
+		return obj[ entries[0] ].reduce( (result, key) => {
+
+		}, [ ])
 	}
 };
 
