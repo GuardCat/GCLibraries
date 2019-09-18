@@ -6,16 +6,16 @@ const tinyJSON = {
 				if (!result[key]) result[key] = [ ];
 				result[key].push(item[key]);
 			}
-			return result
-		}, { })
+			return result;
+		}, { });
 	},
 
 	deflate: (obj) => {
-		let result = [ ], entries = Object.keys(obj);
-
-		return obj[ entries[0] ].reduce( (result, key) => {
-
-		}, [ ])
+		const
+			keys = Object.keys(obj),
+			mainKey = keys.reduce( (res, key) => obj[key].length > res.len ? {key: key, len: obj[key].length} : res, {len: 0} ).key
+		;
+		return obj[mainKey].map( (item, i) => keys.reduce( (res, key) => { res[key] = obj[key][i]; return res }, { }), [ ]);
 	}
 };
 
@@ -26,8 +26,8 @@ const a = [
 ]
 
 const b = tinyJSON.compress(a);
+gc.log( JSON.stringify(tinyJSON.deflate(b), false, 2) );/*
 
 gc.log( encodeURIComponent(JSON.stringify(a)).length);
 gc.dir(b);
-gc.info( encodeURIComponent(JSON.stringify(b)).length);
-
+gc.info( encodeURIComponent(JSON.stringify(b)).length);*/
