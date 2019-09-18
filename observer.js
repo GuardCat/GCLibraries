@@ -1,4 +1,7 @@
-// EventList
+/*jshint esversion: 6 */
+/*jshint browser: true */
+
+// EventList v 1.2
 "use strict";
 
 class EventList {
@@ -7,42 +10,29 @@ class EventList {
 	}
 
 	add(event, handler) {
-		if ( !this.has(event) ) this.list[event] = [ ];
-		if (!(handler instanceof Function)) throw new Error("You're trying to add to EventList not Function.")
+		if ( !(event in this.list) ) this.list[event] = [ ];
+		if ( !(handler instanceof Function) ) throw new Error("You're trying to add to EventList not Function.");
 		this.list[event].push(handler);
 		return true;
 	}
   
 	del(event, handler) {
-		let pos, has;
-		if ( !this.has(event) || !this.list[event].length ) return false;
-		
-		has = this.list[event].some(
-		  (el, i) => {
-			pos = i;
-			return el === handler;
-		  }
-		);
-		if (!has) return false;
-	
-		this.list[event].splice(pos, 1);
-		return true;  
+		if ( !(event in this.list) || !this.list[event].length ) return false;
+		this.list[event].forEach( (el, i) => { if (el === handler) return this.list[event].splice(i, 1); } );
+		return false;  
 	}
   
 	drop(event) {
-		if ( !this.hasEvent(event) ) return false;
+		if ( !(event in this.list) ) return false;
 		return delete this.list[event];
 	}
 	  
-	run(event, e, ...args) {
-		if ( !this.has(event) ) return false;
+	run(event, e = {}, ...args) {
+		if ( !(event in this.list) ) return false;
 		e.type = event;
 		this.list[event].forEach( (ev) => ev(e, ...args) ); 
 	}
-  
-	has(event) {
-		return event in this.list;
-	}
+	  
 }
 
 class Observer {
@@ -59,7 +49,7 @@ class Observer {
 		return fn ? this.list.del(event, fn) : this.list.drop(event);
 	}
 	
-	publish(event, e = { }, ...args) {
+	publish(event, e, ...args) {
 		return this.list.run(event, e, ...args) ;
 	}
 }
