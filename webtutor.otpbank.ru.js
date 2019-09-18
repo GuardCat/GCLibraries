@@ -79,3 +79,36 @@ try {
 
 //Send results
 Response.Write(result);
+
+//GCVersion
+const wtBase = {
+	get: async ( ) => {
+		if (!user) return new Promise( (resolve, reject) => reject({error: "нет объекта user"} ) );
+		const 
+			responce = await fetch(`https://webtutor.otpbank.ru/remote_action.html?action=6737268026748272006&flag=get&person_id=${user.id}` ),
+			result = responce.ok ? await responce.json() : responce.status
+		;
+
+		return result;
+	},
+	
+	set: async (data) => {
+		if (!user) return new Promise( (resolve, reject) => reject({error: "нет объекта user"} ) );
+		const
+			post = ( ( ) => { let str = ""; for (let key in data) str += `&${key}=${data[key]}`; return str } ) ( ),
+			responce = await fetch(`https://webtutor.otpbank.ru/remote_action.html?action=6737268026748272006&flag=send&person_id=${user.id}${post}` ),
+			result = responce.ok ? await responce.json() : {error: responce.status}
+		;
+		return result
+	}
+};
+
+wtBase.set("test", 250).
+	then( i => console.info(i.status) ).
+	catch( e => console.error(e) )
+;
+
+wtBase.get( ).
+	then( i => console.info(i) ).
+	catch( e => console.error(e) )
+;
