@@ -1,11 +1,11 @@
 const tinyJSON = {
 	compress: (arr) => {
+		const keys = Object.keys(arr[0]);
 		return arr.reduce( (result, item) => {
-			for (let key in item) {
-				if (!item.hasOwnProperty(key)) continue;
+			keys.forEach( (key) => {
 				if (!result[key]) result[key] = [ ];
 				result[key].push(item[key]);
-			}
+			});
 			return result;
 		}, { });
 	},
