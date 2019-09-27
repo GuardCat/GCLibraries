@@ -19,15 +19,3 @@ const tinyJSON = {
 	}
 };
 
-const a = [
-	{ar: 10, bw: 2},
-	{ar: 109, bw: 250},
-	{ar: 1987, bw: 2000}
-]
-
-const b = tinyJSON.compress(a);
-gc.log( JSON.stringify(tinyJSON.deflate(b), false, 2) );
-
-gc.log( encodeURIComponent(JSON.stringify(a)).length);
-gc.dir(b);
-gc.info( encodeURIComponent(JSON.stringify(b)).length);

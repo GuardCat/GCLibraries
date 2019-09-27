@@ -14,8 +14,7 @@ function CSVToJSON(csv) {
 		for (let columnCursor = 0; columnCursor < cells.length; columnCursor++) {
 			row[captions[columnCursor]] = cells[columnCursor];
 		}
-		result.push(row)
-		
+		result.push(row);
 	}
 	return result
 }
