@@ -1,12 +1,7 @@
 function CSVToJSON(csv) {
-	let 
-		rows = csv.split("\r\n"), 
-		captions = rows[0].split(";"),
-		result = [], 
-		cells, row, key
-	;
+	const rows = csv.split("\r\n"), captions = rows[0].split(";");
+	let	result = [], cells, row;
 	
-
 	for (let rowCursor = 1; rowCursor < rows.length; rowCursor++ ) { /* From one because the zero row has captions */
 		cells = rows[rowCursor].split(";");
 		row = {}
@@ -17,4 +12,16 @@ function CSVToJSON(csv) {
 		result.push(row);
 	}
 	return result
+}
+
+function JSONToCSV(arr) {
+    const 
+		colDelimiter = ";", 
+		rowDelimiter = ("\r\n"),
+		keys = Object.keys(arr[0])
+	;
+    
+    return arr.reduce( (result, item) => {
+        return result + rowDelimiter + keys.reduce( (r,i) => {return r + item[i] + colDelimiter}, "" );
+    }, keys.join(colDelimiter) );
 }
