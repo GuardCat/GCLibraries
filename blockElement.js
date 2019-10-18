@@ -66,14 +66,6 @@ function getRndEls(arr, len) {
 	return result;
 }
 
-async function promptData(html, okFn, cancelFn) {
-	const 
-		container = document.createElement("div"),
-		msg = document.createElement("div")
-	;
-	container.style.display = "flex";
-	
-}
 
 function director(el) {
 	const 
