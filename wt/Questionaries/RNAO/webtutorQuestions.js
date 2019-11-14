@@ -2,7 +2,7 @@
 ( function( ) {
 
 	const
-		questions = Object.assign( [ ], document.querySelectorAll(".wtp-question") ).slice(2),
+		questions = Object.assign( [ ], document.querySelectorAll("div[wtp-part='body'] .wtp-question") ),
 		noTrainingsTxt = "В течение последнего месяца тренинги не проводились",
 		anotherTxt = "Другое обучение / тренинг (напишу в комментариях)",
 		hideOnStart = [3, 4],

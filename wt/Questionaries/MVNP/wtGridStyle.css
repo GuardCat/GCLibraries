@@ -1,11 +1,11 @@
 .hided {
-	display:	none !important;
+	display:					none !important;
 }
 
 .wtp-poll-page {
 	display:					grid !important;
 	grid-template-areas: 
-		"q1 q1 q1 q1 q1 q1"
+		"q1 q1 q20 q20 q20 q20"
 		"c1 c2 c3 c4 c5 c6"
 		"q6 q2 q16 q7 q3 q17"
 		"q8 q4 q18 q9 q5 q19"
@@ -32,7 +32,7 @@ div[wtp-part='body'] .wtp-question:nth-child(2) {
 	grid-area:					q2;
 }
 div[wtp-part='body'] .wtp-question:nth-child(2)::before {
-	content:					"офис, часов";
+	content:					"в офисе, час.";
 	float:						right;
 }
 
@@ -40,7 +40,7 @@ div[wtp-part='body'] .wtp-question:nth-child(3) {
 	grid-area:					q3;
 }
 div[wtp-part='body'] .wtp-question:nth-child(3)::before {
-	content:					"офис, часов";
+	content:					"в офисе, час.";
 	float:						right;
 }
 
@@ -48,7 +48,7 @@ div[wtp-part='body'] .wtp-question:nth-child(4) {
 	grid-area:					q4;
 }
 div[wtp-part='body'] .wtp-question:nth-child(4)::before {
-	content:					"офис, часов";
+	content:					"в офисе, час.";
 	float:						right;
 }
 
@@ -56,7 +56,7 @@ div[wtp-part='body'] .wtp-question:nth-child(5) {
 	grid-area:					q5;
 }
 div[wtp-part='body'] .wtp-question:nth-child(5)::before {
-	content:					"офис, часов";
+	content:					"в офисе, час.";
 	float:						right;
 }
 
@@ -120,7 +120,7 @@ div[wtp-part='body'] .wtp-question:nth-child(16) {
 	grid-area:					q16;
 }
 div[wtp-part='body'] .wtp-question:nth-child(16)::before {
-	content:					"поле, часов";
+	content:					"в поле, час.";
 	float:						right;
 }
 
@@ -128,7 +128,7 @@ div[wtp-part='body'] .wtp-question:nth-child(17) {
 	grid-area:					q17;
 }
 div[wtp-part='body'] .wtp-question:nth-child(17)::before {
-	content:					"поле, часов";
+	content:					"в поле, час.";
 	float:						right;
 }
 
@@ -136,7 +136,7 @@ div[wtp-part='body'] .wtp-question:nth-child(18) {
 	grid-area:					q18;
 }
 div[wtp-part='body'] .wtp-question:nth-child(18)::before {
-	content:					"поле, часов";
+	content:					"в поле, час.";
 	float:						right;
 }
 
@@ -145,11 +145,15 @@ div[wtp-part='body'] .wtp-question:nth-child(19) {
 	float:						right;
 }
 div[wtp-part='body'] .wtp-question:nth-child(19)::before {
-	content:					"поле, часов";
+	content:					"в поле, час.";
 	float:						right;
 }
 
 div[wtp-part='body'] .wtp-question:nth-child(20) {
+	grid-area:					q20;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(21) {
 	display:					none !important;
 }
 
