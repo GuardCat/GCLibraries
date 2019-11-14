@@ -1,8 +1,7 @@
 /*jshint esversion: 6 */
 /*jshint browser: true */
 
-// EventList v 1.2
-"use strict";
+// EventList v 1.3
 
 class EventList {
 	constructor( ) {
@@ -11,7 +10,7 @@ class EventList {
 
 	add(event, handler) {
 		if ( !(event in this.list) ) this.list[event] = [ ];
-		if ( !(handler instanceof Function) ) throw new Error("You're trying to add to EventList not Function.");
+		if ( !(handler instanceof Function) ) throw new Error("You're trying to add in EventList not Function.");
 		this.list[event].push(handler);
 		return this.del.bind(this, event, handler);
 	}
@@ -36,13 +35,13 @@ class EventList {
 }
 
 /**
- * @desc паттерн «Pub/Sub». Для каждого наблюдаемого объекта —
- *		свой экземпляр. Устанавливает метод publish наблюдаемому объекту.
+ * @desc	паттерн «Pub/Sub». Для каждого наблюдаемого объекта —
+ *			свой экземпляр. Устанавливает метод publish наблюдаемому объекту.
  * @constructor
  * @param {object} obj наблюдаемый объект. Должен уметь использовать publish.
  * @require {object} EventList class
 */
-class Observer {
+export class Observer {
 	constructor(obj) {
 		this.list = new EventList();
 		obj.publish = this.publish.bind(this);
