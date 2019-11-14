@@ -112,3 +112,19 @@ wtBase.get( ).
 	then( i => console.info(i) ).
 	catch( e => console.error(e) )
 ;
+
+let user = {
+	lastName:	"<%=curUser.lastname%>",
+	firstName:	"<%=curUser.firstname%>",
+	middleName: "<%=curUser.middlename%>",
+	department: "<%=curUser.position_parent_name%>",
+	position:	"<%=curUser.position_name%>",
+	hireDate:	"<%=curUser.hire_date%>"
+	sex:		"<%=curUser.sex%>",
+	birthday:	"<%=curUser.birth_date%>",
+	path:		`
+				<% for ( elem in curUser.path_subs) {%>
+					<%=elem.name%> 
+				<%}%>`,
+	id:			"<%=curUserID%>"
+}

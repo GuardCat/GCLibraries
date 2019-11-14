@@ -1,0 +1,158 @@
+.hided {
+	display:	none !important;
+}
+
+.wtp-poll-page {
+	display:					grid !important;
+	grid-template-areas: 
+		"q1 q1 q1 q1 q1 q1"
+		"c1 c2 c3 c4 c5 c6"
+		"q6 q2 q16 q7 q3 q17"
+		"q8 q4 q18 q9 q5 q19"
+		"q10 q10 q10 q10 q10 q10"
+		"q11 q11 q11 q11 q11 q11"
+		"q12 q12 q12 q12 q12 q12"
+		"q13 q13 q13 q13 q13 q13"
+		"q14 q14 q14 q14 q14 q14"
+		"q15 q15 q15 q15 q15 q15"
+	;
+	grid-template-columns:		repeat(6, 1fr); 
+	
+}
+
+*::before {
+	font-size:					12px !important;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(1) {
+	grid-area:					q1;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(2) {
+	grid-area:					q2;
+}
+div[wtp-part='body'] .wtp-question:nth-child(2)::before {
+	content:					"офис, часов";
+	float:						right;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(3) {
+	grid-area:					q3;
+}
+div[wtp-part='body'] .wtp-question:nth-child(3)::before {
+	content:					"офис, часов";
+	float:						right;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(4) {
+	grid-area:					q4;
+}
+div[wtp-part='body'] .wtp-question:nth-child(4)::before {
+	content:					"офис, часов";
+	float:						right;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(5) {
+	grid-area:					q5;
+}
+div[wtp-part='body'] .wtp-question:nth-child(5)::before {
+	content:					"офис, часов";
+	float:						right;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(6) {
+	grid-area:					q6;
+}
+div[wtp-part='body'] .wtp-question:nth-child(6)::before {
+	content:					"I день: дата";
+	float:						right;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(7) {
+	grid-area:					q7;
+}
+div[wtp-part='body'] .wtp-question:nth-child(7)::before {
+	content:					"II день: дата";
+	float:						right;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(8) {
+	grid-area:					q8;
+}
+div[wtp-part='body'] .wtp-question:nth-child(8)::before {
+	content:					"III день: дата";
+	float:						right;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(9) {
+	grid-area:					q9;
+}
+div[wtp-part='body'] .wtp-question:nth-child(9)::before {
+	content:					"IV день: дата";
+	float:						right;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(10) {
+	grid-area:					q10;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(11) {
+	grid-area:					q11;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(12) {
+	grid-area:					q12;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(13) {
+	grid-area:					q13;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(14) {
+	grid-area:					q14;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(15) {
+	grid-area:					q15;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(16) {
+	grid-area:					q16;
+}
+div[wtp-part='body'] .wtp-question:nth-child(16)::before {
+	content:					"поле, часов";
+	float:						right;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(17) {
+	grid-area:					q17;
+}
+div[wtp-part='body'] .wtp-question:nth-child(17)::before {
+	content:					"поле, часов";
+	float:						right;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(18) {
+	grid-area:					q18;
+}
+div[wtp-part='body'] .wtp-question:nth-child(18)::before {
+	content:					"поле, часов";
+	float:						right;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(19) {
+	grid-area:					q19;
+	float:						right;
+}
+div[wtp-part='body'] .wtp-question:nth-child(19)::before {
+	content:					"поле, часов";
+	float:						right;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(20) {
+	display:					none !important;
+}
+
+.ui-spinner .wtp-fld-number {
+	width:						30px !important;
+}
