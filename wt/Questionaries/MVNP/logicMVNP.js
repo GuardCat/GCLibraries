@@ -4,26 +4,23 @@
 		hoursContainer =  document.querySelector("[name='CTRL_26345661']"),
 		questions = document.querySelectorAll("div[wtp-part='body'] .wtp-question"),
 		groups = [
-			[5, 1, 15], [6, 2, 16],
-			[7, 3, 17], [8, 4, 18]
+			[2, 3, 4], [5, 6, 7],
+			[8, 9, 10], [11, 12, 13]
 		],
-		forHide = [9, 10, 11, 12, 13, 14], 
+		forHide = [1, 14, 15, 16, 17, 18, 19],
+		sumControl = [3, 4, 6, 7, 9, 10, 12, 13],
+		submitButton = document.querySelector("div[wtp-part='body'] button[wtp-role='submit']"),
 		max = 4,
 		min = 0
 	;
-	let allHidedFlag = false;
+
+	let allHidedFlag, submitWasDisabled = false;
 	window.q = questions;
 	
 	function getHours( ) {
-		return +hoursContainer.value;
+		return hoursContainer.value === "" ? null : +hoursContainer.value;
 	}
-	
-	function generateCaptions(capArr) {
-		return capArr.reduce( (res, el, i) => {
-			return res += `<div id="caption${i + 1}">${el}</div>`;
-		}, "" );
-	}
-	
+		
 	function hideQuestions(arr) {
 		arr.forEach( i => { 
 			if( !questions[i].classList.contains("hided") ) questions[i].classList.add("hided"); 
@@ -35,7 +32,7 @@
 		} );
 	}
 	
-	function configureQuestions(e) {
+	function configureQuestions( ) {
 		if ( getHours( ) > max ) hoursContainer.value = max;
 		if ( getHours( ) < min ) hoursContainer.value = min;
 		const
@@ -46,18 +43,23 @@
 		if (groupsAmount) groups.slice(0, groupsAmount).forEach( group => showQuestions(group) );
 		if (groupsAmount < groups.length ) groups.slice( -(groups.length - groupsAmount) ).forEach( group => hideQuestions(group) );
 		
-		if (!h) {
+		if (!h && h!== null) {
 			allHidedFlag = true;
 			hideQuestions(forHide);
+			
+			submitWasDisabled = submitButton.hasAttribute("disabled");
+			submitButton.removeAttribute("disabled");
+			
 		} else if (allHidedFlag) {
 			allHidedFlag = false;
 			showQuestions(forHide);
+			if (!submitWasDisabled) submitButton.setAttribute("disabled", "");
 		}
-		
-	
 	}
 	
-	hoursContainer.addEventListener("change", configureQuestions, false);
+	hoursContainer.addEventListener("keyup", configureQuestions, false);
+	questions[questions.length - 2].addEventListener("click", configureQuestions, false);
 	document.querySelector(".ui-spinner").addEventListener("click", configureQuestions, false);
-	configureQuestions( );
+
+	setTimeout(configureQuestions, 100);
 } ) ( );

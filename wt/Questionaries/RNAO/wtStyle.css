@@ -53,7 +53,6 @@ div[wtp-part='body'] .wtp-question:nth-child(6)::before {
 	content:					"Длительность, часов"
 }
 
-
 div[wtp-part='body'] .wtp-question:nth-child(7) {
 	grid-area:					q7;
 }
@@ -70,4 +69,8 @@ div[wtp-part='body'] .wtp-question:nth-child(8)::before {
 
 div[wtp-part='body'] .wtp-question:nth-child(9) {
 	grid-area:					q9;
+}
+
+div[wtp-part='body'] .wtp-question:nth-child(10) {
+	grid-area:					q10;
 }
