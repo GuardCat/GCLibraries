@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+	<head>
+		<meta charset="utf-8">
+		<title>Компонентный стенд</title>
+
+		<link rel="stylesheet" href="forms/simpleinput/simpleinput.css">
+		<script src="forms/simpleinput/simpleinput.js"></script>
+	</head>
+	<body>
+		<h2>Поля ввода</h2>
+
+		<h3>Простое поле ввода GCInput</h3>
+
+		<div class="GCInput">
+			<label class="GCInput__label">
+				<div class="GCInput__title">Интересный текст</div>
+				<input class="GCInput__input" type="text">
+			</label>
+		</div>
+
+		<h2>Кнопки</h2>
+
+		<script>
+			new GCInput( document.querySelector(".GCInput") );
+		</script>
+
+	</body>
+</html>
