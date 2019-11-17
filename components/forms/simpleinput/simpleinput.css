@@ -1,23 +1,19 @@
-.GCInput {
-	font-family:			Roboto, Calibri;
-}
-
 .GCInput__title {
 	color:					gray;
 	font-size:				12px;
-	display:				none;
+	opacity:				0;
 }
 
 .GCInput__input {
 	background-color:		white;
 	border:					1px solid silver;
-	border-radius:			4px;
+	border-radius:			8px;
 	padding:				0.1em 0 0.1em 0.5em;
 	font-size:				14px;
 }
 
 .GCInput__title_needed {
-	display:				block !important;
+	opacity:				1 !important;
 }
 
 .GCInput__input::placeholder {
