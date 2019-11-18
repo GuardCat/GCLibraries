@@ -1,20 +1,19 @@
 .GCInput__title {
 	color:					gray;
 	font-size:				12px;
-	opacity:				0;
+	opacity:				1;
 }
 
 .GCInput__input {
 	background-color:		white;
 	border:					1px solid silver;
-	border-radius:			8px;
+	border-radius:			4px;
 	padding:				0.3em 0 0.3em 0.5em;
 	font-size:				14px;
-	opacity:				1;
 }
 
 .GCInput__title_hidden {
-	opacity:				0 !important;
+	opacity:				0;
 }
 
 .GCInput__input::placeholder {
