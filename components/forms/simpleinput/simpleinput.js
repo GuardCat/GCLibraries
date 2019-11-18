@@ -20,6 +20,7 @@ class GCInput {
 	}
 
 	hideTitle( ) {
+		console.log(this.title);
 		this.title.classList.remove("GCInput__title_needed");
 	}
 
