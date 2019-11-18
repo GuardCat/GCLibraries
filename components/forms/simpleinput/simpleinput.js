@@ -20,12 +20,11 @@ class GCInput {
 	}
 
 	hideTitle( ) {
-		console.log(this.title);
-		this.title.classList.remove("GCInput__title_needed");
+		this.title.classList.add("GCInput__title_hidden");
 	}
 
 	showTitle( ) {
-		this.title.classList.add("GCInput__title_needed");
+		this.title.classList.remove("GCInput__title_hidden");
 	}
 
 	get value( ) {
