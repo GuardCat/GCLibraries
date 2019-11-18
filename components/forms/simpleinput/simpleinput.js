@@ -2,13 +2,16 @@ class GCInput {
 	constructor(el) {
 		this.input = el.querySelector(".GCInput__input");
 		this.title = el.querySelector(".GCInput__title");
-		this.titleText = this.title.innerText;
-		this.input.setAttribute("placeholder", this.titleText);
 
 		this.input.addEventListener( "focus", this.showTitle.bind(this), false );
 		this.input.addEventListener( "blur", this._showHideTitle.bind(this), false );
 
+		this._setPlaceholder( );
 		this._showHideTitle( );
+	}
+
+	_setPlaceholder( ) {
+		this.input.setAttribute("placeholder", this.titleText);
 	}
 
 	_showHideTitle( ) {
@@ -26,6 +29,15 @@ class GCInput {
 
 	get value( ) {
 		return this.input.value;
+	}
+
+	set titleText(text) {
+		this.title.innerText = text;
+		this._setPlaceholder( );
+	}
+
+	get titleText( ) {
+		return this.title.innerText;
 	}
 
 	publish( ) {

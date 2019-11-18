@@ -21,7 +21,12 @@
 		<h2>Кнопки</h2>
 
 		<script>
-			new GCInput( document.querySelector(".GCInput") );
+			const
+				input = new GCInput( document.querySelector(".GCInput") )
+			;
+
+			input.title = "Текст заголовка из js";
+
 		</script>
 
 	</body>
