@@ -1,0 +1,17 @@
+.GCInput__title {
+	color:					gray;
+}
+
+.GCInput__input {
+	background-color:		white;
+	border-color:			silver;
+	color:					#505050;
+}
+
+.GCInput__input::placeholder {
+	color:					gray;
+}
+
+.GCInput__input:focus {
+	border-color:			gray;
+}

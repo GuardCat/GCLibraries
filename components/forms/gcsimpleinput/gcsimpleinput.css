@@ -1,0 +1,24 @@
+.GCInput__title {
+	font-size:				12px;
+	opacity:				1;
+	margin-bottom:			3px;
+}
+
+.GCInput__input {
+	border:					1px solid;
+	border-radius:			4px;
+	padding:				0.3em 0 0.3em 0.5em;
+	font-size:				14px;
+}
+
+.GCInput__title_hidden {
+	opacity:				0;
+}
+
+.GCInput__input::placeholder {
+	text-overflow:			ellipsis;
+}
+
+.GCInput__input:focus::placeholder {
+	color:					transparent;
+}

@@ -1,12 +1,11 @@
 .GCInput__title {
-	color:					gray;
 	font-size:				12px;
 	opacity:				1;
+	margin-bottom:			3px;
 }
 
 .GCInput__input {
-	background-color:		white;
-	border:					1px solid silver;
+	border:					1px solid;
 	border-radius:			4px;
 	padding:				0.3em 0 0.3em 0.5em;
 	font-size:				14px;
@@ -18,11 +17,6 @@
 
 .GCInput__input::placeholder {
 	text-overflow:			ellipsis;
-	color:					gray;
-}
-
-.GCInput__input:focus {
-	border-color:			gray;
 }
 
 .GCInput__input:focus::placeholder {
