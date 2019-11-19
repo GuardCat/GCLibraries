@@ -13,6 +13,13 @@
 	let allHidedFlag = false;
 	window.q = questions;
 	
+	// Притворяемся, что необязательные вопросы — обязательные (рисуем звёздочку)
+	function setLikeRequired(qNum) {
+		if (qNum instanceof Array) return qNum.map( i => setLikeRequired(i) );
+		questions[qNum].setAttribute("wtp-required", 1);
+		return true;
+	}
+	
 	function getChecked(question) {
 		return Object.assign( [ ], question.querySelectorAll("div[wt-state='selected']") );
 	}
@@ -60,4 +67,5 @@
 	
 	questions[0].querySelector(".wtp-question-right").addEventListener("click", (e) => setTimeout( configureQuestions, 10 ), false); // Без таймаута, система не успевает поставить галочку 
 	setTimeout( configureQuestions, 10 );
+	setLikeRequired(groups);
 } ) ( );

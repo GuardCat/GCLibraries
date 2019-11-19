@@ -20,6 +20,12 @@
 	function getHours( ) {
 		return hoursContainer.value === "" ? null : +hoursContainer.value;
 	}
+	
+	function setLikeRequired(qNum) {
+		if (qNum instanceof Array) return qNum.map( i => setLikeRequired(i) );
+		questions[qNum].setAttribute("wtp-required", 1);
+		return true;
+	}
 		
 	function hideQuestions(arr) {
 		arr.forEach( i => { 
@@ -62,4 +68,5 @@
 	document.querySelector(".ui-spinner").addEventListener("click", configureQuestions, false);
 
 	setTimeout(configureQuestions, 100);
+	setLikeRequired(groups);
 } ) ( );
