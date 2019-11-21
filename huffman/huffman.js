@@ -7,10 +7,9 @@ const huffman = {
 			pyramid = this.__makePyramide( sortedArray ),
 			table = this.__makeCodeTable(pyramid),
 			compressedBinText = this.__compressString(table, text),
-			compressed = this.__symbolizeBinText(compressedBinText, 50),
-			binSymsLength = this.__binStrToSym( sortedArray.length.toString("2") )
+			compressed = this.__symbolizeBinText(compressedBinText, 50)
 		;
-		return binSymsLength + sortedArray.join("") + compressed;
+		return String.fromCharCode(sortedArray.length) + sortedArray.join("") + compressed;
 	},
 	
 	/**
