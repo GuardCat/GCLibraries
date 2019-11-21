@@ -1,15 +1,26 @@
-/*jshint es5: true, esnext: true, browser: true*/
+/*jshint esversion: 6 */ /*jshint browser: true */
 const huffman = {
 	compress(text) {
 		const
 			stat = this.__getSymbolsStat(text),
 			sortedArray = this.__makeSortedArray(stat),
-			pyramid = this.__makePyramide( sortedArray ),
+			pyramid = this.__makePyramide(sortedArray),
 			table = this.__makeCodeTable(pyramid),
 			compressedBinText = this.__compressString(table, text),
-			compressed = this.__symbolizeBinText(compressedBinText, 50)
+			compressed = this.__symbolizeBinText(compressedBinText, 16)
 		;
 		return String.fromCharCode(sortedArray.length) + sortedArray.join("") + compressed;
+	},
+	
+	decompress(text) {
+		const
+			arrayLength = text[0].charCodeAt( ),
+			sortedArray = [...text.substr(1, arrayLength)],
+			pyramid = this.__makePyramide(sortedArray),
+			table = this.__makeCodeTable(pyramid),
+			binarizedText = this.__binarizeText( text.substr(1 + arrayLength) )
+		;
+		return this.__decompressBinarizedString(binarizedText, table, sortedArray);
 	},
 	
 	/**
@@ -69,7 +80,7 @@ const huffman = {
 	},
 	
 	/**
-	 * @desc создает из текста строку 0 и 1 по таблице Хаффмана
+	 * @desc создает из текста строку из содержимого таблицы Хаффмана (0 || 1)
 	 */
 	__compressString(table, text) {
 		return [ ].reduce.call( text, (res, el) => {
@@ -88,18 +99,41 @@ const huffman = {
 		}, "" );
 	},
 	
+	
+	/**
+	 * @desc строку 0 и 1 переводит в 1 символ
+	 */
 	__binStrToSym(binStr) {
 		return String.fromCharCode( parseInt(binStr, 2) );
+	},
+	
+	/**
+	 * @desc текст переводит в коды в двоичном представлении и сливает в одну строку
+	 */
+	__binarizeText(text) {
+		return [ ].reduce.call( text, (res, el) => {
+			return res + el.charCodeAt( ).toString(2);
+		}, "");		
+	},
+	
+	/**
+	 * @desc превращает строку 0 и 1 в текст на основе массива символов и таблицы Хаффмана
+	 */
+	__decompressBinarizedString(text, table, array) {
+		return array.reduceRight( (res, el) => {
+			const r = RegExp(table[el], "g")
+			console.log(table.length);
+			return res.replace(r, el);
+		}, text );
 	}
+	
 };
 
-/* todo
-+функция, из объекта частот создающая отсортированный массив символов
-+функция сбора пирамидки
-+функция создания кодов из пирамидки
-+функция кодирования текста
-+функция сбора функций в алгоритм сжатия
-функция разбора сжатого текста
-функция декодирования текста
-функция сбора функция в алгоритм распаковки
-*/
+let 
+	t = "Hello my sweet world", //11
+	compressed = huffman.compress(t, 8),
+	decompressed = huffman.decompress(compressed)
+;
+
+console.log(compressed.length);
+console.log(decompressed);
