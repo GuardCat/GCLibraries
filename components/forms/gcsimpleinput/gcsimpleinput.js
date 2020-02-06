@@ -1,5 +1,6 @@
 class GCInput {
 	constructor(el) {
+		if (el instanceof Array) return el.map( input => new GCInput(input) );
 		this.input = el.querySelector(".GCInput__input");
 		this.title = el.querySelector(".GCInput__title");
 

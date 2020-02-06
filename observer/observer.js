@@ -26,7 +26,7 @@ class EventList {
 		return delete this.list[event];
 	}
 
-	run(event, e = {}, ...args) {
+	run(event, e = { }, ...args) {
 		if ( !(event in this.list) ) return false;
 		e.type = event;
 		this.list[event].forEach( (handler) => handler(e, ...args) );
@@ -41,7 +41,7 @@ class EventList {
  * @param {object} obj наблюдаемый объект. Должен уметь использовать publish.
  * @require {object} EventList class
 */
-export class Observer {
+class Observer {
 	constructor(obj) {
 		this.list = new EventList();
 		obj.publish = this.publish.bind(this);

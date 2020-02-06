@@ -6,9 +6,10 @@
 		<link rel="stylesheet" href="forms/gcsimpleinput/gcsimpleinput.css">
 		<link rel="stylesheet" href="forms/gcsimpleinput/gcsimpleinput_gray-theme.css">
 		
+		<link rel="stylesheet" href="forms/gccontainer/gccontainer.css">
+		
 		<script src="forms/gcsimpleinput/gcsimpleinput.js"></script>
 
-		
 		<style>
 			body {
 				font-family:		Roboto, Calibri;
@@ -17,34 +18,36 @@
 			.GCInput {
 				margin-top:			15px;
 			}
-			
-
 		</style>
 	</head>
 	<body>
 		<h3>Поля ввода GCInput</h3>
 
-		<div class="GCInput">
-			<label class="GCInput__label">
-				<div class="GCInput__title">Обычное текстовое поле</div>
-				<input class="GCInput__input" type="text">
-			</label>
+		<div class="GCContainer">
+			<div class="GCInput">
+				<label class="GCInput__label">
+					<div class="GCInput__title">Фамилия</div>
+					<input class="GCInput__input" type="text">
+				</label>
+			</div>
+	
+			<div class="GCInput">
+				<label class="GCInput__label">
+					<div class="GCInput__title">Имя</div>
+					<input class="GCInput__input" type="text">
+				</label>
+			</div>
+			
+			<div class="GCInput">
+				<label class="GCInput__label">
+					<div class="GCInput__title">Отчество</div>
+					<input class="GCInput__input" type="text">
+				</label>
+			</div>
 		</div>
 
-		<div class="GCNumberInput GCInput">
-			<label class="GCInput__label">
-				<div class="GCInput__title">Ввод чисел</div>
-				<input class="GCInput__input" type="number" max="20" min="10">
-			</label>
-		</div>
-		
 		<script>
-			const
-				input = new GCInput( document.querySelector(".GCInput") )
-			;
-
-			//input.titleText = "Введите текст";
-
+			const inputs = new GCInput( [...document.querySelectorAll(".GCInput")] );
 		</script>
 
 	</body>
