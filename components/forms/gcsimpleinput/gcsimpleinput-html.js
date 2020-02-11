@@ -1,13 +1,16 @@
-class GCInput {
-	constructor(el) {
+class GCInputH {
+	constructor(el, title = "") {
 		if (el instanceof Array) return el.map( input => new GCInput(input) );
+		
+		this._text = title;
+		el.insertAdjacentHTML("afterend", this.html);
+		console.log(el);
 		this.input = el.querySelector(".GCInput__input");
 		this.title = el.querySelector(".GCInput__title");
-
+		
 		this.input.addEventListener( "focus", this.showTitle.bind(this), false );
 		this.input.addEventListener( "blur", this._showHideTitle.bind(this), false );
 
-		this._setPlaceholder( );
 		this._showHideTitle( );
 	}
 
@@ -41,6 +44,15 @@ class GCInput {
 		return this.title.innerText;
 	}
 
+	get html( ) {
+		return `
+		<label class="GCInput__label">
+			<div class="GCInput__title">${this._text}</div>
+			<input class="GCInput__input" type="text">
+		</label>
+		`
+	}
+	
 	publish( ) {
 		return;
 	}

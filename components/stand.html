@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="forms/gccontainer/gccontainer.css">
 		
 		<script src="forms/gcsimpleinput/gcsimpleinput.js"></script>
+		<script src="forms/gcsimpleinput/gcsimpleinput-html.js"></script>
 
 		<style>
 			body {
@@ -24,12 +25,8 @@
 		<h3>Поля ввода GCInput</h3>
 
 		<div class="GCContainer">
-			<div class="GCInput">
-				<label class="GCInput__label">
-					<div class="GCInput__title">Фамилия</div>
-					<input class="GCInput__input" type="text">
-				</label>
-			</div>
+		
+			<div class="GCInput"></div>
 	
 			<div class="GCInput">
 				<label class="GCInput__label">
@@ -47,7 +44,14 @@
 		</div>
 
 		<script>
-			const inputs = new GCInput( [...document.querySelectorAll(".GCInput")] );
+			const 
+				elems = [ ...document.querySelectorAll(".GCInput") ],
+				inputs = [
+					new GCInputH(elems[0]),
+					new GCInput(elems[1]),
+					new GCInput(elems[2])
+				]
+			;
 		</script>
 
 	</body>
