@@ -1,13 +1,13 @@
 class GCInputH {
 	constructor(el, title = "") {
-		if (el instanceof Array) return el.map( input => new GCInput(input) );
-		
+		if (el instanceof Array) return el.map( input => new GCInputH(input) );
+
 		this._text = title;
 		el.insertAdjacentHTML("afterend", this.html);
-		console.log(el);
+
 		this.input = el.querySelector(".GCInput__input");
 		this.title = el.querySelector(".GCInput__title");
-		
+
 		this.input.addEventListener( "focus", this.showTitle.bind(this), false );
 		this.input.addEventListener( "blur", this._showHideTitle.bind(this), false );
 
@@ -47,12 +47,12 @@ class GCInputH {
 	get html( ) {
 		return `
 		<label class="GCInput__label">
-			<div class="GCInput__title">${this._text}</div>
+			<div class="GCInput__title"></div>
 			<input class="GCInput__input" type="text">
 		</label>
 		`
 	}
-	
+
 	publish( ) {
 		return;
 	}

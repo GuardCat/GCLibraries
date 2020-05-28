@@ -3,7 +3,7 @@
 <head>
 	<title>Кредитный симулятор</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style.css"> 
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="broshurePager.js"></script>
 </head>
 
@@ -28,7 +28,7 @@
 				<input type="text" name="pall" disabled class="forCopy">
 				<input type="button" value = "Копировать">
 			</div>
-			
+
 			<div>
 				<label for="pe">Чётные страницы</label>
 				<input type="text" name="pe" disabled class="forCopy">
@@ -43,6 +43,12 @@
 
 		</article>
 	</main>
+	<script>
+		documen.body.addEventListener("click", clickHolder, false);
+		function clickHolder(e) {
+			if (e.target.type === "button") copyIt(e);
+		}
+	</script>
 </body>
 
 </html>
