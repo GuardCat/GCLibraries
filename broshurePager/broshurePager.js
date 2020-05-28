@@ -13,6 +13,7 @@ function bPage(pNum, delimiter = ";") {
 	;
 
 	if (pNum <= 0) return result;
+	result.fixed = pNum === upTo(pNum, 4);
 	pNum = upTo(pNum, 4);
 
 	while (pNum) {
@@ -26,7 +27,9 @@ function bPage(pNum, delimiter = ";") {
 	}
 
 	result.all = result.all.join(delimiter);
+	result.odd = result.odd.slice(0, -1);
 	result.even = result.even.reverse( ).join(delimiter);
+ 
 	return result;
 }
 

@@ -11,6 +11,7 @@
 	<main>
 		<article class = "form shadow">
 			<h1>Расчёт страниц для брошюры</h1>
+
 			<div>
 				<label for="delimiter">Разделитель</label>
 				<select name="delimiter">
@@ -18,11 +19,16 @@
 					<option value="," selected>«,» — Word</option>
 				</select>
 			</div>
+			
 			<div>
 				<label for="pNum">Число страниц</label>
-				<input type="number">
+				<input type="number" name="pNum">
 			</div>
 
+			<div class="wide">
+				<input type="button" value = "Рассчитать">
+			</div>
+			
 			<div>
 				<label for="pall">Все страницы</label>
 				<input type="text" name="pall" disabled class="forCopy">
@@ -30,24 +36,57 @@
 			</div>
 
 			<div>
-				<label for="pe">Чётные страницы</label>
+				<label for="po">Нечётные страницы</label>
+				<input type="text" name="po" disabled class="forCopy" value = "">
+				<input type="button" value = "Копировать">
+			</div>
+			
+			<div>
+				<label for="pe">Чётные страницы (обратный порядок)</label>
 				<input type="text" name="pe" disabled class="forCopy">
 				<input type="button" value = "Копировать">
 			</div>
 
-			<div>
-				<label for="po">Нечётные страницы (обратный порядок)</label>
-				<input type="text" name="po" disabled class="forCopy">
-				<input type="button" value = "Копировать">
-			</div>
 
 		</article>
 	</main>
 	<script>
-		documen.body.addEventListener("click", clickHolder, false);
+		document.body.addEventListener("click", clickHolder, false);
+		
 		function clickHolder(e) {
-			if (e.target.type === "button") copyIt(e);
+			"use strict"
+			const 
+				delimiter = document.querySelector("select[name='delimiter']").value,
+				pages = document.querySelector("input[name='pNum']"),
+				pall = document.querySelector("input[name='pall']"),
+				pe = document.querySelector("input[name='pe']"),
+				po = document.querySelector("input[name='po']")
+			;
+		
+			if (e.target.type === "button") {
+				if(e.target.value === "Копировать") copyIt(e);
+				if(e.target.value === "Рассчитать") calcIt(delimiter, pages, pall, po, pe);
+			}
 		}
+		
+		function copyIt(e) {
+			const target = e.target.previousElementSibling;
+			target.removeAttribute("disabled");
+			target.select( );
+			document.execCommand("copy");
+			target.setAttribute("disabled", "");
+			if (target.value) alert("Скопировано");
+		}
+		
+		function calcIt(delimiter, pages, pall, po, pe) {
+			const result = bPage(+pages.value, delimiter);
+			pages.value = upTo(+pages.value, 4);
+			
+			pall.value = result.all;
+			po.value = result.odd;
+			pe.value =	result.even;
+		}
+		
 	</script>
 </body>
 
