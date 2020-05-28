@@ -85,12 +85,20 @@ select {
 	width:				140px;
 }
 
+.fl {
+	display:			flex;
+	align-content:		center;
+	align-items:		center;
+	justify-content:	space-between;
+	width:				100%;
+}
+
 input[type='number'], select {
 	background-color:	white;
 }
 
 input[disabled] {
-	width:				215px;
+	width:				210px;
 	background-color:	rgb(200, 200, 200, 0.5);
 	border:				0;
 	font-size:			9px;
@@ -99,7 +107,7 @@ input[disabled] {
 input[type='button'] {
 	background-color:	rgba(220, 255, 220, 1);
 	color:				#101010;
-	height:				28px;
+	height:				27px;
 	border:				0;
 }
 
