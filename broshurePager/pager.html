@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Кредитный симулятор</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css"> 
+	<script src="broshurePager.js"></script>
+</head>
+
+<body>
+	<main>
+		<article class = "form shadow">
+			<h1>Расчёт страниц для брошюры</h1>
+			<div>
+				<label for="delimiter">Разделитель</label>
+				<select name="delimiter">
+					<option value=";" selected>«;» — PowerPoint</option>
+					<option value="," selected>«,» — Word</option>
+				</select>
+			</div>
+			<div>
+				<label for="pNum">Число страниц</label>
+				<input type="number">
+			</div>
+
+			<div>
+				<label for="pall">Все страницы</label>
+				<input type="text" name="pall" disabled class="forCopy">
+				<input type="button" value = "Копировать">
+			</div>
+			
+			<div>
+				<label for="pe">Чётные страницы</label>
+				<input type="text" name="pe" disabled class="forCopy">
+				<input type="button" value = "Копировать">
+			</div>
+
+			<div>
+				<label for="po">Нечётные страницы (обратный порядок)</label>
+				<input type="text" name="po" disabled class="forCopy">
+				<input type="button" value = "Копировать">
+			</div>
+
+		</article>
+	</main>
+</body>
+
+</html>
