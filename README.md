@@ -2,4 +2,4 @@
 My toolbox for daily tasks.
 
 # Some
-[Broshure calc](https://guardcat.github.io/GCLibraries/)
+[Broshure calc](https://guardcat.github.io/GCLibraries/broshurePager/pager.html)
