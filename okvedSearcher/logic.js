@@ -3,12 +3,13 @@
 
 async function director( ) {
 	const 
-		okveds = await getJson("okved.json"),
+		okveds = await getJson("okved.json?1"),
 		areas =  await getJson("area.json"),
-		main = document.body.querySelector("main")
+		main = document.body.querySelector("main"),
+		testArr = grep(okveds, ["code"], ["95"])  
 	;
 	
-	addRow(okveds.slice(5, 10), areas, main);
+	addRow(testArr, areas, main);
 }
 
 async function getJson(url) {
@@ -24,7 +25,8 @@ async function getJson(url) {
 function addRow(okvedEntry, areas, block) {
 	if (okvedEntry instanceof Array) return okvedEntry.map( entry => addRow(entry, areas, block) );
 	
-	const areaEntry = areas.filter(el => el.code === okvedEntry.code)[0];
+	let areaEntry = areas.filter(el => el.code === okvedEntry.code)[0];
+	if (!areaEntry) areaEntry = areas.filter(el => el.code === "96.03")[0];
 	block.insertAdjacentHTML( "beforeend", createO(okvedEntry) );
 	block.insertAdjacentHTML( "beforeend", createA(areaEntry) );
 }
@@ -45,12 +47,12 @@ function createO(entry) {
 function grep(arr, keys, words) {
 	return words.reduce( 
 		(res, word) => {
-			res = res.filter( el => {
+			return res.filter( el => {
 				let r = new RegExp(word, "gi");
-				
+				return keys.some( (key) => r.test(el[key]) );
 			} );
-		}
-	, arr);
+		},
+	arr);
 }
 
 window.addEventListener("load", director, false);
