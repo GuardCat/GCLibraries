@@ -8,7 +8,7 @@ async function director( ) {
 		main = document.body.querySelector("main")
 	;
 	
-	addRow(okveds[2], areas[2], main);
+	addRow(okveds.slice(5, 10), areas, main);
 }
 
 async function getJson(url) {
@@ -21,11 +21,13 @@ async function getJson(url) {
 	} );
 }
 
-function addRow(okvedEntry, areaEntry, block) {
+function addRow(okvedEntry, areas, block) {
+	if (okvedEntry instanceof Array) return okvedEntry.map( entry => addRow(entry, areas, block) );
+	
+	const areaEntry = areas.filter(el => el.code === okvedEntry.code)[0];
 	block.insertAdjacentHTML( "beforeend", createO(okvedEntry) );
 	block.insertAdjacentHTML( "beforeend", createA(areaEntry) );
 }
-
 
 function createA(entry) {
 	return `<p>${entry.area}</p>`;
