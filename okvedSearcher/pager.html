@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Брошюратор</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="broshurePager.js"></script>
+</head>
+
+<body>
+	<main>
+		<article class = "form shadow">
+			<h1>Расчёт страниц для брошюры</h1>
+
+			<div class = "fl">
+				<div>
+					<label for="delimiter">Разделитель</label>
+					<select name="delimiter">
+						<option value=";" selected>«;» — PowerPoint</option>
+						<option value="," selected>«,» — Word</option>
+					</select>
+				</div>
+
+				<div>
+					<label for="pNum">Число страниц</label>
+					<input type="number" name="pNum">
+				</div>
+			</div>
+			<div class="wide">
+				<input type="button" value = "Рассчитать">
+			</div>
+			
+			<div class="wide">
+				<label for="pall">Все страницы</label>
+				<div class="fl">
+					<input type="text" name="pall" disabled class="forCopy">
+					<input type="button" value = "Копировать">
+				</div>
+			</div>
+
+			<div class="wide">
+				<label for="po">Нечётные страницы</label>
+				<div class="fl">
+					<input type="text" name="po" disabled class="forCopy" value = "">
+					<input type="button" value = "Копировать">
+				</div>
+			</div>
+			
+			<div class="wide">
+				<label for="pe">Чётные страницы (обратный порядок)</label>
+				<div class="fl">
+					<input type="text" name="pe" disabled class="forCopy">
+					<input type="button" value = "Копировать">
+				</div>
+			</div>
+
+
+		</article>
+	</main>
+	<script>
+		document.body.addEventListener("click", clickHolder, false);
+		document.body.addEventListener("keyup", keyHolder, false); 
+		
+
+		function keyHolder(e) {
+			if (e.keyCode === 13) document.querySelector("input[value='Рассчитать']").click( );
+		}
+		
+		function clickHolder(e) {
+			"use strict"
+			const 
+				delimiter = document.querySelector("select[name='delimiter']").value,
+				pages = document.querySelector("input[name='pNum']"),
+				pall = document.querySelector("input[name='pall']"),
+				pe = document.querySelector("input[name='pe']"),
+				po = document.querySelector("input[name='po']")
+			;
+		
+			if (e.target.type === "button") {
+				if(e.target.value === "Копировать") copyIt(e);
+				if(e.target.value === "Рассчитать") calcIt(delimiter, pages, pall, po, pe);
+			}
+		}
+		
+		function copyIt(e) {
+			const target = e.target.previousElementSibling;
+			target.removeAttribute("disabled");
+			target.select( );
+			document.execCommand("copy");
+			target.setAttribute("disabled", "");
+			if (target.value) alert("Скопировано");
+		}
+		
+		function calcIt(delimiter, pages, pall, po, pe) {
+			const result = bPage(+pages.value, delimiter);
+			pages.value = upTo(+pages.value, 4);
+			
+			pall.value = result.all;
+			po.value = result.odd;
+			pe.value =	result.even;
+		}
+		
+	</script>
+</body>
+
+</html>
