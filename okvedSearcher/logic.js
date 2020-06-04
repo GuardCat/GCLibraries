@@ -42,4 +42,15 @@ function createO(entry) {
 	`.replace(/\^/gi,"<br>");
 }
 
+function grep(arr, keys, words) {
+	return words.reduce( 
+		(res, word) => {
+			res = res.filter( el => {
+				let r = new RegExp(word, "gi");
+				
+			} );
+		}
+	, arr);
+}
+
 window.addEventListener("load", director, false);
