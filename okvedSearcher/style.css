@@ -2,7 +2,7 @@ body {
 	display:				grid;
 	max-width:				800px;
 	min-width:				400px;
-	grid-template-columns:	1fr;	
+	grid-template-columns:	1fr;
 	padding:				5px;
 	margin-top:				0px;
 
@@ -11,11 +11,11 @@ body {
 	align-items:			stretch;
 	grid-row-gap:			5px;
 	grid-column-gap:		5px;
-	
+
 	font-family:			calibri;
 	word-break:				break-word;
 	color:					#333;
-	
+
 	grid-template-areas:
 		"header"
 		"field"
@@ -24,7 +24,7 @@ body {
 }
 
 header {
-	grid-area:				header;	
+	grid-area:				header;
 }
 
 h1, h2 {
@@ -56,22 +56,34 @@ label {
 
 input {
 	width:					100%;
+	border-radius:			5px;
+	font-size:				20px;
+	padding:				5px;
+	border:					1px solid green;
 }
 
 main {
 	grid-area:				main;
 	display:				grid;
-	grid-template-columns:	3fr 1fr;	
-	padding:				5px;
+	grid-template-columns:	3fr 1fr;
+	padding:				0px;
 	margin-top:				0px;
 	max-width:				3fr;
 
 	justify-content:		space-around;
 	justify-items:			stretch;
 	align-items:			stretch;
-	grid-row-gap:			5px;
+	grid-row-gap:			0px;
 	grid-column-gap:		5px;
-	
-	border:					1px solid maroon;
-	min-height:				10px;	
+
+	border-radius:			5px;
+	min-height:				30px;
+	margin:					0px;
+}
+
+main > p {
+	border:					1px solid white;
+	border-radius:			5px;
+	padding:				5px;
+	background-color:		#eee;
 }
