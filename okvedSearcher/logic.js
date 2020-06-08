@@ -7,12 +7,15 @@ async function director( ) {
 		main = document.body.querySelector("main"),
 		keys = ["code", "name", "desc"],
 		input = document.querySelector("input[name='mainField']"),
-		searchWhenChanged = doSearch.bind(null, input, okveds, areas, keys, main)
+		bindedSearch = doSearch.bind(null, input, okveds, areas, keys, main),
+		searchWhenChanged = ( ) => timeId = setTimeout(bindedSearch, 1000)
 		//,testArr = grepMissedCodes(okveds, areas)
 		//,testArr = grep(okveds, ["name"], ["изготов"])
 	;
+	let timeId;
 
 	input.addEventListener("keyup", searchWhenChanged, false);
+	input.addEventListener( "keydown", ( ) => clearTimeout(timeId) );
 	//addRow(testArr, areas, main, false);
 	//console.log(testArr.length);
 }
@@ -20,11 +23,14 @@ async function director( ) {
 function doSearch(input, okveds, areas, keys, main) {
 	const
 		text = input.value,
-		words = textToArray(text).filter( word => word.length > 1),
-		found = grep(okveds, keys, words)
+		words = textToArray(text).filter( word => word.length > 1)
 	;
-	main.innerHTML = "";
-	addRow(found, areas, main);
+	main.innerHTML = "<p>Поиск...</p>";
+	setTimeout( ( ) => {
+		let found = grep(okveds, keys, words);
+		main.innerHTML = "";
+		addRow(found, areas, main);
+	}, 10);
 }
 
 async function getJson(url) {
@@ -40,12 +46,12 @@ function addRow(okvedEntry, areas, block, descFlag) {
 	if (okvedEntry instanceof Array) return okvedEntry.map( entry => addRow(entry, areas, block) );
 
 	let areaEntry = areas.filter(el => el.code === okvedEntry.code)[0];
-	if (!areaEntry) areaEntry = {area: "Нет данных"};
+	if (!areaEntry) return false; //areaEntry = {area: "Нет данных"};
 	block.insertAdjacentHTML( "beforeend", createO(okvedEntry) );
 	block.insertAdjacentHTML( "beforeend", createA(areaEntry) );
 }
 
-function createA(entry) {
+function createA(entry) {			
 	return `<p>${entry.area}</p>`;
 }
 
@@ -60,7 +66,7 @@ function createO(entry, descFlag = true) {
 
 function grep(arr, keys, words) {
 	if (!words.length) return [{code:"", name: "введите больше слов", desc: ""}];
-	return words.reduce(
+	const result = words.reduce(
 		(res, word) => {
 			return res.filter( el => {
 				let r = new RegExp(word, "gi");
@@ -69,8 +75,15 @@ function grep(arr, keys, words) {
 		}, arr)
 		.sort( (a, b) => {
 			const phrase = new RegExp( words.join(" "), "gi");
-			return keys.some( key => phrase.test(a[key]) ) ? -1 : 0;
-		} );
+			let result = 0;
+			if ( phrase.test(a.name) ) return -1;
+			if ( keys.some( key => phrase.test(a[key]) ) ) return -1;
+			if ( words.some( (word) => a.name.search(word) !== -1 ) ) return -1;
+			return 0;
+	} );
+
+	if (!result.length) return [{code:"", name: "Ничего не найдено. Попробуйте сформулировать иначе.", desc: ""}];
+	return result;
 }
 
 function grepMissedCodes(okveds, areas) {
