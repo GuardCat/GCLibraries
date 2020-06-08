@@ -108,7 +108,8 @@ function grep(arr, keys, words) {
 		keys.forEach( key => {
 			words.forEach( word => {
 				const r = new RegExp(`(${word})`, "gi");
-				mapResult[key] = element[key].replace(r, "<span class='found'>$1</span>");
+				let elementForChange = mapResult[key] ? mapResult[key] : element[key];
+				mapResult[key] = elementForChange.replace(r, "<span class='found'>$1</span>");
 			} );
 		} );
 		return mapResult;
