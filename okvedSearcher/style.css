@@ -87,3 +87,7 @@ main > p {
 	padding:				5px;
 	background-color:		#eee;
 }
+
+.found {
+	background-color:		#FFEB99;
+}
