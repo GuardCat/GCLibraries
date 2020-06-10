@@ -87,22 +87,21 @@ function grep(arr, keys, words) {
 		.sort( (a, b) => {
 			const
 				phrase = new RegExp( words.join(" "), "gi"),
-				startPhrase = new RegExp( "^" + words.join(" "), "gi")
+				startPhrase = new RegExp( "^" + words.join(" "), "gi"),
+				wholePhrase = new RegExp( "^" + words.join(" ") + "$", "gi")
 			;
-			if ( startPhrase.test(a.code) ) return -1;
 
-			if ( startPhrase.test(b.code) ) return 0;
-			if ( phrase.test(a.code) ) return -1;
+			for (let keyid in keys) {
+				if ( wholePhrase.test(b[ keys[keyid] ]) ) return 0;
+				if ( startPhrase.test(a[ keys[keyid] ]) ) return -1;
 
-			if ( phrase.test(b.code) ) return 0;
-			if ( phrase.test(a.name)  ) return -1;
+				if ( startPhrase.test(b[ keys[keyid] ]) ) return 0;
+				if ( phrase.test(a[ keys[keyid] ]) ) return -1;
 
-			if ( phrase.test(b.name) ) return 0;
-			if ( phrase.test(a.desc)  ) return -1;
-
-			if ( phrase.test(b.desc)  ) return 0;
-			if ( words.some( (word) => a.name.search(word) !== -1 ) ) return -1;
-			return 0;
+				if ( phrase.test(b[ keys[keyid] ]) ) return 0;
+				if ( words.some( (word) => a[ keys[keyid] ].search(word) !== -1 ) ) return -1;
+			}
+		return 0;
 	} ).map( element => {
 		const mapResult = { };
 		keys.forEach( key => {
