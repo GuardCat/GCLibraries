@@ -1,5 +1,16 @@
 /*jshint esversion: 9, browser: true*/
 "use strict";
+
+/**
+ * @desc director not pure async function. Sets events, loads data.
+ * @requires file okved.json
+ * @requires file area.json
+ * @requires function getJson
+ * @requires function doSearch
+ * @requires HTMLElement main — for placing information
+ * @requires HTMLElement input[name='mainField'] — for getting keywords
+ * @return undefined
+*/
 async function director( ) {
 	let timeId = 0;
 	const
@@ -8,27 +19,35 @@ async function director( ) {
 		main = document.body.querySelector("main"),
 		keys = ["code", "name", "desc"],
 		input = document.querySelector("input[name='mainField']"),
-		search = (t = 1000) => {
+		search = (e, t = 1000) => {
 			clearTimer( );
-			timeId = setTimeout(doSearch, t, input, okveds, areas, keys, main);
+			if (e.keyCode === 13) return false;
+			timeId = setTimeout(doSearch, t, input, main, okveds, areas, keys);
 		},
-		searchNotEnter = (e) => {
-			if (e.keyCode !== 13) search( );
-		},
-		clearTimer = ( ) => {
-			if (timeId) clearTimeout(timeId);
-		}
+		clearTimer = ( ) => {if (timeId) clearTimeout(timeId);}
 	;
 
-	input.addEventListener("keyup", searchNotEnter, false);
+	input.addEventListener("keyup", search, false);
 	input.addEventListener("keydown", clearTimer, false);
 	document.forms.mainForm.addEventListener( "submit", (e) => {
 		e.preventDefault( );
-		search(10);
+		search({}, 10);
 	} );
 }
 
-function doSearch(input, okveds, areas, keys, main) {
+/**
+ * @desc doSearch not pure function searches areas by keywords and okveds.
+ * 		 Adds info in main element.
+ * @param  {HTMLElement} input  the text field with keywords
+ * @param  {HTMLElement} main there will be placed the result of the searching
+ * @param  {array} okveds base of okveds
+ * @param  {array} areas base of areas
+ * @param  {array} keys Array of text — keys for okveds.
+ * @requiress function grep — for cross-searching
+ * @requires functio} addRow — for adding info into the main element
+ * @return {undefined}
+ */
+function doSearch(input, main, okveds, areas, keys) {
 	const words = textToArray(input.value).filter( word => word.length > 1);
 	main.innerHTML = "<p>Поиск...</p>";
 	setTimeout( ( ) => {
@@ -38,6 +57,12 @@ function doSearch(input, okveds, areas, keys, main) {
 	}, 10);
 }
 
+/**
+ * @desc getJson pure async function
+ * @param  {string} url for loading json file
+ * @throws {error} if the server returns an error
+ * @return {promise} for accesing to the recieved data
+ */
 async function getJson(url) {
 
 	return new Promise( async (resolve, reject) => {
@@ -47,6 +72,15 @@ async function getJson(url) {
 	} );
 }
 
+/**
+ * @desc addRow not pure function adds a row to the main element
+ *
+ * @param  {object or array of objects} okvedEntry the found row from okved json
+ * @param  {array} areas
+ * @param  {HTMLElement} block — there will be placed result
+ * @param  {boolean} descFlag if shoud include the description to the result
+ * @return {undefined}
+ */
 function addRow(okvedEntry, areas, block, descFlag) {
 	if (okvedEntry instanceof Array) {
 		if (okvedEntry.length > 1) {
@@ -62,10 +96,24 @@ function addRow(okvedEntry, areas, block, descFlag) {
 	block.insertAdjacentHTML( "beforeend", createA(areaEntry) );
 }
 
+
+/**
+ * @desc createA pure function creates HTML by its static template
+ *
+ * @param  {object} entry that contains key "area"
+ * @return {string} with HTML code
+ */
 function createA(entry) {
 	return `<p>${entry.area}</p>`;
 }
 
+/**
+ * @desc createO pure function creates HTML by its static template
+ *
+ * @param {object} entry that contains keys "code" and "desc"
+ * @param {boolean} descFlag if should to add "desc" to the result
+ * @return {string} with HTML code
+ */
 function createO(entry, descFlag = true) {
 	const
 		message = `<p><strong>${entry.code} ${entry.name}</strong>`,
@@ -75,6 +123,18 @@ function createO(entry, descFlag = true) {
 	return message + (descFlag ? desc + closer : closer);
 }
 
+
+/**
+ * @desc grep pure function searches rows in Array of objects
+ * 		 by key words. Every row has to contain one of more those key words.
+ * 		 The result sortes, keywords includes in the span node with
+ * 		 HTML class 'founded'
+ *
+ * @param  {array} arr base for search
+ * @param  {array} keys for search. It is necessery that the keys be in the arr.
+ * @param  {array} words keywords for the searching
+ * @return {array} the filtered sorted and marked searching result.
+ */
 function grep(arr, keys, words) {
 	if (!words.length) return [{code:"", name: "введите больше слов (латиница и символы не учитываются)", desc: ""}];
 	const result = words.reduce(
@@ -101,15 +161,16 @@ function grep(arr, keys, words) {
 				if ( phrase.test(b[ keys[keyid] ]) ) return 0;
 				if ( words.some( (word) => a[ keys[keyid] ].search(word) !== -1 ) ) return -1;
 			}
-		return 0;
-	} ).map( element => {
-		const mapResult = { };
-		keys.forEach( key => {
-			words.forEach( word => {
-				const r = new RegExp(`(${word})`, "gi");
-				let elementForChange = mapResult[key] ? mapResult[key] : element[key];
-				mapResult[key] = elementForChange.replace(r, "<span class='found'>$1</span>");
-			} );
+			return 0;
+		} )
+		.map( element => {
+			const mapResult = { };
+			keys.forEach( key => {
+				words.forEach( word => {
+					const r = new RegExp(`(${word})`, "gi");
+					let elementForChange = mapResult[key] ? mapResult[key] : element[key];
+					mapResult[key] = elementForChange.replace(r, "<span class='found'>$1</span>");
+				} );
 		} );
 		return mapResult;
 	} );
