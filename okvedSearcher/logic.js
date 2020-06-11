@@ -21,7 +21,10 @@ async function director( ) {
 		input = document.querySelector("input[name='mainField']"),
 		search = (e, t = 1000) => {
 			clearTimer( );
-			if (e.keyCode === 13) return false;
+			if (e.keyCode === 13) {
+				search({ }, 10);
+				return false;
+			}
 			timeId = setTimeout(doSearch, t, input, main, okveds, areas, keys);
 		},
 		clearTimer = ( ) => {if (timeId) clearTimeout(timeId);}
@@ -31,7 +34,6 @@ async function director( ) {
 	input.addEventListener("keydown", clearTimer, false);
 	document.forms.mainForm.addEventListener( "submit", (e) => {
 		e.preventDefault( );
-		search({}, 10);
 	} );
 }
 
