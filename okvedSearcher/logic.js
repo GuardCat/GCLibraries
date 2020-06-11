@@ -32,9 +32,7 @@ async function director( ) {
 
 	input.addEventListener("keyup", search, false);
 	input.addEventListener("keydown", clearTimer, false);
-	document.forms.mainForm.addEventListener( "submit", (e) => {
-		e.preventDefault( );
-	} );
+	document.forms.mainForm.addEventListener( "submit", (e) => e.preventDefault( ));
 }
 
 /**
