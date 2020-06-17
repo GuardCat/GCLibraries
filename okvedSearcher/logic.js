@@ -14,7 +14,7 @@
 async function director( ) {
 	let timeId = 0;
 	const
-		okveds = await getJson("okved.json"),
+		okveds = await getJson("base.json"),
 		areas =  await getJson("area.json"),
 		main = document.body.querySelector("main"),
 		keys = ["code", "name", "desc"],
@@ -33,6 +33,7 @@ async function director( ) {
 	input.addEventListener("keyup", search, false);
 	input.addEventListener("keydown", clearTimer, false);
 	document.forms.mainForm.addEventListener( "submit", (e) => e.preventDefault( ));
+	console.log( grepMissedCodes(areas, okveds) );
 }
 
 /**
