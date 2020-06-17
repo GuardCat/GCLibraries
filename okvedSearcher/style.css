@@ -81,7 +81,7 @@ main {
 	margin:					0px;
 }
 
-main > p {
+main > p, main > marquee {
 	border:					1px solid white;
 	border-radius:			5px;
 	padding:				5px;

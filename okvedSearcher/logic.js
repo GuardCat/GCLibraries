@@ -3,8 +3,7 @@
 
 /**
  * @desc director not pure async function. Sets events, loads data.
- * @requires file okved.json
- * @requires file area.json
+ * @requires file base.json
  * @requires function getJson
  * @requires function doSearch
  * @requires HTMLElement main — for placing information
@@ -14,8 +13,7 @@
 async function director( ) {
 	let timeId = 0;
 	const
-		okveds = await getJson("base.json"),
-		areas =  await getJson("area.json"),
+		base = await getJson("base.json"),
 		main = document.body.querySelector("main"),
 		keys = ["code", "name", "desc"],
 		input = document.querySelector("input[name='mainField']"),
@@ -25,15 +23,14 @@ async function director( ) {
 				search({ }, 10);
 				return false;
 			}
-			timeId = setTimeout(doSearch, t, input, main, okveds, areas, keys);
+			timeId = setTimeout(doSearch, t, input, main, base, keys);
 		},
 		clearTimer = ( ) => {if (timeId) clearTimeout(timeId);}
 	;
 
 	input.addEventListener("keyup", search, false);
 	input.addEventListener("keydown", clearTimer, false);
-	document.forms.mainForm.addEventListener( "submit", (e) => e.preventDefault( ));
-	console.log( grepMissedCodes(areas, okveds) );
+	document.forms.mainForm.addEventListener( "submit", (e) => e.preventDefault( ) );
 }
 
 /**
@@ -41,20 +38,19 @@ async function director( ) {
  * 		 Adds info in main element.
  * @param  {HTMLElement} input  the text field with keywords
  * @param  {HTMLElement} main there will be placed the result of the searching
- * @param  {array} okveds base of okveds
- * @param  {array} areas base of areas
+ * @param  {array} base base of okveds
  * @param  {array} keys Array of text — keys for okveds.
  * @requiress function grep — for cross-searching
  * @requires functio} addRow — for adding info into the main element
  * @return {undefined}
  */
-function doSearch(input, main, okveds, areas, keys) {
+function doSearch(input, main, base, keys) {
 	const words = textToArray(input.value).filter( word => word.length > 1);
-	main.innerHTML = "<p>Поиск...</p>";
+	main.innerHTML = "<marquee behavior='alternate' direction='right'>Поиск...</marquee>";
 	setTimeout( ( ) => {
-		let found = grep(okveds, keys, words);
+		let found = grep(base, keys, words);
 		main.innerHTML = "";
-		addRow(found, areas, main);
+		addRow(found, main);
 	}, 10);
 }
 
@@ -76,25 +72,22 @@ async function getJson(url) {
 /**
  * @desc addRow not pure function adds a row to the main element
  *
- * @param  {object or array of objects} okvedEntry the found row from okved json
- * @param  {array} areas
+ * @param  {object or array of objects} okvedEntry the found row from base
  * @param  {HTMLElement} block — there will be placed result
  * @param  {boolean} descFlag if shoud include the description to the result
  * @return {undefined}
  */
-function addRow(okvedEntry, areas, block, descFlag) {
+function addRow(okvedEntry, block, descFlag) {
 	if (okvedEntry instanceof Array) {
 		if (okvedEntry.length > 1) {
 			block.insertAdjacentHTML( "beforeend", createO({desc: `Найдено вариантов: ${okvedEntry.length}`,code: "", name: ""}) );
 			block.insertAdjacentHTML( "beforeend", createA({area: ""}) );
 		}
-		return okvedEntry.map( entry => addRow(entry, areas, block) );
+		return okvedEntry.map( entry => addRow(entry, block) );
 	}
-	let areaEntry = areas.filter(area => area.code === okvedEntry.code.replace(/<[^>]+>/g, ""))[0]; // При сравнении убираем span — выделение найденного
-	if (!areaEntry && okvedEntry.code) return false; //areaEntry = {area: "Нет данных"};
-	if (!okvedEntry.code) areaEntry = {area: ""};
+
 	block.insertAdjacentHTML( "beforeend", createO(okvedEntry) );
-	block.insertAdjacentHTML( "beforeend", createA(areaEntry) );
+	block.insertAdjacentHTML( "beforeend", createA(okvedEntry) );
 }
 
 
@@ -128,7 +121,7 @@ function createO(entry, descFlag = true) {
 /**
  * @desc grep pure function searches rows in Array of objects
  * 		 by key words. Every row has to contain one of more those key words.
- * 		 The result sortes, keywords includes in the span node with
+ * 		 The result sortes, keywords include in the span node with
  * 		 HTML class 'founded'
  *
  * @param  {array} arr base for search
@@ -137,8 +130,9 @@ function createO(entry, descFlag = true) {
  * @return {array} the filtered sorted and marked searching result.
  */
 function grep(arr, keys, words) {
-	if (!words.length) return [{code:"", name: "введите больше слов (латиница и символы не учитываются)", desc: ""}];
-	const result = words.reduce(
+	if (!words.length) return [{code:"", name: "введите больше слов (латиница и символы не учитываются)", desc: "", area: ""}];
+	const allKeys = Object.keys(arr[0]).filter( akey => !keys.some(key => key === akey) ), /*List of the keys which not used in the searching*/
+		result = words.reduce(
 		(res, word) => {
 			return res.filter( el => {
 				let r = new RegExp(word, "gi");
@@ -172,12 +166,13 @@ function grep(arr, keys, words) {
 					let elementForChange = mapResult[key] ? mapResult[key] : element[key];
 					mapResult[key] = elementForChange.replace(r, "<span class='found'>$1</span>");
 				} );
+				allKeys.forEach( akey => mapResult[akey] = element[akey] );
 		} );
 		return mapResult;
 	} );
 
 	if (!result.length) {
-		return [{code:"", desc: "Ничего не найдено. Попробуйте сформулировать иначе.", name: ""}];
+		return [{code:"", desc: "Ничего не найдено. Попробуйте сформулировать иначе.", name: "", area: ""}];
 	}
 	return result;
 }
