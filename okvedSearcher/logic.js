@@ -3,14 +3,14 @@
 
 function oldBrowser( ) {
 	try {
-		var map = new Map( );
+		eval("async function testMe(){}")
 	} catch(e) {
 		return true;
 	}
 	return false;
 }
 
-if ( oldBrowser( ) ) locate.href = "oldBrowser.html";
+if ( oldBrowser( ) ) location.href = "oldBrowser.html";
 
 window.addEventListener("load", director, false);
 
