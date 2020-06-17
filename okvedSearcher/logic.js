@@ -3,8 +3,7 @@
 
 function oldBrowser( ) {
 	try {
-		const testConst = false;
-		class testClass {}
+		var map = new Map( );
 	} catch(e) {
 		return true;
 	}
