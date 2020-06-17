@@ -12,6 +12,7 @@
 */
 async function director( ) {
 	let timeId = 0;
+	if ( oldBrowser( ) ) {locate.href="oldBrowser.html";return false;}
 	const
 		base = await getJson("base.json"),
 		main = document.body.querySelector("main"),
@@ -187,6 +188,16 @@ function textToArray(text) {
 		spaces = / +/g
 	;
 	return text.replace(badSymbols, "").split(spaces).filter( text => !!text );
+}
+
+function oldBrowser( ) {
+	try {
+		const testConst = false;
+		class testClass {}
+	} catch(e) {
+		return true;
+	}
+	return false;
 }
 
 window.addEventListener("load", director, false);
