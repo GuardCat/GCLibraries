@@ -1,17 +1,6 @@
 /*jshint esversion: 9, browser: true*/
 "use strict";
 
-function oldBrowser( ) {
-	try {
-		eval("async function testMe(){}")
-	} catch(e) {
-		return true;
-	}
-	return false;
-}
-
-if ( oldBrowser( ) ) location.href = "oldBrowser.html";
-
 window.addEventListener("load", director, false);
 
 /**
