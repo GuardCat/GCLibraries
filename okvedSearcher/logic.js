@@ -1,6 +1,20 @@
 /*jshint esversion: 9, browser: true*/
 "use strict";
 
+function oldBrowser( ) {
+	try {
+		const testConst = false;
+		class testClass {}
+	} catch(e) {
+		return true;
+	}
+	return false;
+}
+
+if ( oldBrowser( ) ) locate.href = "oldBrowser.html";
+
+window.addEventListener("load", director, false);
+
 /**
  * @desc director not pure async function. Sets events, loads data.
  * @requires file base.json
@@ -12,7 +26,6 @@
 */
 async function director( ) {
 	let timeId = 0;
-	if ( oldBrowser( ) ) {locate.href="oldBrowser.html";return false;}
 	const
 		base = await getJson("base.json"),
 		main = document.body.querySelector("main"),
@@ -189,15 +202,3 @@ function textToArray(text) {
 	;
 	return text.replace(badSymbols, "").split(spaces).filter( text => !!text );
 }
-
-function oldBrowser( ) {
-	try {
-		const testConst = false;
-		class testClass {}
-	} catch(e) {
-		return true;
-	}
-	return false;
-}
-
-window.addEventListener("load", director, false);
