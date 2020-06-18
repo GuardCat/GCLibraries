@@ -15,7 +15,7 @@ window.addEventListener("load", director, false);
 async function director( ) {
 	let timeId = 0;
 	const
-		base = await getJson("base.json"),
+		base = await getJson("base.json?5"),
 		main = document.body.querySelector("main"),
 		keys = ["code", "name", "desc"],
 		input = document.querySelector("input[name='mainField']"),
