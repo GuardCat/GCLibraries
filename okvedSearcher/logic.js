@@ -18,6 +18,7 @@ async function director( ) {
 		base = await getJson("base.json?5"),
 		main = document.body.querySelector("main"),
 		keys = ["code", "name", "desc"],
+		limit = 150,
 		input = document.querySelector("input[name='mainField']"),
 		search = (e, t = 1000) => {
 			clearTimer( );
@@ -25,7 +26,7 @@ async function director( ) {
 				search({ }, 10);
 				return false;
 			}
-			timeId = setTimeout(doSearch, t, input, main, base, keys);
+			timeId = setTimeout(doSearch, t, input, main, base, keys, limit);
 		},
 		clearTimer = ( ) => {if (timeId) clearTimeout(timeId);}
 	;
@@ -46,13 +47,13 @@ async function director( ) {
  * @requires functio} addRow — for adding info into the main element
  * @return {undefined}
  */
-function doSearch(input, main, base, keys) {
+function doSearch(input, main, base, keys, limit) {
 	const words = textToArray(input.value).filter( word => word.length > 1);
 	main.innerHTML = "<div>Поиск...</div>";
 	setTimeout( ( ) => {
-		let found = grep(base, keys, words);
+		let found = grep(base, keys, words, limit);
 		main.innerHTML = "";
-		addRow(found, main);
+		addRow(found, main, true, limit);
 	}, 10);
 }
 
@@ -79,16 +80,16 @@ async function getJson(url) {
  * @param  {boolean} descFlag if shoud include the description to the result
  * @return {undefined}
  */
-function addRow(okvedEntry, block, descFlag) {
+function addRow(okvedEntry, block, descFlag, limit) {
 	if (okvedEntry instanceof Array) {
 		if (okvedEntry.length > 1) {
-			block.insertAdjacentHTML( "beforeend", createO({desc: `Найдено вариантов: ${okvedEntry.length}`,code: "", name: ""}) );
+			block.insertAdjacentHTML( "beforeend", createO({desc: `Найдено вариантов: ${okvedEntry.length}${okvedEntry.length === limit ? "+ (усечено)" : ""}`,code: "", name: ""}) );
 			block.insertAdjacentHTML( "beforeend", createA({area: ""}) );
 		}
 		return okvedEntry.map( entry => addRow(entry, block) );
 	}
 
-	block.insertAdjacentHTML( "beforeend", createO(okvedEntry) );
+	block.insertAdjacentHTML( "beforeend", createO(okvedEntry, descFlag) );
 	block.insertAdjacentHTML( "beforeend", createA(okvedEntry) );
 }
 
@@ -119,7 +120,6 @@ function createO(entry, descFlag = true) {
 	return message + (descFlag ? desc + closer : closer);
 }
 
-
 /**
  * @desc grep pure function searches rows in Array of objects
  * 		 by key words. Every row has to contain one of more those key words.
@@ -131,47 +131,49 @@ function createO(entry, descFlag = true) {
  * @param  {array} words keywords for the searching
  * @return {array} the filtered sorted and marked searching result.
  */
-function grep(arr, keys, words) {
+function grep(arr, keys, words, limit = 150) {
 	if (!words.length) return [{code:"", name: "введите больше слов (латиница и символы не учитываются)", desc: "", area: ""}];
-	const allKeys = Object.keys(arr[0]).filter( akey => !keys.some(key => key === akey) ), /*List of the keys which not used in the searching*/
-		result = words.reduce(
-		(res, word) => {
-			return res.filter( el => {
-				let r = new RegExp(word, "gi");
-				return keys.some( (key) => r.test(el[key]) );
+	const allKeys = Object.keys(arr[0]).filter( akey => !keys.some(key => key === akey) ); /*List of the keys which not used in the searching*/
+	let result = arr;
+	words.forEach( (word) => {
+	 	result = result.filter( item => {
+			const r = new RegExp(`${word}`, "gi");
+			return keys.some( key => r.test(item[key]) );
+		} );
+	} );
+	result = result.slice(0, limit)
+	.sort( (a, b) => {
+		const
+			phrase = new RegExp( words.join(" "), "gi"),
+			startPhrase = new RegExp( "^" + words.join(" "), "gi"),
+			wholePhrase = new RegExp( "^" + words.join(" ") + "$", "gi")
+		;
+
+		for (let keyid in keys) {
+			if ( wholePhrase.test(b[ keys[keyid] ]) ) return 0;
+			if ( startPhrase.test(a[ keys[keyid] ]) ) return -1;
+
+			if ( startPhrase.test(b[ keys[keyid] ]) ) return 0;
+			if ( phrase.test(a[ keys[keyid] ]) ) return -1;
+
+			if ( phrase.test(b[ keys[keyid] ]) ) return 0;
+			if ( words.some( (word) => a[ keys[keyid] ].search(word) !== -1 ) ) return -1;
+		}
+		return 1;
+	} )
+	.map( element => {
+		const mapResult = { };
+		keys.forEach( key => {
+			words.forEach( word => {
+				const r = new RegExp(`(${word})`, "gi");
+				let elementForChange = mapResult[key] ? mapResult[key] : element[key];
+				mapResult[key] = elementForChange.replace(r, "<span class='found'>$1</span>");
 			} );
-		}, arr)
-		.sort( (a, b) => {
-			const
-				phrase = new RegExp( words.join(" "), "gi"),
-				startPhrase = new RegExp( "^" + words.join(" "), "gi"),
-				wholePhrase = new RegExp( "^" + words.join(" ") + "$", "gi")
-			;
-
-			for (let keyid in keys) {
-				if ( wholePhrase.test(b[ keys[keyid] ]) ) return 0;
-				if ( startPhrase.test(a[ keys[keyid] ]) ) return -1;
-
-				if ( startPhrase.test(b[ keys[keyid] ]) ) return 0;
-				if ( phrase.test(a[ keys[keyid] ]) ) return -1;
-
-				if ( phrase.test(b[ keys[keyid] ]) ) return 0;
-				if ( words.some( (word) => a[ keys[keyid] ].search(word) !== -1 ) ) return -1;
-			}
-			return 0;
-		} )
-		.map( element => {
-			const mapResult = { };
-			keys.forEach( key => {
-				words.forEach( word => {
-					const r = new RegExp(`(${word})`, "gi");
-					let elementForChange = mapResult[key] ? mapResult[key] : element[key];
-					mapResult[key] = elementForChange.replace(r, "<span class='found'>$1</span>");
-				} );
-				allKeys.forEach( akey => mapResult[akey] = element[akey] );
+			allKeys.forEach( akey => mapResult[akey] = element[akey] );
 		} );
 		return mapResult;
 	} );
+
 
 	if (!result.length) {
 		return [{code:"", desc: "Ничего не найдено. Попробуйте сформулировать иначе.", name: "", area: ""}];
