@@ -7,7 +7,6 @@ body {
 	margin-top:				0px;
 
 	justify-content:		space-around;
-	justify-items:			stretch;
 	align-items:			stretch;
 	grid-row-gap:			5px;
 	grid-column-gap:		5px;
@@ -46,6 +45,7 @@ strong {
 
 label {
 	display:				block;
+	margin-bottom:			5px;
 }
 
 #mainForm {
@@ -59,33 +59,44 @@ input {
 	border-radius:			5px;
 	font-size:				20px;
 	padding:				5px;
-	border:					1px solid green;
+	border:					2px solid #52AE30;
 }
 
 main {
 	grid-area:				main;
 	display:				grid;
-	grid-template-columns:	3fr 1fr;
+	grid-template-columns:	5fr 2fr;
 	padding:				0px;
 	margin-top:				0px;
-	max-width:				3fr;
+	max-width:				7fr;
 
 	justify-content:		space-around;
-	justify-items:			stretch;
 	align-items:			stretch;
-	grid-row-gap:			0px;
+	grid-row-gap:			17px;
 	grid-column-gap:		5px;
 
 	border-radius:			5px;
-	min-height:				30px;
+	min-height:				20px;
 	margin:					0px;
 }
 
-main > p, main > marquee {
-	border:					1px solid white;
+main > p, main > div {
+	margin-top:auto;
+	margin-bottom: auto;
 	border-radius:			5px;
 	padding:				5px;
-	background-color:		#eee;
+	background-color:		#F5F5F5;
+	height:					100%;
+}
+
+main > div {
+	animation: blinker 1.5s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0.2;
+  }
 }
 
 .found {

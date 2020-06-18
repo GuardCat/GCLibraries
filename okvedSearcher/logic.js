@@ -48,7 +48,7 @@ async function director( ) {
  */
 function doSearch(input, main, base, keys) {
 	const words = textToArray(input.value).filter( word => word.length > 1);
-	main.innerHTML = "<marquee behavior='alternate' direction='right'>Поиск...</marquee>";
+	main.innerHTML = "<div>Поиск...</div>";
 	setTimeout( ( ) => {
 		let found = grep(base, keys, words);
 		main.innerHTML = "";
