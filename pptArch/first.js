@@ -2,11 +2,11 @@ const
 	fs = require("fs"),
 	{exec} = require("child_process"),
 	minOption = "-25k",
-	maxSize = 1200
+	maxSize = 1365
 ;
 
 let list, arr;
-exec("rm *.svg *.wdp", options);
+exec("rm *.svg *.wdp");
 exec("identify *.png *.jpg *.jpeg | cut -f 1 -d 'x' > list.txt");
 
 setTimeout(resize, 1000);

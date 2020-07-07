@@ -1,6 +1,6 @@
 const
 	fs = require("fs"),
-	{exec} = require("child_process"),
+	{exec} = require("child_process")
 ;
 
 let list, arr;
