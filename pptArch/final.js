@@ -15,4 +15,6 @@ setTimeout(final, 1000);
 function final( ) {
 	exec ("optipng *.png");
 	exec ("jpegoptim *.jpg *.jpeg");
+	exec ("rm list.txt");
+	
 }
