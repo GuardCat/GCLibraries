@@ -8,20 +8,22 @@
 	
 	<hr style = "margin-bottom: 20px; margin-top: 20px; height: 0.5 px">
 	
-	<input type="button" value = "Save as..." disabled>
-
+	<input type="button" value = "Save as JSON..." disabled>
+	<input type="button" value = "Save as HTML..." disabled>
+	
 	<script src="saveFile.js"></script>
 	<script src="CSVToJSON.js"></script>
-	<script src="../compressJSON.js"></script>
+	<script src="jsonToTable.js"></script>
 
 	<script>
 		const 
 			reader = new FileReader( ),
-			button = document.querySelector("input[type='button']"),
+			saveAsJSON = document.querySelectorAll("input[type='button']")[0],
+			saveAsHTML = document.querySelectorAll("input[type='button']")[1],
 			fileInput = document.querySelector("input[type='file']")
 		;
 		
-		let json, csv;
+		let json, csv, html;
 		
 		fileInput.addEventListener( "change",
 			( ) => {
@@ -31,15 +33,18 @@
 				reader.onload = ( ) => {
 					csv = reader.result;
 					json = CSVToJSON(csv);
-					button.removeAttribute("disabled");	
+					html = JSONToTable(json);
+					saveAsJSON.removeAttribute("disabled");
+					saveAsHTML.removeAttribute("disabled");
 					console.info("Loaded");
 				}
 
 			}, false );
 					
-		button.addEventListener( "click", 
-			( ) => saveFile( JSON.stringify(json), {type: "text/json", charset: "utf-8", name: prompt("Введите имя файла: ")} ), false);
-		
+		saveAsJSON.addEventListener( "click", 
+			( ) => saveFile( JSON.stringify(json), {type: "text/json", charset: "utf-8", name: prompt("Введите имя JSON файла: ")} ), false);
+		saveAsHTML.addEventListener( "click", 
+			( ) => saveFile( html, {type: "text/json", charset: "utf-8", name: prompt("Введите имя HTML файла: ")} ), false);
 		//saveFile(a, {type: "text/json", charset: "utf-8", name: "pretest.json"});
 
 		//window.open(`data:text/json;charset=utf-8,${encodeURI(a)}`)
