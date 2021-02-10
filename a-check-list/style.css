@@ -25,7 +25,7 @@ input[type=checkbox] {
 
 input:checked + span {
 	text-decoration:		line-through;
-	color:					silver;
+	color:					#cdc;
 }
 
 .panel {
@@ -44,9 +44,10 @@ input:checked + span {
 input.clearIt {
 	border:					0px;
 	border-radius:			5px;
-	box-shadow:				0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);
-	background-color:		#fdd;
+	box-shadow:				0 1px 3px rgba(256,0,0,0.16), 0 1px 3px rgba(256,0,0,0.23);
+	background-color:		#fee;
 	outline:				none;
+	font-size:				14px;
 }
 
 input.clearIt:active {
@@ -55,9 +56,9 @@ input.clearIt:active {
 
 .counter {
 	font-size:				14px;
-	padding:				0px;
+	margin-top:				auto;
 }
 
 .done {
-	background-color:					#dfd;
+	color:					#060;
 }
