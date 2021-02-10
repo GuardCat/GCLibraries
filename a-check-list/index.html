@@ -47,7 +47,7 @@
 			<li><label><input type="checkbox"><span>Персональные данные Клиента полностью совпадают с данными в паспорте</span></label></li>
 			<li><label><input type="checkbox"><span>Если предоставлено водительское удостоверение, есть скан и второй его стороны</span></label></li>
 		</ul>
-		<h2>Представлены следующие документы по транспортному средству (возможны вариации)</h2>
+		<h2>Представлены все документы ТС (возможны вариации)</h2>
 		<ul>
 			<li><label><input type="checkbox"><span>Договор купли–продажи</span></label></li>
 			<li><label><input type="checkbox"><span>Гарантийное письмо / чек на ПВ</span></label></li>
@@ -56,7 +56,90 @@
 			<li><label><input type="checkbox"><span>Полис КАСКО</span></label></li>
 			<li><label><input type="checkbox"><span>Договор комиссии</span></label></li>
 		</ul>
+		<h2>Договор купли-продажи (ДКП)</h2>
+		<div class="info">Именно на основании ДКП автомобиль передаётся от предыдущего собственника Клиенту.
+			Информация в ДКП <b>обязательно</b> должна совпадать с данными из СТС и ПТС. Сверьте совпадение каждого пункта в ДКП и ПТС / СТС.
+			В случае обнаружения расхождений, отправьте договор на доработку с исправлением ошибок. <b>Важно! Проверяйте инфо сразу и в ДКП и в акте приёма-передачи к нему!</b>
+		</div>
+		<ul>
+			<li><label><input type="checkbox"><span>Марка и модель совпадает с ПТС</span></label></li>
+			<li><label><input type="checkbox"><span>Тип транспортного средства совпадает с ПТС</span></label></li>
+			<li><label><input type="checkbox"><span>Идентификационный номер (VIN) совпадает с ПТС</span></label></li>
+			<li><label><input type="checkbox"><span>Год выпуска совпадает с ПТС</span></label></li>
+			<li><label><input type="checkbox"><span>Номер двигателя совпадает с ПТС</span></label></li>
+			<li><label><input type="checkbox"><span>Порядковый номер шасси совпадает с ПТС</span></label></li>
+			<li><label><input type="checkbox"><span>Специальный кузовной номер совпадает с ПТС</span></label></li>
+			<li><label><input type="checkbox"><span>Цвет транспортного средства совпадает с ПТС</span></label></li>
+			<li><label><input type="checkbox"><span>Номер паспорта транспортного средства, кем и когда выдан</span></label></li>
+			<li><label><input type="checkbox"><span>Стоимость транспортного средства в ДКП, совпадает со стоимостью в Siebel</span></label></li>
+			<li><label><input type="checkbox"><span>Паспортные данные клиента в ДКП соответствуют документу</span></label></li>
+			<li><label><input type="checkbox"><span>На страницах в ДКП, где это предусмотрено, есть подписи сторон, реквизиты и печати юридического лица.</span></label></li>
+			<li><label><input type="checkbox"><span>Подпись Клиента везде соответствует паспорту.</span></label></li>
+			<li><label><input type="checkbox"><span>В приложенном к ДКП акт приема-передачи транспортного средства вышеуказанные данные по автомобилю также соответствуют ПТС.</span></label></li>
+			<li><label><input type="checkbox"><span>Если запрошена спецификация, номер ДКП в ней и данные автомобиля совпадают с документами</span></label></li>
+		</ul>
+		<div class="info">
+		В случае указания в ДКП / акте недостоверных данных транспортного средства или данных Клиента, сделка признается недействительной.
+		</div>
 
+		<h2>Гарантийное письмо (чек о внесении первоначального взноса)</h2>
+		<div class="info">Документ удостоверяет внесение Клиентом денежных средств
+			в счет оплаты первоначального взноса (предоплаты) за автомобиль,
+			приобретаемый по договору купли-продажи с указанием суммы взноса,
+			данных по Клиенту, транспортному средству и юридическому лицу.
+		</div>
+		<ul>
+			<li><label><input type="checkbox"><span>Все данные отражены корректно</span></label></li>
+			<li><label><input type="checkbox"><span>Есть все необходимые подписи сторон</span></label></li>
+			<li><label><input type="checkbox"><span>Есть необходимые печати</span></label></li>
+			<li><label><input type="checkbox"><span>Сумма в документе совпадает с суммой первоначального взноса в Siebel</span></label></li>
+			<li><label><input type="checkbox"><span>Данные автомобиля совпадают с ПТС</span></label></li>
+			<li><label><input type="checkbox"><span>Паспортные данные клиента совпадают с паспортом</span></label></li>
+			<li><label><input type="checkbox"><span>Номер ДКП совпадает с оригиналом</span></label></li>
+			<div class="info">В случае выявления ошибок направьте пакет документов на доработку в автосалон.
+			</div>
+		</ul>
+
+		<h2>Счета на оплату остаточной стоимости ТС, и иных дополнительных продуктов, включенных в тело кредита</h2>
+		<ul>
+			<li><label><input type="checkbox"><span>Суммы в документе совпадает с реальными</span></label></li>
+			<li><label><input type="checkbox"><span>Данные автомобиля совпадают с ПТС</span></label></li>
+			<li><label><input type="checkbox"><span>Паспортные данные клиента совпадают с паспортом</span></label></li>
+			<li><label><input type="checkbox"><span>Указаны реквизиты юриического лица (ДЦ)</span></label></li>
+		</ul>
+		<div class="info">В случае выявления ошибок направьте пакет документов на доработку в автосалон.
+		</div>
+
+		<h2>Полис КАСКО</h2>
+		<div class="info">Требуется обязательно при сумме свыше 1 млн. рублей</div>
+		<ul>
+			<li><label><input type="checkbox"><span>Указаны риски: «Угон и Тотал»</span></label></li>
+			<li><label><input type="checkbox"><span></span>Клиент указан в списке лиц, допущенных к управлению ТС или есть скан его Водительского удостоверения</label></li>
+			<li><label><input type="checkbox"><span>Сумма за страхование не входит в тело кредита или есть счет на оплату страхования</span></label></li>
+			<li><label><input type="checkbox"><span>Данные автомобиля совпадают с ПТС</span></label></li>
+			<li><label><input type="checkbox"><span>Паспортные данные клиента совпадают с паспортом</span></label></li>
+			<li><label><input type="checkbox"><span>Есть все необходимые подписи сторон</span></label></li>
+			<li><label><input type="checkbox"><span>Есть печать страховщика</span></label></li>
+		</ul>
+		<h2>Паспорт транспортного средства (далее ПТС)</h2>
+		<ul>
+			<li><label><input type="checkbox"><span>Есть скан (не заверенная копия) оригинала ПТС. Для б/у — обязательно цветной. Или, вместо ПТС, предоставлено Гарантийное письмо от автосалона.</span></label></li>
+			<li><label><input type="checkbox"><span>Для б/у авто с ЭПТС есть расширенная выписка или скан СТС прежнего собственника.</span></label></li>
+			<li><label><input type="checkbox"><span>Все документы полные и читаемые</span></label></li>
+			<li><label><input type="checkbox"><span>Последним собственником в ПТС указан продавец или есть договор комиссии</span></label></li>
+		</ul>
+		<h2>Договор комиссии</h2>
+		<div class="info">Если не требуется (продавец и есть последний владелец), отметьте все пункты без проверки</div>
+		<ul>
+			<li><label><input type="checkbox"><span>Данные по комиссионеру и комитенту внесены верно</span></label></li>
+			<li><label><input type="checkbox"><span>Данные транспортного средства в Договоре совпадают с ПТС</span></label></li>
+			<li><label><input type="checkbox"><span>Присутствуют печати комиссионера, подписи и реквизиты сторон</span></label></li>
+			<li><label><input type="checkbox"><span>Последним собственником в ПТС указан продавец или есть договор комиссии</span></label></li>
+			<li><label><input type="checkbox"><span>Сканы содержат все страницы, все данные читаемы</span></label></li>
+			<li><label><input type="checkbox"><span>Собственник в ПТС и комитент в договоре комиссии совпадают. Или приложены документы, подтверждающие переход ТС от собственника к собственнику независимо от их количества.</span></label></li>
+			<li><label><input type="checkbox">Есть акт приёма-передачи данных авто и все указанные выше данные в нём присутствуют.<span></span></label></li>
+
+		</ul>
 <!--
 		<h2></h2>
 		<ul>

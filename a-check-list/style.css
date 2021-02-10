@@ -1,6 +1,7 @@
 body {
 	font-family:			Calibri, Arial;
 	font-size:				20px;
+	max-width:				1024px;
 }
 
 h1 {
@@ -58,7 +59,13 @@ input.clearIt:active {
 	font-size:				14px;
 	margin-top:				auto;
 }
-
 .done {
 	color:					#060;
+}
+.info {
+	background-color:		#ffffdd;
+	border-radius:			5px;
+	font-size:				14px;
+	padding:				5px;
+	color:					#555;
 }
