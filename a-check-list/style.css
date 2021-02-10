@@ -3,17 +3,55 @@ body {
 	font-size:				20px;
 }
 
+h1 {
+	font-size:				28px
+}
+
+h2 {
+	font-size:				24px;
+}
+
 li {
-	list-style-type:	none;
+	list-style-type:		none;
 	margin-top:				10px;
 }
 
-input {
+input[type=checkbox] {
 	margin-left:			-2.25em;
 	margin-right:			1em;
 }
 
 input:checked + span {
-	text-decoration:	line-through;
-	color:						silver;
+	text-decoration:		line-through;
+	color:					silver;
+}
+
+.panel {
+	display:				flex;
+	align-items:			center;
+	justify-content:		space-between;
+	box-shadow:				0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	padding:				5px;
+	border-radius:			5px;
+}
+
+input.clearIt {
+	border:					0px;
+	border-radius:			5px;
+	box-shadow:				0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);
+	background-color:		#fdd;
+	outline:				none;
+}
+
+input.clearIt:active {
+	box-shadow:				0 0 0 rgba(0, 0, 0, 0) !important;
+}
+
+.counter {
+	font-size:				14px;
+	padding:				0px;
+}
+
+.done {
+	background-color:					#dfd;
 }

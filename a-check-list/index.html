@@ -8,9 +8,14 @@
 
  	</head>
  	<body>
+		<h1>Проверка документов на сделку автокредитования</h1>
 
-		<h2>Проверка комплектности документов</h2>
-		<div>В наличии</div>
+		<article class="panel">
+			<div class="counter">Проверено: 0 из 30</div>
+			<input type="button" value="Очистить чек-лист" class="clearIt">
+		</article>
+
+		<h2>В наличии есть следующие документы</h2>
 		<ul>
 			<li><label><input type="checkbox"><span>Фотография Клиента</span></label></li>
 			<li><label><input type="checkbox"><span>Цветной скан паспорта</span></label></li>
@@ -25,6 +30,14 @@
 			<li><label><input type="checkbox"><span>Клиент повёрнут к камере лицом, лицо не обрезано (например, видна не только макушка или подбородок)</span></label></li>
 			<li><label><input type="checkbox"><span>Клиент снят без солнцезащитных очков, без головного убора, аксессуаров, которые закрывают часть лица или искажают внешность</span></label></li>
 		</ul>
+
+		<h2>Скан паспорта</h2>
+			<ul>
+				<li><label><input type="checkbox"><span>Скан паспорта должен быть в цветном виде</span></label></li>
+				<li><label><input type="checkbox"><span>В скане есть страницы первого разворота, страница с адресом регистрации;</span></label></li>
+	   			<li><label><input type="checkbox"><span>Сканированные страницы читаемы, нет засвеченной, затенённой, размытой области</span></label></li>
+	   			<li><label><input type="checkbox"><span>Сканированные страницы сяты полностью, не обрезаны</span></label></li>
+	   			<li><label><input type="checkbox"><span>По фотографии в паспорте можно идентифицировать Клиента</span></label></li>
 
 		<script src="logic.js"></script>
 
