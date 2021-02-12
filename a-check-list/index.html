@@ -5,16 +5,25 @@
  		<meta name="viewport" content="width=device-width, initial-scale=1"/>
  		<title>Проверка документов для сделки авто</title>
 		<link rel="stylesheet" href="style.css">
-
  	</head>
+
  	<body>
 		<h1>Проверка документов на сделку автокредитования</h1>
 
-		<article class="panel">
-			<div class="counter">Проверено: 0 из 30</div>
-			<input type="button" value="Очистить чек-лист" class="clearIt">
-		</article>
 
+		<section class="panel">
+			<div class="counter"></div>
+			<input type="button" value="Очистить чек-лист" class="clearIt">
+		</section>
+
+		<section class="dealTerms">
+			<h1>Данные по сделке и авто</h1>
+			<label><input type="checkbox" id="is_new">Автомобиль новый</label>
+			<label><input type="checkbox" id="epts">Электронный вариант ПТС</label>
+			<label><input type="checkbox" id="dc_is_owner">Владелец авто — ДЦ</label>
+		</section>
+
+		<main>
 		<h2>Представлены все документы (возможны вариации)</h2>
 		<ul>
 			<li><label><input type="checkbox"><span>Фотография Клиента</span></label></li>
@@ -23,8 +32,8 @@
 			<li><label><input type="checkbox"><span>Договор купли-продажи</span></label></li>
 			<li><label><input type="checkbox"><span>Документ, подтверждающий первоначальный взнос (если есть): гарантийное письмо или чек на ПВ</span></label></li>
 			<li><label><input type="checkbox"><span>Счета на оплату</span></label></li>
-			<li><label><input type="checkbox"><span>Для Б/У авто <b>без</b> ЭПТС есть цветной скан Паспорта транспортного средства</span></label></li>
-			<li><label><input type="checkbox"><span>Для Б/У авто с ЭПТС есть расширенная выписка или скан СТС прежнего собственника.</span></label></li>
+			<li data-off="is_new;epts"><label><input type="checkbox"><span>Для Б/У авто <b>без</b> ЭПТС есть цветной скан Паспорта транспортного средства</span></label></li>
+			<li data-off="is_new" data-on="epts"><label><input type="checkbox"><span>Для Б/У авто с ЭПТС есть расширенная выписка или скан СТС прежнего собственника.</span></label></li>
 			<li><label><input type="checkbox"><span>Для нового авто есть скан ПТС или ЭПТС <b>или</b> ТТН / ФУТС + Гарантийное письмо ДЦ</span></label></li>
 			<li><label><input type="checkbox"><span>Полис КАСКО обязательно при сумме кредита от 1 млн. рублей</span></label></li>
 			<li><label><input type="checkbox"><span>Согласие на обработку ПД</span></label></li>
@@ -181,7 +190,7 @@
 		<div class="info">
 			Если договор не авторизовывается, создаем заявку в <a href="https://snow.otpbank.hu/obru?id=sc_cat_item&sys_id=9487ef121b1704d4849221ff6e4bcb5e">SN техническая авторизация</a>
 		</div>
-
+	</main>
 <!--
 		<h2></h2>
 		<ul>
