@@ -18,9 +18,6 @@
 
 		<section class="dealTerms">
 			<h1>Данные по сделке и авто</h1>
-			<label><input type="checkbox" id="is_new">Автомобиль новый</label>
-			<label><input type="checkbox" id="epts">Электронный вариант ПТС</label>
-			<label><input type="checkbox" id="dc_is_owner">Владелец авто — ДЦ</label>
 
 			<table>
 				<tr>
@@ -31,7 +28,37 @@
 					<td><input type="radio" id="isold" name="condition"><label for="isold">Б/у</label></td>
 				</tr>
 			</table>
-		</section>
+
+			<table>
+				<tr>
+					<td rowspan="2">Паспорт ТС</td>
+					<td><input type="radio" id="epts" name="pts"><label for="epts">Электронный</label></td>
+				</tr>
+				<tr>
+					<td><input type="radio" id="pts" name="pts"><label for="pts">Бумажный</label></td>
+				</tr>
+			</table>
+
+			<table>
+				<tr>
+					<td rowspan="2">Владелец авто</td>
+					<td><input type="radio" id="dcowner" name="owner"><label for="dcowner">ДЦ</label></td>
+				</tr>
+				<tr>
+					<td><input type="radio" id="notdcowner" name="owner"><label for="notdcowner">Не ДЦ</label></td>
+				</tr>
+			</table>
+
+			<table>
+				<tr>
+					<td rowspan="2">Сумма кредита</td>
+					<td><input type="radio" id="lessmln" name="sum"><label for="lessmln">До 1 млн.</label></td>
+				</tr>
+				<tr>
+					<td><input type="radio" id="moremln" name="sum"><label for="moremln">1 млн. +</label></td>
+				</tr>
+			</table>
+	</section>
 
 		<main>
 		<h2>Представлены все документы (возможны вариации)</h2>
