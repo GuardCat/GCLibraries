@@ -32,7 +32,7 @@
 			<table>
 				<tr>
 					<td rowspan="2">Паспорт ТС</td>
-					<td><input type="radio" id="epts" name="pts"><label for="epts">Электронный</label></td>
+					<td><input type="radio" id="epts" name="pts"><label for="epts">ЭПТС / нет</label></td>
 				</tr>
 				<tr>
 					<td><input type="radio" id="pts" name="pts"><label for="pts">Бумажный</label></td>
@@ -61,6 +61,7 @@
 	</section>
 
 		<main>
+		<section class="checksection">
 		<h2>Представлены все документы (возможны вариации)</h2>
 		<ul>
 			<li><label><input type="checkbox"><span>Фотография Клиента</span></label></li>
@@ -69,22 +70,27 @@
 			<li><label><input type="checkbox"><span>Договор купли-продажи</span></label></li>
 			<li><label><input type="checkbox"><span>Документ, подтверждающий первоначальный взнос (если есть): гарантийное письмо или чек на ПВ</span></label></li>
 			<li><label><input type="checkbox"><span>Счета на оплату</span></label></li>
-			<li data-off="is_new;epts"><label><input type="checkbox"><span>Для Б/У авто <b>без</b> ЭПТС есть цветной скан Паспорта транспортного средства</span></label></li>
-			<li data-off="is_new" data-on="epts"><label><input type="checkbox"><span>Для Б/У авто с ЭПТС есть расширенная выписка или скан СТС прежнего собственника.</span></label></li>
-			<li><label><input type="checkbox"><span>Для нового авто есть скан ПТС или ЭПТС <b>или</b> ТТН / ФУТС + Гарантийное письмо ДЦ</span></label></li>
+			<li data-on="isold;pts"><label><input type="checkbox"><span>Для Б/У авто <b>без</b> ЭПТС есть цветной скан Паспорта транспортного средства</span></label></li>
+			<li data-on="isold;epts"><label><input type="checkbox"><span>Для Б/У авто с ЭПТС есть расширенная выписка или скан СТС прежнего собственника.</span></label></li>
+			<li data-on="isnew;pts"><label><input type="checkbox"><span>Для нового авто есть скан ПТС</span></label></li>
+			<li data-on="isnew;epts"><label><input type="checkbox"><span>Есть ЭПТС <b>или</b> ТТН / ФУТС + Гарантийное письмо ДЦ</span></label></li>
 			<li><label><input type="checkbox"><span>Полис КАСКО обязательно при сумме кредита от 1 млн. рублей</span></label></li>
 			<li><label><input type="checkbox"><span>Согласие на обработку ПД</span></label></li>
 			<li><label><input type="checkbox"><span>Салон является владельцем автомобиля <b>или</b> предоставлен скан Договора комисии (авто на реализации)</span></label></li>
 			<li><label><input type="checkbox"><span>Все сканы документов читаемы, скопированы полностью, нет размытых и обрезанных страниц</span></label></li>
 		</ul>
-
+		</section>
+		
+		<section class="checksection">
 		<h2>Проверка клиента</h2>
 		<ul>
 			<li><label><input type="checkbox"><span>На сайте <a href="http://services.fms.gov.ru/info-service-result.htm?sid=2000">мвд</a> есть инфо о паспорте или (при получении ответа «Сведениями по заданным реквизитам не располагаем»), клиент предоставил справку о действительности паспорта из МВД / МФЦ / Паспортного стола.</span></label></li>
 			<li><label><input type="checkbox"><span>Нет задолженности при поиске по сайту <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или клиент предоставил справку о погашении данной задолженности с верными данными клиентаи.</span></label></li>
 		</ul>
 		<div class="info">При отсутствии данных о паспорте клиента на сайте МВД, рекомендуем клиенту в дальнейшем обратиться в МВД для исправления информации о его паспорте.</div>
-
+		</section>
+		
+		<section class="checksection">
 		<h2>Требования к фотографии Клиента</h2>
 		<ul>
 			<li><label><input type="checkbox"><span>Фотография сделана во время проведения сделки в автосалоне</span></label></li>
@@ -93,7 +99,8 @@
 			<li><label><input type="checkbox"><span>Клиент повёрнут к камере лицом, лицо не обрезано (например, видна не только макушка или подбородок)</span></label></li>
 			<li><label><input type="checkbox"><span>Клиент снят без солнцезащитных очков, без головного убора, аксессуаров, закрывающих часть лица или искажающих внешность</span></label></li>
 		</ul>
-
+		</section>
+		
 		<h2>Скан паспорта</h2>
 		<ul>
 			<li><label><input type="checkbox"><span>Скан паспорта представлен в цветном виде</span></label></li>

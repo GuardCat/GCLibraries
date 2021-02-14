@@ -1,4 +1,4 @@
-/* jshint esversion: 6 */
+/*   */
 class Checklist {
 	constructor (checkboxes, container) {
 		this.checkboxes = [...checkboxes];
@@ -49,7 +49,44 @@ class Checklist {
 	}
 }
 
+class TieChecker {
+	constructor(el, container) {
+		this.ids = el.getAttribute("data-on").split(";");
+		this.elems = this.ids.map( (id) => document.getElementById(id) );
+		this.elems.forEach( el => {
+			el.addEventListener("change", this.renewStatus, false);
+		} );
+	}
+	
+	renewStatus( ) {
+	//	alert(this.show)
+		this.show = this.show;
+	}
+	
+	get show( ) {
+		alert(this.elems);
+		return this.elems.every(el => el.checked);
+	}
+	
+	set show(isShowed) {
+		if (isShowed) {
+			this.classList.remove("off");
+		} else {
+			this.classList.add("off");
+		}
+	}
+	
+}
+
 function director( ) {
+	const 
+		influensers = [...document.querySelectorAll("*[data-on]")],
+		tieClasses = influensers.map( el => new TieChecker(el) )
+	;
+}
+
+
+function olddirector( ) {
 	const
 		checklist = new Checklist( document.querySelectorAll("input[type=checkbox]"), document.body ),
 		panel = document.querySelector(".panel"),
@@ -59,7 +96,7 @@ function director( ) {
 	reset.addEventListener( "click", ( ) => {
 		checklist.reset( );
 		checklist.save( );
-		renewCounter(counter, checklist)
+		renewCounter(counter, checklist);
 	});
 
 	renewCounter(counter, checklist);
