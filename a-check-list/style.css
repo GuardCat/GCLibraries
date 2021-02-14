@@ -31,8 +31,49 @@ li {
 	border-radius: 			20px;
 	margin:					2px;
 }
-.dealTerms input[type=checkbox] {
-	margin-right:			10px;
+
+
+.dealTerms input[type=radio] {
+	display: 				none;
+}
+
+.dealTerms table {
+	background-color:		#eee;
+	border-radius:			10px;
+	border:					0px;
+	border-collapse:		collapse;
+	margin:					10px;
+}
+
+.dealTerms table td {
+	text-align:					center;
+	width:						80px;
+	boder:						0px;
+}
+
+.dealTerms table td label {
+	display:					block;
+	padding:					10px;
+	width:						80px;
+}
+
+.dealTerms table tr td[rowspan='2'] {
+	padding:					0px 10px 0px 10px;
+}
+
+.dealTerms table tr:nth-child(1) td label {
+	border-top-right-radius:	10px;
+	padding:					0px
+}
+
+.dealTerms table tr:nth-child(2) td label {
+	border-bottom-right-radius: 10px;
+	padding:					0px
+}
+
+.dealTerms table td input:checked+label {
+	background-color:			#4577d4;
+	color:						white;
 }
 
 main input[type=checkbox] {
