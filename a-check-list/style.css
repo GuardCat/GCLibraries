@@ -31,6 +31,8 @@ h2 {
 	height: 40px;
 	line-height: 40px;
 	text-indent: 15px;
+	text-overflow: ellipsis;
+	overflow: hidden;
 	background-color: #CDE5FF;
 	box-shadow: 7px 7px 32px 2px rgba(0, 0, 0, 0.04);
 	border-radius: 10px 10px 0px 0px;
@@ -41,7 +43,6 @@ section {
 	box-shadow: 7px 7px 32px 2px rgba(0, 0, 0, 0.2);
 	border-radius: 10px;
 	margin-top: 20px;
-	border: 0px solid black;
 	padding-bottom: 10px;
 	display: flex;
 	flex-wrap: wrap;
@@ -65,8 +66,9 @@ main {
 }
 
 main input[type=checkbox] {
-	margin-left: -2.0em;
-	margin-right: 1em;
+	margin-left: -30px;
+	margin-right: 0;
+	width: 30px;
 }
 
 input:checked + span {
