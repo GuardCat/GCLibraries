@@ -1,7 +1,8 @@
 /* jshint esversion: 6  */
 class Checklist {
-	constructor (checkboxes, container) {
+	constructor (checkboxes, container, excludeClass) {
 		this.checkboxes = [...checkboxes];
+		this.excludeClass = excludeClass;
 
 		container.addEventListener("change", (e) => {
 			if (e.target.tagName !== "INPUT") return true;
@@ -33,11 +34,19 @@ class Checklist {
 		this.check( JSON.parse(savedText) );
 	}
 
+	get hiddenInputsLen( ) {
+		return document.body.querySelectorAll("input:not([type='checkbox'])").length + document.body.querySelectorAll(`${this.excludeClass} input[type='checkbox']`).length;
+	}
+
 	get len( ) {
-		return this.checkboxes.length;
+		return this.checkboxes.length - this.hiddenInputsLen;
 	}
 	get checked( ) {
-		return this.checkboxes.filter( box => box.checked );
+		return this.checkboxes.filter( box => box.checked);
+	}
+
+	get checkedBoxes( ) {
+		return this.checkboxes.filter( box => box.checked && box.type === "checkbox");
 	}
 
 	get checkedNums( ) {
@@ -85,26 +94,47 @@ function director( ) {
 		dealTerms = document.querySelector(".dealTerms"),
 		termsCount = dealTerms.querySelectorAll("table").length,
 		main = document.body.querySelector("main"),
-		hidingSections = [...main.querySelectorAll("section[id]")] /* Все section с id нуждаются в скрытии при отсутствии элементов*/
+		hidingSections = [...main.querySelectorAll("section[id]")], /* Считаем, что все section с id нуждаются в скрытии при отсутствии элементов*/
+		checklist = new Checklist( document.body.querySelectorAll("input"), document.body, ".off" ),
+		panel = document.querySelector(".panel"),
+		counter = panel.querySelector(".counter"),
+		reset = panel.querySelector("input.clearIt")
 	;
 
 	document.body.addEventListener("change", e => {
-		if (e.id === "") return true;
+		if (e.target.tagName !== "INPUT") return true;
 		tieClasses.forEach( t => t.renewStatus( ) );
 		hidingSections.forEach( el => hideIfEmpty(el) );
+		renewCounter(counter, checklist);
 	}, false);
 
 	dealTerms.addEventListener("change", e => {
-		if (termsCount !== dealTerms.querySelectorAll("input:checked").length) return true;
-		main.classList.remove("off");
+		showIfTermsDone(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
 	}, true );
 
+	reset.addEventListener( "click", ( ) => {
+		checklist.reset( );
+		checklist.save( );
+		showIfTermsDone(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
+		tieClasses.forEach( t => t.renewStatus( ) );
+		renewCounter(counter, checklist);
+	});
+
+	showIfTermsDone(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
+	tieClasses.forEach( t => t.renewStatus( ) );
+	renewCounter(counter, checklist);
+}
+
+function showIfTermsDone(termsLen, checkedLen, questionary) {
+	if (termsLen === checkedLen) {
+		questionary.classList.remove("off");
+	} else {
+		questionary.classList.add("off");
+	}
 }
 
 function hideIfEmpty(el) {
-	const
-		inputsCount = el.querySelectorAll("li:not(.off)").length
-	;
+	const inputsCount = el.querySelectorAll("li:not(.off)").length;
 	if (!inputsCount) {
 		el.classList.add("off");
 	} else {
@@ -112,30 +142,9 @@ function hideIfEmpty(el) {
 	}
 }
 
-function olddirector( ) {
-	const
-		checklist = new Checklist( document.querySelectorAll("input[type=checkbox]"), document.body ),
-		panel = document.querySelector(".panel"),
-		counter = panel.querySelector(".counter"),
-		reset = panel.querySelector("input.clearIt")
-	;
-	reset.addEventListener( "click", ( ) => {
-		checklist.reset( );
-		checklist.save( );
-		renewCounter(counter, checklist);
-	});
-
-	renewCounter(counter, checklist);
-
-	document.body.addEventListener("change", (e) => {
-		if (e.target.tagName !== "INPUT") return true;
-		renewCounter(counter, checklist);
-	});
-}
-
 function renewCounter(counter, checklist) {
-	counter.innerHTML = `Проверено: ${checklist.checkedNums.length} из ${checklist.len}`;
-	if (checklist.checkedNums.length === checklist.len) {
+	counter.innerHTML = `Проверено: ${checklist.checkedBoxes.length} из ${checklist.len}`;
+	if (checklist.len && checklist.checkedNums.length === checklist.len) {
 		counter.classList.add("done");
 	} else {
 		counter.classList.remove("done");
