@@ -105,12 +105,9 @@ function director( ) {
 		if (e.target.tagName !== "INPUT") return true;
 		tieClasses.forEach( t => t.renewStatus( ) );
 		hidingSections.forEach( el => hideIfEmpty(el) );
+		showIfTermsDone(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
 		renewCounter(counter, checklist);
 	}, false);
-
-	dealTerms.addEventListener("change", e => {
-		showIfTermsDone(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
-	}, true );
 
 	reset.addEventListener( "click", ( ) => {
 		checklist.reset( );
@@ -120,8 +117,8 @@ function director( ) {
 		renewCounter(counter, checklist);
 	});
 
-	showIfTermsDone(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
 	tieClasses.forEach( t => t.renewStatus( ) );
+	showIfTermsDone(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
 	renewCounter(counter, checklist);
 }
 
