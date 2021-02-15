@@ -6,13 +6,13 @@ body {
 
 h1 {
 	font-size:				28px;
-	width:						100%;
+	width:					100%;
 }
 
 h2 {
 	font-size:				24px;
 	margin-top:				1em;
-	margin-bottom:		0em;
+	margin-bottom:			0em;
 }
 
 li {
@@ -21,62 +21,64 @@ li {
 }
 
 .off {
-	display:						none !important;
+	display:				none !important;
 }
 
 .dealTerms {
 	display:				flex;
 	flex-wrap:				wrap;
+	align-items:			stretch;
+	align-content:			stretch;
 }
 
 .dealTerms input[type=radio] {
-	display: 					none;
+	display: 				none;
 }
 
 .dealTerms table {
-	background-color:	#eee;
-	border-radius:		10px;
-	border:						0px;
-	border-collapse:	collapse;
-	margin:						10px;
-	height:						80px;
-	width:						350px;
+	background-color:		#eee;
+	border-radius:			10px;
+	border:					0px;
+	border-collapse:		collapse;
+	margin:					10px;
+	height:					100%;
+	width:					300px;
 }
 
 .dealTerms table td {
 	text-align:				center;
-	border:						0px;
-	padding:					0px 10px 0px 5px;
+	border:					0px;
+	padding:				0px 10px 0px 5px;
 }
 
 .dealTerms table td label {
-	display:					block;
-	width:						100%;
+	display:				block;
+	width:					100%;
 	line-height:			200%;
-	height:						100%;
-	padding:					0px 5px 0px 5px;
+	height:					100%;
+	padding:				0px 5px 0px 5px;
 }
 
-.dealTerms table tr td[rowspan='2'] {
-	padding:					0px 10px 0px 10px;
-	width:						150px;
+.dealTerms table tr td[rowspan] {
+	padding:				0px 10px 0px 10px;
+	width:					150px;
 }
 
 .dealTerms table tr:first-child td label {
 	border-top-right-radius:	10px;
 }
 .dealTerms table tr:last-child td label {
-	border-bottom-right-radius: 10px;
+	border-bottom-right-radius:	10px;
 }
 
 .dealTerms table td input:checked+label {
-	background-color:			#4577d4;
-	color:						white;
+	background-color:		#4577d4;
+	color:					white;
 }
 
 main input[type=checkbox] {
-	margin-left:				-2.25em;
-	margin-right:				1em;
+	margin-left:			-2.25em;
+	margin-right:			1em;
 }
 
 input:checked + span {

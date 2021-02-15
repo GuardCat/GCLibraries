@@ -1,4 +1,4 @@
-/*   */
+/* jshint esversion: 6  */
 class Checklist {
 	constructor (checkboxes, container) {
 		this.checkboxes = [...checkboxes];
@@ -50,41 +50,67 @@ class Checklist {
 }
 
 class TieChecker {
-	constructor(el, container) {
+	constructor(el) {
 		this.ids = el.getAttribute("data-on").split(";");
-		this.elems = this.ids.map( (id) => document.getElementById(id) );
-		this.elems.forEach( el => {
-			el.addEventListener("change", this.renewStatus, false);
-		} );
+		this.influencers = this.ids.map( (id) => document.getElementById(id) );
+		this.element = el;
+
+		this.renewStatus( );
 	}
-	
+
 	renewStatus( ) {
-	//	alert(this.show)
 		this.show = this.show;
 	}
-	
+
 	get show( ) {
-		alert(this.elems);
-		return this.elems.every(el => el.checked);
+		return this.influencers.every(el => el.checked);
 	}
-	
+
 	set show(isShowed) {
+
 		if (isShowed) {
-			this.classList.remove("off");
+			this.element.classList.remove("off");
 		} else {
-			this.classList.add("off");
+			this.element.classList.add("off");
+			[...this.element.querySelectorAll("input")].forEach(el => el.checked = false);
 		}
 	}
-	
+
 }
 
 function director( ) {
-	const 
+	const
 		influensers = [...document.querySelectorAll("*[data-on]")],
-		tieClasses = influensers.map( el => new TieChecker(el) )
+		tieClasses = influensers.map( el => new TieChecker(el) ),
+		dealTerms = document.querySelector(".dealTerms"),
+		termsCount = dealTerms.querySelectorAll("table").length,
+		main = document.body.querySelector("main"),
+		hidingSections = [...main.querySelectorAll("section[id]")] /* Все section с id нуждаются в скрытии при отсутствии элементов*/
 	;
+
+	document.body.addEventListener("change", e => {
+		if (e.id === "") return true;
+		tieClasses.forEach( t => t.renewStatus( ) );
+		hidingSections.forEach( el => hideIfEmpty(el) );
+	}, false);
+
+	dealTerms.addEventListener("change", e => {
+		if (termsCount !== dealTerms.querySelectorAll("input:checked").length) return true;
+		main.classList.remove("off");
+	}, true );
+
 }
 
+function hideIfEmpty(el) {
+	const
+		inputsCount = el.querySelectorAll("li:not(.off)").length
+	;
+	if (!inputsCount) {
+		el.classList.add("off");
+	} else {
+		el.classList.remove("off");
+	}
+}
 
 function olddirector( ) {
 	const
