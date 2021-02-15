@@ -1,168 +1,196 @@
 body {
-	font-family:			Roboto, Arial;
-	font-size:				20px;
-	/*padding:				0 10px 0px 10px;*/
-	margin:					0;
-	display:				flex;
-	flex-wrap: 				wrap;
-	justify-content: 		center;
-	align-items:			center;
-	max-width:				1024px;
-
+	font-family: Roboto, Arial;
+	font-size: 18px;
+	/*padding: 	0 10px 0px 10px;*/
+	margin: 0;
+	display: flex;
+	flex-wrap:	wrap;
+	justify-content: center;
+	align-items: center;
+	max-width: 	1024px;
+	color: #76777b;
 }
 
 h1 {
-	font-size:				25px;
-	width:					100%;
-	background-color:		#278CFF;
-	height:					60px;
-	line-height:			60px;
-	color:					white;
-	margin-left:			-10px;
-	padding-left:			15px;
-	margin-top:				0;
+	font-size: 25px;
+	width: 100%;
+	background-color: #278CFF;
+	height: 60px;
+	line-height: 60px;
+	color: white;
+	margin-left: -10px;
+	padding-left: 15px;
+	margin-top: 0;
 }
 
 h2 {
-	font-size:				18px;
-	color:					#4B5B6D;
-	margin:					0;
-	width:					100%;
-	height:					40px;
-	line-height:			40px;
-	padding:				0 0 0 15px;
-	background-color:		#CDE5FF;
-	box-shadow:				7px 7px 32px 2px rgba(0, 0, 0, 0.04);
-	border-radius:			10px 10px 0px 0px;
+	font-size: 18px;
+	color: #4B5B6D;
+	margin:	0 0 10px 0;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-indent: 15px;
+	background-color: #CDE5FF;
+	box-shadow: 7px 7px 32px 2px rgba(0, 0, 0, 0.04);
+	border-radius: 10px 10px 0px 0px;
 }
 
 section {
-	width:					95%;
-	box-shadow:				7px 7px 32px 2px rgba(0, 0, 0, 0.2);
-	border-radius:			10px;
-	margin-top:				20px;
-	border:					0px solid black;
+	width: 95%;
+	box-shadow: 7px 7px 32px 2px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	margin-top: 20px;
+	border: 0px solid black;
+	padding-bottom: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+ul {
+	width: 90%;
 }
 
 li {
-	list-style-type:		none;
-	margin-bottom:			10px;
+	list-style-type: none;
+	margin-bottom: 10px;
 }
 
-.off {
-	display:				none !important;
-}
-
-.dealTerms {
-	display:				flex;
-	flex-wrap:				wrap;
-	align-items:			stretch;
-	align-content:			stretch;
-}
-
-.dealTerms input[type=radio] {
-	display: 				none;
-}
-
-.dealTerms table {
-	background-color:		#eee;
-	border-radius:			10px;
-	border:					0px;
-	border-collapse:		collapse;
-	margin:					10px;
-	height:					100%;
-	width:					300px;
-}
-
-.dealTerms table td {
-	text-align:				center;
-	border:					0px;
-	padding:				0px 10px 0px 5px;
-}
-
-.dealTerms table td label {
-	display:				block;
-	width:					100%;
-	line-height:			200%;
-	height:					100%;
-	padding:				0px 5px 0px 5px;
-}
-
-.dealTerms table tr td[rowspan] {
-	padding:				0px 10px 0px 10px;
-	width:					150px;
-}
-
-.dealTerms table tr:first-child td label {
-	border-top-right-radius:	10px;
-}
-.dealTerms table tr:last-child td label {
-	border-bottom-right-radius:	10px;
-}
-
-.dealTerms table td input:checked+label {
-	background-color:		#4577d4;
-	color:					white;
+main {
+	display: flex;
+	flex-wrap:	wrap;
+	justify-content: center;
+	align-items: center;
 }
 
 main input[type=checkbox] {
-	margin-left:			-2.25em;
-	margin-right:			1em;
+	margin-left: -2.0em;
+	margin-right: 1em;
 }
 
 input:checked + span {
-	text-decoration:		line-through;
-	color:					#cdc;
+	text-decoration: line-through;
+	color: #c0e0ff;
 }
 
 .panel {
-	display:				flex;
-	width:					95%;
-	position:				sticky;
-	background-color:		#E5E5E5;
-	top:					0px;
-	z-index:				10;
-	align-items:			center;
-	justify-content:		space-between;
-	border-radius:			87px;
+	display: flex;
+	width: 	95%;
+	position: sticky;
+	background-color: #E5E5E5;
+	top: 0px;
+	z-index: 10;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 87px;
 }
 
 button.clearIt {
-	border:					0px;
-	height:					30px;
-	border-radius:			87px;
-	padding:				0 10px 0 10px;
-	background-color:		#FFA03F;
-	outline:				none;
-	font-size:				13px;
-	line-height:			100%;
-	color:					white;
-	display:				flex;
-	align-items:			center;
-	justify-content:		space-between;
-	width:					150px;
+	border: 0px;
+	height: 30px;
+	border-radius: 87px;
+	padding: 0 10px 0 10px;
+	background-color: #FFA03F;
+	outline: none;
+	font-size: 13px;
+	line-height: 100%;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 	150px;
 }
 
 button.clearIt > svg {
-	zoom:					0.7;
+	zoom: 0.7;
 }
 
 button.clearIt:active {
-	box-shadow:				0 0 0 rgba(0, 0, 0, 0) !important;
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
 }
 
 .counter {
-	font-size:				13px;
-	color:					#76777B;
-	padding:				0 0 0 8px;
+	font-size: 	13px;
+	color: 		#76777B;
+	padding: 	0 0 0 8px;
+	font-weight: bold;
 }
 .done {
-	color:					#060;
+	color: #278cff;
 }
+
+.done::after {
+	content: " ✔"
+}
+
 .info {
-	background-color:		#ffffdd;
-	border-radius:			5px;
-	font-size:				14px;
-	padding:				5px;
-	color:					#555;
+	background-color: #F2F5F8;
+	border-radius: 4px;
+	font-size: 	14px;
+	padding: 	15px;
+	color: 		#555;
+	width:		90%
+}
+
+.off {
+	display: none !important;
+}
+
+.dealTerms {
+	display: flex;
+	flex-wrap: 	wrap;
+	align-items: center;
+	align-content:stretch;
+	justify-content: flex-start;
+}
+
+.dealTerms table caption {
+	color: #76777B;
+	font-size: 16px;
+	text-align: left;
+	margin-bottom: 5px;
+}
+
+.dealTerms input[type=radio] {
+	display: none;
+}
+
+.dealTerms table {
+	font-size: 14px;
+	height: 100%;
+	width: 280px;
+	margin: 10px;
+	border-radius: 4px;
+	border-spacing: 0px;
+	border: 0;
+}
+
+.dealTerms table td {
+	border: 0;/*1px solid #2196F3;*/
+	text-align: center;
+	color: #278cff;
+}
+
+.dealTerms table td label {
+	display: block;
+	width: 100%;
+	line-height: 200%;
+	height: 100%;
+	border: 1px solid #2196F3;
+}
+
+.dealTerms table tr td:first-child label {
+	border-top-left-radius:	4px;
+	border-bottom-left-radius: 4px;
+}
+
+.dealTerms table tr td:last-child label{
+	border-top-right-radius: 4px;
+	border-bottom-right-radius:	4px;
+}
+
+.dealTerms table td input:checked+label {
+	background-color: #278cff;
+	color: white;
 }

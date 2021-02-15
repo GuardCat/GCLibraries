@@ -9,116 +9,103 @@
 
  	<body>
 		<h1>Проверка документов на сделку автокредитования</h1>
-
 		<nav class="panel">
 			<div class="counter"></div>
 			<button class="clearIt"> Сброс чек-листа
-			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path fill-rule="evenodd" clip-rule="evenodd" d="M10 20C15.5228 20 20 15.5229 20 10C20 4.47708 15.5228 0 10 0C4.47716 0 0 4.47708 0 10C0 15.5229 4.47716 20 10 20ZM4.96208 6.28799L8.67416 10L4.96208 13.7122L6.28792 15.038L10 11.3258L13.7121 15.038L15.0379 13.7122L11.3258 10L15.0379 6.28799L13.7121 4.96216L10 8.67432L6.28792 4.96216L4.96208 6.28799Z" fill="white" fill-opacity="0.7"/>
-			</svg>
-		</button>
-
-	</nav>
+				<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M10 20C15.5228 20 20 15.5229 20 10C20 4.47708 15.5228 0 10 0C4.47716 0 0 4.47708 0 10C0 15.5229 4.47716 20 10 20ZM4.96208 6.28799L8.67416 10L4.96208 13.7122L6.28792 15.038L10 11.3258L13.7121 15.038L15.0379 13.7122L11.3258 10L15.0379 6.28799L13.7121 4.96216L10 8.67432L6.28792 4.96216L4.96208 6.28799Z" fill="white" fill-opacity="0.7"/>
+				</svg>
+			</button>
+		</nav>
 
 		<section class="dealTerms">
 			<h2>Данные по сделке и авто</h2>
 
 			<table>
+				<caption>Автомобиль</caption>
 				<tr>
-					<td rowspan="2">Автомобиль</td>
 					<td><input type="radio" id="isnew" name="condition"><label for="isnew">Новый</label></td>
-				</tr>
-				<tr>
 					<td><input type="radio" id="isold" name="condition"><label for="isold">Б/у</label></td>
 				</tr>
 			</table>
 
 			<table>
+				<caption>Паспорт ТС</caption>
 				<tr>
-					<td rowspan="3">Паспорт ТС</td>
 					<td><input type="radio" id="epts" name="ptst"><label for="epts">Электронный</label></td>
-				</tr>
-				<tr data-on="isnew">
-					<td><input type="radio" id="nopts" name="ptst"><label for="nopts">Отсутствует</label></td>
-				</tr>
-				<tr>
+					<td data-on="isnew"><input type="radio" id="nopts" name="ptst"><label for="nopts">Отсутствует</label></td>
 					<td><input type="radio" id="pts" name="ptst"><label for="pts">Бумажный</label></td>
 				</tr>
 			</table>
 
 			<table>
+				<caption>Владелец авто</caption>
 				<tr>
-					<td rowspan="2">Владелец авто</td>
 					<td><input type="radio" id="dcowner" name="owner"><label for="dcowner">ДЦ</label></td>
-				</tr>
-				<tr>
 					<td><input type="radio" id="notdcowner" name="owner"><label for="notdcowner">Не ДЦ</label></td>
 				</tr>
 			</table>
 
 			<table>
+				<caption>Сумма кредита</caption>
 				<tr>
-					<td rowspan="2">Сумма кредита</td>
 					<td><input type="radio" id="lessmln" name="sum"><label for="lessmln">До 1 млн.</label></td>
-				</tr>
-				<tr>
 					<td><input type="radio" id="moremln" name="sum"><label for="moremln">1 млн. +</label></td>
 				</tr>
 			</table>
 
 			<table>
+				<caption>Первоначальный взнос</caption>
 				<tr>
-					<td rowspan="2">Первоначальный взнос</td>
 					<td><input type="radio" id="ispv" name="pv"><label for="ispv">Есть</label></td>
-				</tr>
-				<tr>
 					<td><input type="radio" id="isntpv" name="pv"><label for="isntpv">Нет</label></td>
 				</tr>
 			</table>
 	</section>
 
-		<main class="off">
-		<section class="checksection">
-		<h2>Проверка наличия документов</h2>
-		<ul>
-			<li><label><input type="checkbox"><span>Фотография Клиента</span></label></li>
-			<li><label><input type="checkbox"><span>Цветной скан паспорта</span></label></li>
-			<li><label><input type="checkbox"><span>Скан второго документа</span></label></li>
-			<li><label><input type="checkbox"><span>Договор купли-продажи</span></label></li>
-			<li><label><input type="checkbox"><span>Счета на оплату доп. услуг, входящих в сумму кредита</span></label></li>
-			<li data-on="notdcowner"><label><input type="checkbox"><span>Предоставлен скан Договора комисии (авто на реализации)</span></label></li>
-			<li data-on="ispv"><label><input type="checkbox"><span>Документ, подтверждающий первоначальный взнос: гарантийное письмо или чек на ПВ</span></label></li>
-			<li data-on="isold;pts"><label><input type="checkbox"><span>Есть цветной скан Паспорта транспортного средства.</span></label></li>
-			<li data-on="isold;epts"><label><input type="checkbox"><span>Есть ЭПТС + расширенная выписка или скан СТС прежнего собственника.</span></label></li>
-			<li data-on="isnew;pts"><label><input type="checkbox"><span>Есть скан ПТС</span></label></li>
-			<li data-on="isnew;epts"><label><input type="checkbox"><span>Есть ЭПТС</span></label></li>
-			<li data-on="isnew;nopts"><label><input type="checkbox"><span>При отсутствии ЭПТС для нового авто, <b>Обязательно</b> ТТН / ФУТС + Гарантийное письмо ДЦ</span></label></li>
-			<li data-on="moremln"><label><input type="checkbox"><span>Полис КАСКО обязательно при сумме кредита от 1 млн. рублей</span></label></li>
-			<li><label><input type="checkbox"><span>Согласие на обработку ПД</span></label></li>
-			<li><label><input type="checkbox"><span>Все сканы документов читаемы, скопированы полностью, нет размытых и обрезанных страниц</span></label></li>
-		</ul>
-		</section>
+	<main class="off">
+	<section>
+	<h2>Проверка наличия документов</h2>
+	<ul>
+		<li><label><input type="checkbox"><span>Фотография Клиента</span></label></li>
+		<li><label><input type="checkbox"><span>Цветной скан паспорта</span></label></li>
+		<li><label><input type="checkbox"><span>Скан второго документа</span></label></li>
+		<li><label><input type="checkbox"><span>Договор купли-продажи</span></label></li>
+		<li><label><input type="checkbox"><span>Счета на оплату доп. услуг, входящих в сумму кредита</span></label></li>
+		<li data-on="notdcowner"><label><input type="checkbox"><span>Предоставлен скан Договора комисии (авто на реализации)</span></label></li>
+		<li data-on="ispv"><label><input type="checkbox"><span>Документ, подтверждающий первоначальный взнос: гарантийное письмо или чек на ПВ</span></label></li>
+		<li data-on="isold;pts"><label><input type="checkbox"><span>Есть цветной скан Паспорта транспортного средства.</span></label></li>
+		<li data-on="isold;epts"><label><input type="checkbox"><span>Есть ЭПТС + расширенная выписка или скан СТС прежнего собственника.</span></label></li>
+		<li data-on="isnew;pts"><label><input type="checkbox"><span>Есть скан ПТС</span></label></li>
+		<li data-on="isnew;epts"><label><input type="checkbox"><span>Есть ЭПТС</span></label></li>
+		<li data-on="isnew;nopts"><label><input type="checkbox"><span>При отсутствии ЭПТС для нового авто, <b>Обязательно</b> ТТН / ФУТС + Гарантийное письмо ДЦ</span></label></li>
+		<li data-on="moremln"><label><input type="checkbox"><span>Полис КАСКО обязательно при сумме кредита от 1 млн. рублей</span></label></li>
+		<li><label><input type="checkbox"><span>Согласие на обработку ПД</span></label></li>
+		<li><label><input type="checkbox"><span>Все сканы документов читаемы, скопированы полностью, нет размытых и обрезанных страниц</span></label></li>
+	</ul>
+	</section>
 
-		<section class="checksection">
-		<h2>Проверка клиента</h2>
-		<ul>
-			<li><label><input type="checkbox"><span>На сайте <a href="http://services.fms.gov.ru/info-service-result.htm?sid=2000">мвд</a> есть инфо о паспорте или (при получении ответа «Сведениями по заданным реквизитам не располагаем»), клиент предоставил справку о действительности паспорта из МВД / МФЦ / Паспортного стола.</span></label></li>
-			<li><label><input type="checkbox"><span>Нет задолженности при поиске по сайту <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или клиент предоставил справку о погашении данной задолженности с верными данными клиентаи.</span></label></li>
-		</ul>
-		<div class="info">При отсутствии данных о паспорте клиента на сайте МВД, рекомендуем клиенту в дальнейшем обратиться в МВД для исправления информации о его паспорте.</div>
-		</section>
+	<section class="checksection">
+	<h2>Проверка клиента</h2>
+	<ul>
+		<li><label><input type="checkbox"><span>На сайте <a href="http://services.fms.gov.ru/info-service-result.htm?sid=2000">мвд</a> есть инфо о паспорте или (при получении ответа «Сведениями по заданным реквизитам не располагаем»), клиент предоставил справку о действительности паспорта из МВД / МФЦ / Паспортного стола.</span></label></li>
+		<li><label><input type="checkbox"><span>Нет задолженности при поиске по сайту <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или клиент предоставил справку о погашении данной задолженности с верными данными клиентаи.</span></label></li>
+	</ul>
+	<div class="info">При отсутствии данных о паспорте клиента на сайте МВД, рекомендуем клиенту в дальнейшем обратиться в МВД для исправления информации о его паспорте.</div>
+	</section>
 
-		<section class="checksection">
-		<h2>Требования к фотографии Клиента</h2>
-		<ul>
-			<li><label><input type="checkbox"><span>Фотография сделана во время проведения сделки в автосалоне</span></label></li>
-			<li><label><input type="checkbox"><span>Фотография не засвечена и не затемнена, хорошо виден клиент</span></label></li>
-			<li><label><input type="checkbox"><span>Фотография чёткая, контуры лица хорошо различимы. Фото не замутнено и не размыто.</span></label></li>
-			<li><label><input type="checkbox"><span>Клиент повёрнут к камере лицом, лицо не обрезано (например, видна не только макушка или подбородок)</span></label></li>
-			<li><label><input type="checkbox"><span>Клиент снят без солнцезащитных очков, без головного убора, аксессуаров, закрывающих часть лица или искажающих внешность</span></label></li>
-		</ul>
-		</section>
+	<section class="checksection">
+	<h2>Требования к фотографии Клиента</h2>
+	<ul>
+		<li><label><input type="checkbox"><span>Фотография сделана во время проведения сделки в автосалоне</span></label></li>
+		<li><label><input type="checkbox"><span>Фотография не засвечена и не затемнена, хорошо виден клиент</span></label></li>
+		<li><label><input type="checkbox"><span>Фотография чёткая, контуры лица хорошо различимы. Фото не замутнено и не размыто.</span></label></li>
+		<li><label><input type="checkbox"><span>Клиент повёрнут к камере лицом, лицо не обрезано (например, видна не только макушка или подбородок)</span></label></li>
+		<li><label><input type="checkbox"><span>Клиент снят без солнцезащитных очков, без головного убора, аксессуаров, закрывающих часть лица или искажающих внешность</span></label></li>
+	</ul>
+	</section>
 
+	<section>
 		<h2>Скан паспорта</h2>
 		<ul>
 			<li><label><input type="checkbox"><span>Скан паспорта представлен в цветном виде</span></label></li>
@@ -127,6 +114,9 @@
    			<li><label><input type="checkbox"><span>Сканированные страницы сняты полностью, не обрезаны</span></label></li>
    			<li><label><input type="checkbox"><span>По фотографии в паспорте можно идентифицировать Клиента</span></label></li>
 		</ul>
+	</section>
+
+	<section>
 		<h2>Скан дополнительного документа</h2>
 		<ul>
 			<li><label><input type="checkbox"><span>Сканированный документ представлен в цветном виде и полностью</span></label></li>
@@ -136,7 +126,9 @@
 			<li><label><input type="checkbox"><span>Если предоставлено водительское удостоверение, есть скан и второй его стороны</span></label></li>
 			<li><label><input type="checkbox"><span>Документ (например, ВУ) действующий, срок его действия не истёк.</span></label></li>
 		</ul>
+	</section>
 
+	<section>
 		<h2>Договор купли-продажи (ДКП)</h2>
 		<div class="info">Именно на основании ДКП автомобиль передаётся от предыдущего собственника Клиенту.
 			Информация в ДКП <b>обязательно</b> должна совпадать с данными из СТС и ПТС. Сверьте совпадение каждого пункта в ДКП и  ПТС / СТС.
@@ -161,7 +153,7 @@
 		<div class="info">
 		В случае указания в ДКП / акте недостоверных данных транспортного средства или данных Клиента, сделка признается недействительной.
 		</div>
-
+		</section>
 		<section data-on="ispv">
 			<h2>Гарантийное письмо (чек о внесении первоначального взноса)</h2>
 			<div class="info">Документ удостоверяет внесение Клиентом денежных средств
@@ -181,25 +173,28 @@
 			</div>
 		</section>
 
-		<h2>Счета на оплату остаточной стоимости ТС, и иных дополнительных продуктов, включенных в тело кредита</h2>
-		<ul>
-			<li><label><input type="checkbox"><span>Суммы в документе совпадает с реальными</span></label></li>
-			<li><label><input type="checkbox"><span>Данные автомобиля совпадают с ПТС</span></label></li>
-			<li><label><input type="checkbox"><span>Паспортные данные клиента совпадают с паспортом</span></label></li>
-			<li><label><input type="checkbox"><span>Указаны реквизиты юридического лица (ДЦ)</span></label></li>
-		</ul>
-		<div class="info">В случае выявления ошибок направьте пакет документов на доработку в автосалон.
-		</div>
+		<section>
+			<h2>Счета на оплату остаточной стоимости ТС, и доп. трат в кредит</h2>
+			<ul>
+				<li><label><input type="checkbox"><span>Суммы в документе совпадает с реальными</span></label></li>
+				<li><label><input type="checkbox"><span>Данные автомобиля совпадают с ПТС</span></label></li>
+				<li><label><input type="checkbox"><span>Паспортные данные клиента совпадают с паспортом</span></label></li>
+				<li><label><input type="checkbox"><span>Указаны реквизиты юридического лица (ДЦ)</span></label></li>
+			</ul>
+			<div class="info">В случае выявления ошибок направьте пакет документов на доработку в автосалон.
+			</div>
+		</section>
+
 		<section data-on="moremln">
-		<h2>Полис КАСКО</h2>
-		<div class="info">Требуется обязательно при сумме кредита от 1 млн. рублей</div>
-		<ul>
-			<li><label><input type="checkbox"><span>Присутствует скан Водительского удостоверения лица указанного в полисе в списке допущенных к управлению.</span></label></li>
-			<li><label><input type="checkbox"><span>Есть счет на оплату страхования или страхование не входит в тело кредита </span></label></li>
-			<li><label><input type="checkbox"><span>Данные автомобиля совпадают с ПТС / ЭПТС</span></label></li>
-			<li><label><input type="checkbox"><span>Паспортные данные клиента совпадают с паспортом</span></label></li>
-			<li><label><input type="checkbox"><span>Есть печать страховщика (может быть ч/б факсимиле)</span></label></li>
-		</ul>
+			<h2>Полис КАСКО</h2>
+			<div class="info">Требуется обязательно при сумме кредита от 1 млн. рублей</div>
+			<ul>
+				<li><label><input type="checkbox"><span>Присутствует скан Водительского удостоверения лица указанного в полисе в списке допущенных к управлению.</span></label></li>
+				<li><label><input type="checkbox"><span>Есть счет на оплату страхования или страхование не входит в тело кредита </span></label></li>
+				<li><label><input type="checkbox"><span>Данные автомобиля совпадают с ПТС / ЭПТС</span></label></li>
+				<li><label><input type="checkbox"><span>Паспортные данные клиента совпадают с паспортом</span></label></li>
+				<li><label><input type="checkbox"><span>Есть печать страховщика (может быть ч/б факсимиле)</span></label></li>
+			</ul>
 		</section>
 
 		<section id="pts_section">
@@ -210,6 +205,7 @@
 				<li data-on="dcowner;epts"><label><input type="checkbox"><span>Последним собственником в ЭПТС указан Дилерский центр</span></label></li>
 			</ul>
 		</section>
+
 		<section data-on="notdcowner">
 			<h2>Договор комиссии</h2>
 			<div class="info">Если не требуется (продавец и есть последний владелец), отметьте все пункты без проверки</div>
@@ -224,42 +220,48 @@
 			</ul>
 		</section>
 
-		<h2>Внесение данных авто в плагин</h2>
-		<ul>
-			<li><label><input type="checkbox"><span>Внесена информация согласно ПТС | ЭПТС</span></label></li>
-			<li><label><input type="checkbox"><span>Внесен VIN номер из ПТС или номер шасси (при отсутствии VIN)</span></label></li>
-			<li><label><input type="checkbox"><span>Модель авто выбрана из плагина. При отсутствии, скорректирована в «товарах» в Зибель</span></label></li>
-		</ul>
+		<section>
+			<h2>Внесение данных авто в плагин</h2>
+			<ul>
+				<li><label><input type="checkbox"><span>Внесена информация согласно ПТС | ЭПТС</span></label></li>
+				<li><label><input type="checkbox"><span>Внесен VIN номер из ПТС или номер шасси (при отсутствии VIN)</span></label></li>
+				<li><label><input type="checkbox"><span>Модель авто выбрана из плагина. При отсутствии, скорректирована в «товарах» в Зибель</span></label></li>
+			</ul>
+		</section>
 
-		<h2>Отправка письма на второй этап верификации</h2>
-		<div class="info">
-			<div>Письмо отправляется с личной почты</div>
-			<div><b>кому:</b> <a href="mailto:autoverification@otpbank.ru">autoverification@otpbank.ru</a></div>
-			<div><b>копия:</b> sdelka1@RUSGEN, sdelka2@RUSGEN</div>
-			<div><b>тема письма:</b>ID 2-1RQD3Y8F. ФИО Заемщика</div>
-			<div> Для группирования и изменения формата файлов используем PDFCreator.</div>
-		</div>
-		<ul>
-			<li><label><input type="checkbox"><span>В теле письма прописаны допы (СЖ, автокарта)</span></label></li>
-			<li><label><input type="checkbox"><span>Подготовлены файлы в формате pdf, (отдельные можно в jpg).</span></label></li>
-			<li><label><input type="checkbox"><span>Письмо отправлено</span></label></li>
-		</ul>
+		<section>
+			<h2>Отправка письма на второй этап верификации</h2>
+			<div class="info">
+				<div>Письмо отправляется с личной почты</div>
+				<div><b>кому:</b> <a href="mailto:autoverification@otpbank.ru">autoverification@otpbank.ru</a></div>
+				<div><b>копия:</b> sdelka1@RUSGEN, sdelka2@RUSGEN</div>
+				<div><b>тема письма:</b>ID 2-1RQD3Y8F. ФИО Заемщика</div>
+				<div> Для группирования и изменения формата файлов используем PDFCreator.</div>
+			</div>
+			<ul>
+				<li><label><input type="checkbox"><span>В теле письма прописаны допы (СЖ, автокарта)</span></label></li>
+				<li><label><input type="checkbox"><span>Подготовлены файлы в формате pdf, (отдельные можно в jpg).</span></label></li>
+				<li><label><input type="checkbox"><span>Письмо отправлено</span></label></li>
+			</ul>
+		</section>
 
-		<h2>Выгрузка документов</h2>
-		<div class="info">
-			Сразу после оправки на второй этап, готовим ответное письмо в ДЦ с кредитными документами, для финального подписания сделки клиентом.
-	Файлы выгружаем по одному, <b>кнопку не нажимаем</b> до подтверждения верификатора, что сделка целесообразна.
-		</div>
-		<ul>
-			<li><label><input type="checkbox"><span>Письмо подготовлено</span></label></li>
-			<li><label><input type="checkbox"><span>Верификатор подтвердил целесообразность сделки</span></label></li>
-			<li><label><input type="checkbox"><span>Направлено письмо в ДЦ с документами на подписание клиентом</span></label></li>
-			<li><label><input type="checkbox"><span>В подписанных документах присутствуют необходимые подписи клиента, заполнены все заявления.</span></label></li>
-			<li><label><input type="checkbox"><span>После проверки всех документов нажимаем: <i>ВЫГРУЗИТЬ ВСЕ → ПОДПИСАН → АВТОРИЗОВАТЬ</i></span></label></li>
-		</ul>
-		<div class="info">
-			Если договор не авторизовывается, создаем заявку в <a href="https://snow.otpbank.hu/obru?id=sc_cat_item&sys_id=9487ef121b1704d4849221ff6e4bcb5e">SN техническая авторизация</a>
-		</div>
+		<section>
+			<h2>Выгрузка документов</h2>
+			<div class="info">
+				Сразу после оправки на второй этап, готовим ответное письмо в ДЦ с кредитными документами, для финального подписания сделки клиентом.
+		Файлы выгружаем по одному, <b>кнопку не нажимаем</b> до подтверждения верификатора, что сделка целесообразна.
+			</div>
+			<ul>
+				<li><label><input type="checkbox"><span>Письмо подготовлено</span></label></li>
+				<li><label><input type="checkbox"><span>Верификатор подтвердил целесообразность сделки</span></label></li>
+				<li><label><input type="checkbox"><span>Направлено письмо в ДЦ с документами на подписание клиентом</span></label></li>
+				<li><label><input type="checkbox"><span>В подписанных документах присутствуют необходимые подписи клиента, заполнены все заявления.</span></label></li>
+				<li><label><input type="checkbox"><span>После проверки всех документов нажимаем: <i>ВЫГРУЗИТЬ ВСЕ → ПОДПИСАН → АВТОРИЗОВАТЬ</i></span></label></li>
+			</ul>
+			<div class="info">
+				Если договор не авторизовывается, создаем заявку в <a href="https://snow.otpbank.hu/obru?id=sc_cat_item&sys_id=9487ef121b1704d4849221ff6e4bcb5e">SN техническая авторизация</a>
+			</div>
+		</section>
 	</main>
 <!--
 		<h2></h2>

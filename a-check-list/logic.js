@@ -141,7 +141,7 @@ function hideIfEmpty(el) {
 
 function renewCounter(counter, checklist) {
 	counter.innerHTML = `Проверено: ${checklist.checkedBoxes.length} из ${checklist.len}`;
-	if (checklist.len && checklist.checkedNums.length === checklist.len) {
+	if (checklist.checkedBoxes.length && checklist.checkedBoxes.length === checklist.len) {
 		counter.classList.add("done");
 	} else {
 		counter.classList.remove("done");
