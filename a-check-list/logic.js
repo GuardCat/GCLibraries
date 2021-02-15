@@ -98,7 +98,7 @@ function director( ) {
 		checklist = new Checklist( document.body.querySelectorAll("input"), document.body, ".off" ),
 		panel = document.querySelector(".panel"),
 		counter = panel.querySelector(".counter"),
-		reset = panel.querySelector("input.clearIt")
+		reset = panel.querySelector("button.clearIt")
 	;
 
 	document.body.addEventListener("change", e => {

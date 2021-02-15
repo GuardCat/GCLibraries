@@ -1,12 +1,25 @@
 body {
-	font-family:			Calibri, Arial;
+	font-family:			Roboto, Arial;
 	font-size:				20px;
 	max-width:				1024px;
+	padding:				0 10px 0px 10px;
+	margin:					0;
+	display:				flex;
+	flex-wrap: 				wrap;
+	justify-content: 		center;
+	align-items:			center;
 }
 
 h1 {
-	font-size:				28px;
+	font-size:				25px;
 	width:					100%;
+	background-color:		#278CFF;
+	height:					60px;
+	line-height:			60px;
+	color:					white;
+	margin-left:			-10px;
+	padding-left:			15px;
+	margin-top:				0;
 }
 
 h2 {
@@ -88,33 +101,44 @@ input:checked + span {
 
 .panel {
 	display:				flex;
+	width:					95%;
 	position:				sticky;
-	background-color:		white;
+	background-color:		#E5E5E5;
 	top:					0px;
 	z-index:				10;
 	align-items:			center;
 	justify-content:		space-between;
-	box-shadow:				0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-	padding:				5px;
-	border-radius:			5px;
+	padding:				0 0 0 8px;
+	border-radius:			87px;
 }
 
-input.clearIt {
+button.clearIt {
 	border:					0px;
-	border-radius:			5px;
-	box-shadow:				0 1px 3px rgba(256,0,0,0.16), 0 1px 3px rgba(256,0,0,0.23);
-	background-color:		#fee;
+	height:					30px;
+	border-radius:			87px;
+	padding:				0 10px 0 10px;
+	background-color:		#FFA03F;
 	outline:				none;
-	font-size:				14px;
+	font-size:				13px;
+	line-height:			100%;
+	color:					white;
+	display:				flex;
+	align-items:			center;
+	justify-content:		space-between;
+	width:					150px;
 }
 
-input.clearIt:active {
+button.clearIt > svg {
+	zoom:					0.7;
+}
+
+button.clearIt:active {
 	box-shadow:				0 0 0 rgba(0, 0, 0, 0) !important;
 }
 
 .counter {
 	font-size:				14px;
-	margin-top:				auto;
+	color:					#76777B;
 }
 .done {
 	color:					#060;
