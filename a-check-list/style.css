@@ -1,5 +1,5 @@
 body {
-	font-family: Roboto, Arial;
+	font-family: 'Arial', 'Calibri', 'Roboto';
 	font-size: 16px;
 	margin: 0;
 	display: flex;
@@ -11,7 +11,7 @@ body {
 }
 
 h1 {
-	font-size: 25px;
+	font-size: 24px;
 	width: 100%;
 	background-color: #278CFF;
 	height: 60px;
@@ -50,9 +50,9 @@ section {
 
 ul {
 	width: 90%;
-	padding-inline-start: 40px;
-    margin-block-start: 0;
-	margin-block-end: 0;
+	padding-inline-start: 17px;
+    margin-block-start: 1em;
+	margin-block-end: 1em;
 }
 
 li {
@@ -68,9 +68,9 @@ main {
 }
 
 main input[type=checkbox] {
-	margin-left: -30px;
-	margin-right: 0;
-	width: 30px;
+	margin-left: -40px;
+	margin-right: 0px;
+	width: 40px;
 }
 
 input:checked + span {
