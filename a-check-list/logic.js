@@ -60,8 +60,8 @@ class Checklist {
 
 class TieChecker {
 	constructor(el) {
-		this.ids = el.getAttribute("data-on").split(";");
-		this.influencers = this.ids.map( (id) => document.getElementById(id) );
+		this.ids = el.getAttribute("data-on").split("|").map( text => text.split(";") );
+		this.influencers = this.ids.map( arr => arr.map(id => document.getElementById(id) ) );
 		this.element = el;
 
 		this.renewStatus( );
@@ -72,7 +72,7 @@ class TieChecker {
 	}
 
 	get show( ) {
-		return this.influencers.every(el => el.checked);
+		return this.influencers.some( arr => arr.every(el => el.checked) );
 	}
 
 	set show(isShowed) {

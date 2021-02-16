@@ -10,6 +10,11 @@ body {
 	color: #76777b;
 }
 
+*[title] {
+	cursor: help;
+	border: 1px dotted #278Caa;
+}
+
 h1 {
 	font-size: 24px;
 	width: 100%;
@@ -165,7 +170,7 @@ button.clearIt:active {
 .dealTerms table {
 	font-size: 14px;
 	height: 100%;
-	max-width: 280px;
+	max-width: 300px;
 	min-width: 200px;
 	margin: 10px;
 	border-radius: 4px;
