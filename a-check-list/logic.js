@@ -119,6 +119,7 @@ function director( ) {
 
 	tieClasses.forEach( t => t.renewStatus( ) );
 	showIfTermsDone(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
+	hidingSections.forEach( el => hideIfEmpty(el) )
 	renewCounter(counter, checklist);
 }
 
