@@ -98,7 +98,8 @@ function director( ) {
 		checklist = new Checklist( document.body.querySelectorAll("input"), document.body, ".off" ),
 		panel = document.querySelector(".panel"),
 		counter = panel.querySelector(".counter"),
-		reset = panel.querySelector("button.clearIt")
+		reset = panel.querySelector("button.clearIt"),
+		tooltips = [...document.querySelectorAll("*:not(a)[data-title]")]
 	;
 
 	document.body.addEventListener("change", e => {
@@ -119,7 +120,8 @@ function director( ) {
 
 	tieClasses.forEach( t => t.renewStatus( ) );
 	showIfTermsDone(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
-	hidingSections.forEach( el => hideIfEmpty(el) )
+	hidingSections.forEach( el => hideIfEmpty(el) );
+	tooltips.forEach( el => el.addEventListener( "click", e => e.preventDefault( ) ) );
 	renewCounter(counter, checklist);
 }
 
