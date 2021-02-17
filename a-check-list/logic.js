@@ -99,33 +99,38 @@ function director( ) {
 		panel = document.querySelector(".panel"),
 		counter = panel.querySelector(".counter"),
 		reset = panel.querySelector("button.clearIt"),
-		tooltips = [...document.querySelectorAll("*:not(a)[data-title]")]
+		renewAll = ( ) => {
+			tieClasses.forEach( t => t.renewStatus( ) );
+			showIfTermsSet(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
+			hidingSections.forEach( el => hideIfEmpty(el) );
+			renewCounter(counter, checklist);
+		}
 	;
 
 	document.body.addEventListener("change", e => {
 		if (e.target.tagName !== "INPUT") return true;
 		tieClasses.forEach( t => t.renewStatus( ) );
 		hidingSections.forEach( el => hideIfEmpty(el) );
-		showIfTermsDone(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
+		showIfTermsSet(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
 		renewCounter(counter, checklist);
 	}, false);
 
-	reset.addEventListener( "click", ( ) => {
+	reset.addEventListener( "click", e => {
 		checklist.reset( );
 		checklist.save( );
-		showIfTermsDone(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
-		tieClasses.forEach( t => t.renewStatus( ) );
-		renewCounter(counter, checklist);
+		renewAll( );
+		e.stopPropagation( );
 	});
 
-	tieClasses.forEach( t => t.renewStatus( ) );
-	showIfTermsDone(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
-	hidingSections.forEach( el => hideIfEmpty(el) );
-	tooltips.forEach( el => el.addEventListener( "click", e => e.preventDefault( ) ) );
-	renewCounter(counter, checklist);
+	document.body.addEventListener("click", e => {
+			const el = e.target;
+			if ( el.getAttribute("data-title") && el.tagName !== "A" ) e.preventDefault( );
+	}, false);
+
+	renewAll( );
 }
 
-function showIfTermsDone(termsLen, checkedLen, questionary) {
+function showIfTermsSet(termsLen, checkedLen, questionary) {
 	if (termsLen === checkedLen) {
 		questionary.classList.remove("off");
 	} else {
