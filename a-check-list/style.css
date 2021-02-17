@@ -23,13 +23,11 @@ body {
 	font-size: 12px;
 	display: block;
 	border-radius: 5px;
-	vertical-align: center;
-	height: 40px;
-    margin: -70px auto auto 0;
+    margin: -40px auto auto 0;
 	text-align: left;
-	line-height: 20px;
 	padding: 5px;
 	color: white;
+	height: auto;
 	background-color: rgba(39, 140, 255, 1);
 	box-shadow: 3px 3px 6px 2px rgba(0, 0, 0, 0.2);
 }
