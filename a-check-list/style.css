@@ -10,9 +10,27 @@ body {
 	color: #76777b;
 }
 
-*[title] {
+*[data-title] {
 	cursor: help;
-	border: 1px dotted #278Caa;
+	border-bottom: 1px dotted #278Caa;
+}
+
+
+
+*[data-title]:hover::after {
+	content: attr(data-title);
+	position: absolute;
+	font-size: 12px;
+	display: block;
+	border-radius: 5px;
+	vertical-align: center;
+	height: 40px;
+    margin: -70px auto auto 0;
+	text-align: left;
+	line-height: 20px;
+	padding: 5px;
+	color: white;
+	background-color: rgba(39, 140, 255, 0.9);
 }
 
 h1 {
