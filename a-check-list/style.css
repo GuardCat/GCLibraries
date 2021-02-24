@@ -73,12 +73,12 @@ section {
 ul {
 	width: 90%;
 	padding-inline-start: 37px;
-  margin-block-start: 1em;
+ 	margin-block-start: 1em;
 	margin-block-end: 1em;
+	list-style-type: none;
 }
 
 li {
-	list-style-type: none;
 	margin-bottom: 10px;
 }
 
@@ -161,6 +161,15 @@ button.clearIt:active {
 	width:		90%
 }
 
+.info div, .info img {
+	margin-top: 10px;
+}
+
+.info > img {
+	width: 100%;
+	border-radius: 4px;
+}
+
 .off {
 	display: none !important;
 }
@@ -224,4 +233,14 @@ button.clearIt:active {
 .dealTerms table td input:checked+label {
 	background-color: #278cff;
 	color: white;
+}
+
+.marked {
+	border: 1px solid #278cff;
+	color: #278cff;
+	padding: 2px;
+	font-size: 11px !important;
+	font-weight:600;
+	border-radius: 4px;
+	border:
 }
