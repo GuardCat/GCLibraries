@@ -10,14 +10,21 @@ body {
 	color: #76777b;
 }
 
-*[data-title] {
+span[data-title] {
 	cursor: help;
-	border-bottom: 1px dotted #278Caa;
+	border: 2px solid #76777b;
+	border-radius: 50%;
+	font-size: 10px;
+	font-weight: 800;
+	display: inline-block;
+	vertical-align: middle;
+	width: 15px;
+	height: 15px;
+	line-height: 15px;
+	text-align: center;
 }
 
-
-
-*[data-title]:hover::after {
+span[data-title]:hover::after {
 	content: attr(data-title);
 	position: absolute;
 	font-size: 12px;
