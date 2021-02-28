@@ -104,7 +104,6 @@ function director( ) {
 			tieClasses.forEach( t => t.renewStatus( ) );
  			numOffVidgets = dealTerms.querySelectorAll("table.off").length;
 			showIfTermsSet(termsCount - numOffVidgets, dealTerms.querySelectorAll("input:checked").length, main);
-			console.info(termsCount, numOffVidgets);
 			hidingSections.forEach( el => hideIfEmpty(el) );
 			renewCounter(counter, checklist);
 		}

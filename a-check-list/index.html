@@ -61,6 +61,15 @@
 			</table>
 
 			<table>
+				<caption>Паспорт ТС</caption>
+				<tr>
+					<td><input type="radio" id="epts" name="ptst"><label for="epts">Электронный</label></td>
+					<td data-on="isnew"><input type="radio" id="nopts" name="ptst"><label for="nopts">Отсутствует</label></td>
+					<td><input type="radio" id="pts" name="ptst"><label for="pts">Бумажный</label></td>
+				</tr>
+			</table>
+
+			<table data-on="lessmln">
 				<caption>Как приобретается КАСКО</caption>
 				<tr>
 					<td><input type="radio" id="kaskonal" name="kasko"><label for="kaskonal">За наличные</label></td>
@@ -74,15 +83,6 @@
 				<tr>
 					<td><input type="radio" id="is3" name="3"><label for="is3">Вписаны</label></td>
 					<td><input type="radio" id="no3" name="3"><label for="no3">Отсутствуют</label></td>
-				</tr>
-			</table>
-
-			<table>
-				<caption>Паспорт ТС</caption>
-				<tr>
-					<td><input type="radio" id="epts" name="ptst"><label for="epts">Электронный</label></td>
-					<td data-on="isnew"><input type="radio" id="nopts" name="ptst"><label for="nopts">Отсутствует</label></td>
-					<td><input type="radio" id="pts" name="ptst"><label for="pts">Бумажный</label></td>
 				</tr>
 			</table>
 
@@ -113,12 +113,12 @@
 	</ul>
 	</section>
 
-	<section class="checksection">
+	<section class="checksection" id="custCheck">
 	<h2>Проверка клиента</h2>
 	<ul>
 		<li data-on="avtoodobr"><label><input type="checkbox"><span>У клиента при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или клиент предоставил справку о погашении данной задолженности с верными данными клиента.</span></label></li>
-		<li data-on="nocvu"><label><input type="checkbox"><span>У лица, забирающего авто при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лица.</span></label></li>
-		<li data-on="is3"><label><input type="checkbox"><span>Ни у одного 3 лица <span data-title="Если в полис КАСКО вписаны иные лица кроме клиента, проверяем каждого. При наличии долгов хотя бы у одного лица, сделка не может проводиться">?</span>, указанного в полисе КАСКО при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лиц.</span></label></li>
+		<li data-on="nocvu"><label><input type="checkbox"><span>У лица, забирающего авто, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лица.</span></label></li>
+		<li data-on="is3"><label><input type="checkbox"><span>Ни у одного 3 лица <span data-title="Если в полис КАСКО вписаны иные лица кроме клиента, проверяем каждого. При наличии долгов хотя бы у одного лица, сделка не может проводиться">?</span>, указанного в полисе КАСКО, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лиц.</span></label></li>
 	</ul>
 	</section>
 
