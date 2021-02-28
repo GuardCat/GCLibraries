@@ -53,11 +53,27 @@
 			</table>
 
 			<table>
+				<caption>ВУ клиента</span></caption>
+				<tr>
+					<td><input type="radio" id="iscvu" name="cvu"><label for="iscvu">Есть</label></td>
+					<td><input type="radio" id="nocvu" name="cvu"><label for="nocvu">Отсутствует</label></td>
+				</tr>
+			</table>
+
+			<table>
 				<caption>Как приобретается КАСКО</caption>
 				<tr>
 					<td><input type="radio" id="kaskonal" name="kasko"><label for="kaskonal">За наличные</label></td>
 					<td data-on="lessmln"><input type="radio" id="nokasko" name="kasko"><label for="nokasko">Нет КАСКО</label></td>
 					<td><input type="radio" id="kaskokred" name="kasko"><label for="kaskokred">В кредит</label></td>
+				</tr>
+			</table>
+
+			<table data-on="moremln|kaskokred">
+				<caption>3 лица в КАСКО</span></caption>
+				<tr>
+					<td><input type="radio" id="is3" name="3"><label for="is3">Вписаны</label></td>
+					<td><input type="radio" id="no3" name="3"><label for="no3">Отсутствуют</label></td>
 				</tr>
 			</table>
 
@@ -78,7 +94,10 @@
 	<ul>
 		<li><label><input type="checkbox"><span>Фотография Клиента</span></label></li>
 		<li><label><input type="checkbox"><span>Цветной скан паспорта</span></label></li>
-		<li><label><input type="checkbox"><span>Скан второго документа</span></label></li>
+		<li data-on="nocvu"><label><input type="checkbox"><span>Скан водительского удостоверения лица, забирающего авто из салона</span></label></li>
+		<li data-on="nocvu"><label><input type="checkbox"><span>Скан второго документа клиента</span></label></li>
+		<li data-on="iscvu"><label><input type="checkbox"><span>Скан водительского удостоверения клиента</span></label></li>
+		<li data-on="moremln|kaskokred"><label><input type="checkbox"><span>Скан водительского удостоверения любого лица из допущенных к управлению в полисе КАСКО</span></label></li>
 		<li><label><input type="checkbox"><span>Договор купли-продажи</span></label></li>
 		<li><label><input type="checkbox"><span>Счета на оплату доп. услуг, входящих в сумму кредита</span></label></li>
 		<li data-on="notdcowner"><label><input type="checkbox"><span>Предоставлен скан Договора комисии (авто на реализации)</span></label></li>
@@ -88,16 +107,18 @@
 		<li data-on="isnew;epts"><label><input type="checkbox"><span>Есть ЭПТС</span></label></li>
 		<li data-on="nopts"><label><input type="checkbox"><span>Для нового авто без ЭПТС предоставлено: Товарно-транспортная накладная (ТТН) или Форма учёта ТС (ФУТС) или Гарантийное письмо ДЦ</span></label></li>
 		<li data-on="nopts"><label><input type="checkbox"><span>В предоставленном взамен ЭПТС документе указаны мощность, объём двигателя и VIN автомобиля, документ пронумерован.</span></label></li>
-		<li data-on="moremln"><label><input type="checkbox"><span>Полис КАСКО обязательно при сумме кредита от 1 млн. рублей</span></label></li>
+		<li data-on="moremln|kaskokred"><label><input type="checkbox"><span>Полис КАСКО</span></label></li>
 		<li><label><input type="checkbox"><span>Согласие на обработку ПД</span></label></li>
 		<li><label><input type="checkbox"><span>Все сканы документов читаемы, скопированы полностью, нет размытых и обрезанных страниц</span></label></li>
 	</ul>
 	</section>
 
-	<section class="checksection" data-on="avtoodobr">
+	<section class="checksection">
 	<h2>Проверка клиента</h2>
 	<ul>
-		<li><label><input type="checkbox"><span>При поиске по сайту <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или клиент предоставил справку о погашении данной задолженности с верными данными клиента.</span></label></li>
+		<li data-on="avtoodobr"><label><input type="checkbox"><span>У клиента при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или клиент предоставил справку о погашении данной задолженности с верными данными клиента.</span></label></li>
+		<li data-on="nocvu"><label><input type="checkbox"><span>У лица, забирающего авто при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лица.</span></label></li>
+		<li data-on="is3"><label><input type="checkbox"><span>Ни у одного 3 лица <span data-title="Если в полис КАСКО вписаны иные лица кроме клиента, проверяем каждого. При наличии долгов хотя бы у одного лица, сделка не может проводиться">?</span>, указанного в полисе КАСКО при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лиц.</span></label></li>
 	</ul>
 	</section>
 
@@ -179,7 +200,6 @@
 			<h2>Полис КАСКО</h2>
 			<div class="info">Требуется обязательно при сумме кредита от 1 млн. рублей или при любой сумме, если полис покупается в кредит</div>
 			<ul>
-				<li><label><input type="checkbox"><span>Присутствует скан Водительского удостоверения лица указанного в полисе в списке допущенных к управлению.</span></label></li>
 				<li data-on="kaskokred"><label><input type="checkbox"><span>Есть счет на оплату КАСКО, купленного в кредит </span></label></li>
 				<li><label><input type="checkbox"><span>Данные автомобиля совпадают <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span></span></label></li>
 				<li><label><input type="checkbox"><span>Паспортные данные клиента совпадают с паспортом</span></label></li>

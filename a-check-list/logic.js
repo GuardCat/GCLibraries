@@ -100,8 +100,11 @@ function director( ) {
 		counter = panel.querySelector(".counter"),
 		reset = panel.querySelector("button.clearIt"),
 		renewAll = ( ) => {
+			let numOffVidgets;
 			tieClasses.forEach( t => t.renewStatus( ) );
-			showIfTermsSet(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
+ 			numOffVidgets = dealTerms.querySelectorAll("table.off").length;
+			showIfTermsSet(termsCount - numOffVidgets, dealTerms.querySelectorAll("input:checked").length, main);
+			console.info(termsCount, numOffVidgets);
 			hidingSections.forEach( el => hideIfEmpty(el) );
 			renewCounter(counter, checklist);
 		}
@@ -109,10 +112,7 @@ function director( ) {
 
 	document.body.addEventListener("change", e => {
 		if (e.target.tagName !== "INPUT") return true;
-		tieClasses.forEach( t => t.renewStatus( ) );
-		hidingSections.forEach( el => hideIfEmpty(el) );
-		showIfTermsSet(termsCount, dealTerms.querySelectorAll("input:checked").length, main);
-		renewCounter(counter, checklist);
+		renewAll( );
 	}, false);
 
 	reset.addEventListener( "click", e => {
