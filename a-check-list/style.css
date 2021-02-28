@@ -11,17 +11,19 @@ body {
 }
 
 span[data-title] {
+	color:  #278cff;
 	cursor: help;
-	border: 2px solid #76777b;
+	border: 1px solid #278cff;
 	border-radius: 50%;
 	font-size: 10px;
 	font-weight: 800;
 	display: inline-block;
 	vertical-align: middle;
-	width: 15px;
-	height: 15px;
-	line-height: 15px;
+	width: 13px;
+	height: 13px;
+	line-height: 13px;
 	text-align: center;
+	vertical-align: middle;
 }
 
 span[data-title]:hover::after {
