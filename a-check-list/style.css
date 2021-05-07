@@ -209,13 +209,14 @@ button.clearIt:active {
 	max-width: 300px;
 	min-width: 200px;
 	margin: 10px;
-	border-radius: 4px;
 	border-spacing: 0px;
-	border: 0;
+	border: 1px solid #2196F3;
+	border-radius:	4px;
 }
 
 .dealTerms table td {
-	border: 0;/*1px solid #2196F3;*/
+	border: 0;
+	padding: 0;
 	text-align: center;
 	color: #278cff;
 	width: 50%;
@@ -227,17 +228,6 @@ button.clearIt:active {
 	width: 100%;
 	line-height: 200%;
 	height: 100%;
-	border: 1px solid #2196F3;
-}
-
-.dealTerms table tr td:first-child label {
-	border-top-left-radius:	4px;
-	border-bottom-left-radius: 4px;
-}
-
-.dealTerms table tr td:last-child label{
-	border-top-right-radius: 4px;
-	border-bottom-right-radius:	4px;
 }
 
 .dealTerms table td input:checked+label {

@@ -85,10 +85,10 @@
 				</tr>
 			</table>
 
-			<table data-on="lessmln">
+			<table>
 				<caption>Как приобретается КАСКО</caption>
 				<tr>
-					<td><input type="radio" id="kaskonal" name="kasko"><label for="kaskonal">За наличные</label></td>
+					<td data-on="moremln"><input type="radio" id="kaskonal" name="kasko"><label for="kaskonal">За наличные</label></td>
 					<td data-on="lessmln"><input type="radio" id="nokasko" name="kasko"><label for="nokasko">Нет КАСКО</label></td>
 					<td><input type="radio" id="kaskokred" name="kasko"><label for="kaskokred">В кредит</label></td>
 				</tr>
@@ -124,6 +124,8 @@
 		<li data-on="nopts"><label><input type="checkbox"><span>Для нового авто без ЭПТС предоставлено: Товарно-транспортная накладная (ТТН) или Форма учёта ТС (ФУТС) или Гарантийное письмо ДЦ</span></label></li>
 		<li data-on="nopts"><label><input type="checkbox"><span>В предоставленном взамен ЭПТС документе указаны мощность, объём двигателя и VIN автомобиля, документ пронумерован.</span></label></li>
 		<li data-on="moremln|kaskokred"><label><input type="checkbox"><span>Полис КАСКО</span></label></li>
+    <li data-on="kaskokred"><label><input type="checkbox"><span>Счет на оплату КАСКО, купленного в кредит </span></label></li>
+    <li data-on="kaskonal"><label><input type="checkbox"><span>Документ об оплате КАСКО наличными </span></label></li>
 		<li><label><input type="checkbox"><span>Согласие на обработку ПД</span></label></li>
 		<li><label><input type="checkbox"><span>Все сканы документов читаемы, скопированы полностью, нет размытых и обрезанных страниц</span></label></li>
 	</ul>
@@ -217,7 +219,6 @@
 			<h2>Полис КАСКО</h2>
 			<div class="info">Требуется обязательно при сумме кредита от 1 млн. рублей или при любой сумме, если полис покупается в кредит</div>
 			<ul>
-				<li data-on="kaskokred"><label><input type="checkbox"><span>Есть счет на оплату КАСКО, купленного в кредит </span></label></li>
 				<li><label><input type="checkbox"><span>Данные автомобиля совпадают <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span></span></label></li>
 				<li><label><input type="checkbox"><span>Паспортные данные клиента совпадают с паспортом</span></label></li>
 				<li><label><input type="checkbox"><span>Есть печать страховщика (может быть ч/б факсимиле)</span></label></li>
