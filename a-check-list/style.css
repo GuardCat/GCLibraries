@@ -7,6 +7,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
+	max-width: 1860px;
 	color: #76777b;
 }
 
