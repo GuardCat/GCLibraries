@@ -94,19 +94,11 @@
 				</tr>
 			</table>
 
-			<table data-on="moremln|kaskokred">
+			<table data-on="iscvu;kaskokred|iscvu;kaskonal">
 				<caption>3 лица в КАСКО</span></caption>
 				<tr>
 					<td><input type="radio" id="is3" name="3"><label for="is3">Вписаны</label></td>
 					<td><input type="radio" id="no3" name="3"><label for="no3">Отсутствуют</label></td>
-				</tr>
-			</table>
-
-      <table data-on="moremln">
-				<caption>Указание рисков в КАСКО</span></caption>
-				<tr>
-					<td><input type="radio" id="kaskototal" name="ktotal"><label for="kaskototal">TOTAL <span data-title="Страховой риск полной гибели ТС при любых обстоятельствах">?</span></label></td>
-					<td><input type="radio" id="kaskopunkts" name="ktotal"><label for="kaskopunkts">Раздельно <span data-title="Вместо TOTAL в КАСКО перечислены отдельные риски">?</span></label></td>
 				</tr>
 			</table>
 
@@ -116,10 +108,10 @@
 	<section>
 	<h2>Проверка наличия документов</h2>
 	<ul>
-    <li><label><input type="checkbox"><span>Согласие на обработку ПД</span></label></li>
+    <li><label><input type="checkbox"><span>Согласие на обработку персональных данных</span></label></li>
 		<li><label><input type="checkbox"><span>Фотография Клиента</span></label></li>
 		<li><label><input type="checkbox"><span>Цветной скан паспорта</span></label></li>
-		<li data-on="nocvu"><label><input type="checkbox"><span>Скан водительского удостоверения лица, забирающего авто из салона</span></label></li>
+		<li data-on="nocvu"><label><input type="checkbox"><span>Скан водительского удостоверения 3 лица, вписанного в КАСКО</span></label></li>
 		<li data-on="nocvu"><label><input type="checkbox"><span>Скан второго документа клиента</span></label></li>
 		<li data-on="iscvu"><label><input type="checkbox"><span>Скан водительского удостоверения клиента</span></label></li>
 		<li><label><input type="checkbox"><span>Договор купли-продажи</span></label></li>
@@ -140,9 +132,10 @@
 	<section class="checksection" id="custCheck">
 	<h2>Проверка клиента</h2>
 	<ul>
+    <li><label><input type="checkbox"><span>В согласии на обработку персональных данных стоят отметки только в пунктах о согласии клиента с передачей данных</span></label></li>
 		<li data-on="avtoodobr"><label><input type="checkbox"><span>У клиента при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или клиент предоставил справку о погашении данной задолженности с верными данными клиента.</span></label></li>
 		<li data-on="nocvu"><label><input type="checkbox"><span>У лица, забирающего авто, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лица.</span></label></li>
-		<li data-on="is3"><label><input type="checkbox"><span>Ни у одного 3 лица <span data-title="Если в полис КАСКО вписаны иные лица кроме клиента, проверяем каждого. При наличии долгов хотя бы у одного лица, сделка не может проводиться">?</span>, указанного в полисе КАСКО, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лиц.</span></label></li>
+		<li data-on="is3|nocvu"><label><input type="checkbox"><span>Ни у одного 3 лица <span data-title="Если в полис КАСКО вписаны иные лица кроме клиента, проверяем каждого. При наличии долгов хотя бы у одного лица, сделка не может проводиться">?</span>, указанного в полисе КАСКО, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лиц.</span></label></li>
 	</ul>
 	</section>
 
@@ -225,8 +218,6 @@
 			<h2>Полис КАСКО</h2>
 			<div class="info">Требуется обязательно при сумме кредита от 1 млн. рублей или при любой сумме, если полис покупается в кредит</div>
 			<ul>
-        <li><label><input type="checkbox"><span>Выгодоприобретателем / залогодержателем указан АО «ОТП Банк»</span></label></li>
-        <li><label><input type="checkbox"><span>Страхователем в полисе указан клиент</span></label></li>
         <li><label><input type="checkbox"><span>ФИО клиента, его дата рождения, серия и номер паспорта указаны и соответствуют паспорту</span></label></li>
         <li><label><input type="checkbox"><span>Страховая сумма полностью покрывает стоимость транспортного средства</span></label></li>
         <li><label><input type="checkbox"><span>Марка и модель ТС указаны и совпадают с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span></label></li>
@@ -234,13 +225,12 @@
         <li><label><input type="checkbox"><span>Год выпуска указан и совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span></span></label></li>
         <li data-on="nocvu"><label><input type="checkbox"><span>В списке лиц, допущенных к управлению, указано лицо, забирающее авто из ДЦ</span></label></li>
         <li data-on="is3|nocvu"><label><input type="checkbox"><span>Для каждого лица, допущенного к управлению, указаны ФИО и дата рождения</span></label></li>
+        <li data-on="moremln"><label><input type="checkbox"><span>В рисках указано: «Ущерб (ТОТАЛ)» или прописано повреждение/гибель ТС в результате действия страхователя, лиц, допущенных к управлению, природных и техногенных факторов, действий третьих лиц </span><span data-title="Важно! Если не указан ущерб по любой причине (ТОТАЛ), должны быть прописаны все указанные причины!">?</span></label></li>
+        <li data-on="moremln"><label><input type="checkbox"><span>В рисках указано Хищение (угон) </span></label></li>
+        <li data-on="moremln"><label><input type="checkbox"><span>Выгодоприобретателем по рискам ущерб (ТОТАЛ), угон/хищение указан АО ОТП Банк</span></label></li>
+        <li><label><input type="checkbox"><span>Страхователем в полисе указан клиент</span></label></li>
         <li><label><input type="checkbox"><span>Есть печать страховщика (может быть ч/б факсимиле)</span></label></li>
-        <li data-on="kaskopunkts"><label><input type="checkbox"><span>Указан риск «ДТП»</span></label></li>
-        <li data-on="kaskopunkts"><label><input type="checkbox"><span>Указан риск «Хищение»</span></label></li>
-        <li data-on="kaskopunkts"><label><input type="checkbox"><span>Указан риск «Природные и техногенные факторы»</span></label></li>
-        <li data-on="kaskopunkts"><label><input type="checkbox"><span>Указан риск «Действия третьих лиц»</span></label></li>
-				<li data-on="kaskopunkts"><label><input type="checkbox"><span>Учтены риски наступившие по вине страхователя и лиц допущенных к управлению. НЕ «Миникаско».</span></label></li>
-			</ul>
+      </ul>
 		</section>
 
 		<section id="pts_section">
