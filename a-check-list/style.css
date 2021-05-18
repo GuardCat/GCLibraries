@@ -24,8 +24,6 @@ body {
 span[data-title] {
 	color:  #278cff;
 	cursor: help;
-/*	border: 1px solid #278cff;
-	border-radius: 50%;*/
 	font-size: 10px;
 	font-weight: 800;
 	display: inline-block;
