@@ -26,7 +26,7 @@
 
  	<body>
 		<h1>Сделка авто. Документы</h1>
-    <div class="version">v 1.02 18.05.2021</div>
+    <div class="version">v 1.02 18.05.21</div>
 
 		<nav class="panel">
 			<div class="counter"></div>
@@ -138,7 +138,13 @@
     <li><label><input type="checkbox"><span>В согласии на обработку персональных данных клиентом везде, где необходимо, проставлены отметки</span></label></li>
 		<li data-on="avtoodobr"><label><input type="checkbox"><span>У клиента при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или клиент предоставил справку о погашении данной задолженности с верными данными клиента.</span></label></li>
 		<li data-on="nocvu"><label><input type="checkbox"><span>У лица, забирающего авто, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лица.</span></label></li>
-		<li data-on="is3|nocvu"><label><input type="checkbox"><span>Ни у одного 3 лица <span data-title="Если в полис КАСКО вписаны иные лица кроме клиента, проверяем каждого. При наличии долгов хотя бы у одного лица, сделка не может проводиться">?</span>, указанного в полисе КАСКО, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лиц.</span></label></li>
+    <li data-on="is3|nocvu"><label><input type="checkbox"><span>Ни у одного 3 лица <span data-title="При наличии долгов хотя бы у одного 3 лица, сделка не может проводиться">?</span>, указанного в полисе КАСКО, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лиц.</span></label></li>
+
+		<div class="info">Проверьте наличие залога у клиента <span data-on="is3">и третьих лиц вписанных в КАСКО </span>по адресу <a href="https://www.reestr-zalogov.ru/search/">www.reestr-zalogov.ru/search/</a>.
+      При переходе на сайт кликните <span class="marked">по&nbsp;информации&nbsp;о&nbsp;залогодателе</span> и введите данные проверяемого лица.
+    </div>
+    <li data-on="avtoodobr"><label><input type="checkbox"><span>У клиента в <a href="https://www.reestr-zalogov.ru/search/">реестре залогов</a> менее 2 ТС, зарегистрированных 3 и менее месяцев назад <span data-title="Например, сегодня 20 мая. Считаются ТС, зарегистрированные 20 февраля или позднее.">?</span></span></label></li>
+		<li data-on="is3|nocvu"><label><input type="checkbox"><span>Хотя бы у одного 3 лица <span data-title="Если в полис КАСКО вписано несколько 3 лиц, достаточно найти одно 3 лицо, подпадающее под условия. Количество залогов по другим 3 лицам нбудут неважны.">?</span>, в залоге менее 2 ТС, которые зарегистрированы 3 и менее месяцев назад.</label></li>
 	</ul>
 	</section>
 
@@ -266,7 +272,7 @@
 				<li><label><input type="checkbox"><span>Категория выбрана согласно типу авто</span></label></li>
 				<li><label><input type="checkbox"><span>Категория заполнена так (пример): Легковой автомобиль Год выпуска:YYYY;Мощность л.с.:XXX;Мощность кВт:XX,X;Пробег км:X</span><span data-title="Важно! Учитывайте количество пробелов и их наличие как в примере!">?</span></label></li>
 				<li><label><input type="checkbox"><span>Марка заполнена так: <i data-title="Подставьте марку авто, например: Hyundai">марка</i><span data-title="Например: Hyundai">?</span>;Модель:<i>модель</i><span data-title="Например: Solaris">?</span></label></li>
-				<li><label><input type="checkbox"><span>Модель заполнена так: <i data-title="Подставьте VIN автомобиля. При его отсутствии, впишите номер шасси.">VIN</i> Объём дв-ля:XXXXсм3</span></label></li>
+				<li><label><input type="checkbox"><span>Модель заполнена так: <i>VIN</i><span data-title="Подставьте VIN автомобиля. При его отсутствии, впишите номер шасси.">?</span> Объём дв-ля:XXXXсм3</span></label></li>
 			</ul>
 		</section>
 

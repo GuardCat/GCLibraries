@@ -94,6 +94,7 @@ ul {
  	margin-block-start: 1em;
 	margin-block-end: 1em;
 	list-style-type: none;
+	margin: 5px 0px;
 }
 
 li {
@@ -176,10 +177,13 @@ button.clearIt:active {
 	font-size: 	14px;
 	padding: 	15px;
 	color: 		#555;
-	width:		90%
+	width:		90%;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	line-height: 21px;
 }
 
-.info div, .info img {
+.info img {
 	margin-top: 10px;
 }
 
