@@ -89,7 +89,7 @@ class TieChecker {
 
 function director( ) {
 	const
-		updatedFact = 1621336818640,
+		updatedFact = 1621338549500,
 		updatedLocal =  +window.localStorage.getItem("checklist_auto_updated"),
 		influensers = [...document.querySelectorAll("*[data-on]")],
 		tieClasses = influensers.map( el => new TieChecker(el) ),

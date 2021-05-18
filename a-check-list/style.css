@@ -9,6 +9,7 @@ body {
 	width: 100%;
 	max-width: 1860px;
 	color: #76777b;
+	padding-bottom: 20px;
 }
 
 .version {
