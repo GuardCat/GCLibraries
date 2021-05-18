@@ -13,10 +13,11 @@ body {
 }
 
 .version {
-	font-size: 12px;
+	font-size: 10px;
 	position: absolute;
-	top: 10px;
-	left: 80%;
+	right:20px;
+	top: 42px;
+	line-height: 20px;
 	color: white;
 }
 

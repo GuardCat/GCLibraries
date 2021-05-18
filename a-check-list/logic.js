@@ -89,7 +89,7 @@ class TieChecker {
 
 function director( ) {
 	const
-		updatedFact = 1621339524500,
+		updatedFact = 1621342654346,
 		updatedLocal = +window.localStorage.getItem("checklist_auto_updated"),
 		influensers = [...document.querySelectorAll("*[data-on]")],
 		tieClasses = influensers.map( el => new TieChecker(el) ),
@@ -128,13 +128,14 @@ function director( ) {
 			if ( el.getAttribute("data-title") && el.tagName !== "A" ) e.preventDefault( );
 	}, false);
 
+	renewAll( );
+
 	// Сбросим флаги, если ЧЛ был обновлён.
 	if (updatedFact > updatedLocal) {
+		if (document.querySelectorAll("input:checked").length) alert("Приложение обновлено. Чек-лист будет очищен, во избежание неверного отображения.");
 		reset.click( );
 		window.localStorage.setItem("checklist_auto_updated", updatedFact);
-		alert("Приложение обновлено. Отмеченные пункты сброшены, во избежание неверного отображения");
 	}
-	renewAll( );
 }
 
 function showIfTermsSet(termsLen, checkedLen, questionary) {
