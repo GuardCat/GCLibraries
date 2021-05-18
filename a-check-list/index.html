@@ -26,7 +26,7 @@
 
  	<body>
 		<h1>Сделка авто. Документы</h1>
-    <div class="version">v 1.03 18.05.21</div>
+    <div class="version">v 1.1 18.05.21</div>
 
 		<nav class="panel">
 			<div class="counter"></div>
@@ -39,6 +39,15 @@
 
 		<section class="dealTerms">
 			<h2>Данные по сделке и авто</h2>
+
+      <table>
+				<caption>Проведение сделки</caption>
+				<tr>
+					<td><input type="radio" id="nosoz" name="contract"><label for="nosoz">Полностью</label></td>
+					<td><input type="radio" id="soz" name="contract"><label for="soz">Через СОЗ</label></td>
+				</tr>
+			</table>
+
 			<table>
 				<caption>Автомобиль</caption>
 				<tr>
@@ -128,7 +137,7 @@
     <li data-on="kaskokred"><label><input type="checkbox"><span>Счет на оплату КАСКО, купленного в кредит </span></label></li>
     <li data-on="kaskonal"><label><input type="checkbox"><span>Документ об оплате КАСКО наличными </span></label></li>
 		<li><label><input type="checkbox"><span>Счета на оплату доп. услуг, входящих в сумму кредита</span></label></li>
-		<li><label><input type="checkbox"><span>Все сканы документов читаемы, скопированы полностью, нет размытых и обрезанных страниц</span></label></li>
+		<li><label><input type="checkbox"><span>Для всех документов подготовлены скан-копии, все сканы читаемы, нет размытых и обрезанных страниц</span></label></li>
 	</ul>
 	</section>
 
@@ -288,7 +297,7 @@
 			</div>
 			<ul>
 				<li><label><input type="checkbox"><span>В теле письма прописаны допы Банка (СЖ, автокарта)</span></label></li>
-				<li><label><input type="checkbox"><span>Подготовлены файлы в формате pdf, (отдельные можно в jpg).</span></label></li>
+				<li><label><input type="checkbox"><span>Подготовлены файлы в формате pdf. При отправке отдельных файлов в JPG, имена документов содержат наименование документа и имеют в конце номер страницы: ДПК1.jpg, ДПК2.jpg.</span></label></li>
 				<li><label><input type="checkbox"><span>Письмо отправлено</span></label></li>
 			</ul>
 		</section>

@@ -89,6 +89,8 @@ class TieChecker {
 
 function director( ) {
 	const
+		updatedFact = 1621336818640,
+		updatedLocal =  +window.localStorage.getItem("checklist_auto_updated"),
 		influensers = [...document.querySelectorAll("*[data-on]")],
 		tieClasses = influensers.map( el => new TieChecker(el) ),
 		dealTerms = document.querySelector(".dealTerms"),
@@ -126,6 +128,12 @@ function director( ) {
 			if ( el.getAttribute("data-title") && el.tagName !== "A" ) e.preventDefault( );
 	}, false);
 
+	// Сбросим флаги, если ЧЛ был обновлён.
+	if (updatedFact > updatedLocal) {
+		reset.click( );
+		window.localStorage.setItem("checklist_auto_updated", updatedFact);
+		alert("Приложение обновлено. Отмеченные пункты сброшены, во избежание неверного отображения");
+	}
 	renewAll( );
 }
 
