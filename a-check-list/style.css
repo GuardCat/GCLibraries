@@ -11,6 +11,14 @@ body {
 	color: #76777b;
 }
 
+.version {
+	font-size: 12px;
+	position: absolute;
+	top: 10px;
+	left: 90%;
+	color: white;
+}
+
 span[data-title] {
 	color:  #278cff;
 	cursor: help;
