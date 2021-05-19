@@ -76,7 +76,6 @@ class TieChecker {
 	}
 
 	set show(isShowed) {
-
 		if (isShowed) {
 			this.element.classList.remove("off");
 		} else {
@@ -89,18 +88,28 @@ class TieChecker {
 
 function director( ) {
 	const
-		updatedFact = 1621342654346,
+		version = "1.25b",
+		updatedFact = 1621418205543,
 		updatedLocal = +window.localStorage.getItem("checklist_auto_updated"),
-		influensers = [...document.querySelectorAll("*[data-on]")],
-		tieClasses = influensers.map( el => new TieChecker(el) ),
+		oldDate = new Date(updatedLocal),
+		newDate = new Date(updatedFact),
+
+		depended = [...document.querySelectorAll("*[data-on]")],
+		tieClasses = depended.map( el => new TieChecker(el) ),
 		dealTerms = document.querySelector(".dealTerms"),
 		termsCount = dealTerms.querySelectorAll("table").length,
+
 		main = document.body.querySelector("main"),
+		versionElement = document.body.querySelector(".version"),
 		hidingSections = [...main.querySelectorAll("section[id]")], /* Считаем, что все section с id нуждаются в скрытии при отсутствии элементов*/
 		checklist = new Checklist( document.body.querySelectorAll("input"), document.body, ".off" ),
 		panel = document.querySelector(".panel"),
 		counter = panel.querySelector(".counter"),
 		reset = panel.querySelector("button.clearIt"),
+		updateMessage =
+`Приложение обновлено.
+Сохранения версии от ${zeroTo( oldDate.getDate( ) )}.${zeroTo( oldDate.getMonth( ) + 1 )}.${oldDate.getFullYear( )} удалены, во избежание неверного отображения.
+Чек-лист будет очищен.`
 		renewAll = ( ) => {
 			let numOffVidgets;
 			tieClasses.forEach( t => t.renewStatus( ) );
@@ -130,12 +139,17 @@ function director( ) {
 
 	renewAll( );
 
-	// Сбросим флаги, если ЧЛ был обновлён.
-	if (updatedFact > updatedLocal) {
-		if (document.querySelectorAll("input:checked").length) alert("Приложение обновлено. Чек-лист будет очищен, во избежание неверного отображения.");
-		reset.click( );
-		window.localStorage.setItem("checklist_auto_updated", updatedFact);
-	}
+	// Обновим дату версии
+	versionElement.innerHTML = `${version}&nbsp;${zeroTo( newDate.getDate( ) )}.${zeroTo( newDate.getMonth( ) + 1 )}.${newDate.getFullYear( ) - 2000}`
+
+	// Сбросим флаги, если ЧЛ был обновлён. Таймаут, чтобы успела отобразиться новая версия до alert
+	setTimeout( ( ) => {
+		if (updatedFact > updatedLocal) {
+			if (checklist.checked.length) alert(updateMessage);
+			reset.click( );
+			window.localStorage.setItem("checklist_auto_updated", updatedFact);
+		}
+	}, 100 );
 }
 
 function showIfTermsSet(termsLen, checkedLen, questionary) {
@@ -162,6 +176,12 @@ function renewCounter(counter, checklist) {
 	} else {
 		counter.classList.remove("done");
 	}
+}
+
+function zeroTo(num, length = 2) {
+    let res = "" + num;
+    while (length - res.length > 0) res = "0" + res;
+    return res;
 }
 
 window.addEventListener("load", director);

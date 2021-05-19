@@ -26,7 +26,7 @@
 
  	<body>
 		<h1>Сделка авто. Документы</h1>
-    <div class="version">v1.21&nbsp;18.05.21</div>
+    <div class="version">—</div>
 
 		<nav class="panel">
 			<div class="counter"></div>
@@ -39,7 +39,6 @@
 
 		<section class="dealTerms">
 			<h2>Данные по сделке и авто</h2>
-
       <table>
 				<caption>Проведение сделки</caption>
 				<tr>
@@ -122,12 +121,12 @@
 	<ul>
     <li><label><input type="checkbox"><span>Согласие на обработку персональных данных</span></label></li>
 		<li><label><input type="checkbox"><span>Фотография Клиента</span></label></li>
-		<li><label><input type="checkbox"><span>Цветной скан паспорта</span></label></li>
+		<li><label><input type="checkbox"><span><b>Цветной</b> скан паспорта</span></label></li>
 		<li data-on="nocvu"><label><input type="checkbox"><span>Скан водительского удостоверения 3 лица, вписанного в КАСКО</span></label></li>
-		<li data-on="nocvu"><label><input type="checkbox"><span>Скан второго документа клиента</span></label></li>
-		<li data-on="iscvu"><label><input type="checkbox"><span>Скан водительского удостоверения клиента</span></label></li>
+		<li data-on="nocvu"><label><input type="checkbox"><span><b>Цветной</b> скан второго документа клиента</span></label></li>
+		<li data-on="iscvu"><label><input type="checkbox"><span><b>Цветной</b> скан водительского удостоверения клиента</span></label></li>
 		<li><label><input type="checkbox"><span>Договор купли-продажи</span></label></li>
-		<li data-on="notdcowner"><label><input type="checkbox"><span>Скан Договора комиссии (авто на реализации)</span></label></li>
+		<li data-on="notdcowner"><label><input type="checkbox"><span><b>Цветной</b> скан Договора комиссии</span></label></li>
 		<li data-on="isold;pts"><label><input type="checkbox"><span><b>Цветной</b> скан ПТС.</span></label></li>
 		<li data-on="isold;epts"><label><input type="checkbox"><span>ЭПТС + СТС или скан старого ПТС или расширенная выписка</span></label></li>
 		<li data-on="isnew;pts"><label><input type="checkbox"><span>Скан ПТС</span></label></li>
@@ -137,6 +136,7 @@
     <li data-on="kaskokred"><label><input type="checkbox"><span>Счет на оплату КАСКО, купленного в кредит </span></label></li>
     <li data-on="kaskonal"><label><input type="checkbox"><span>Документ об оплате КАСКО наличными </span></label></li>
 		<li><label><input type="checkbox"><span>Счета на оплату доп. услуг, входящих в сумму кредита</span></label></li>
+    <li><label><input type="checkbox"><span>Документы на оплату всей суммы ПВ. Допускаются: кассовый чек, договор трейд-ин, приходный ордер <b>с печатью ДЦ</b>. Есть исключения<span data-title="Принимается ТОЛЬКО кассовый чек из ДЦ: «Правовая культура», «Авангард Пискарёвский», «Трудовая нициатива», «АвтоРим», ГК «Локо Авто».">?</span></span></label></li>
 		<li><label><input type="checkbox"><span>Для всех документов подготовлены скан-копии, все сканы читаемы, нет размытых и обрезанных страниц</span></label></li>
 	</ul>
 	</section>
@@ -172,11 +172,9 @@
 		<h2>Скан паспорта</h2>
 		<ul>
 			<li><label><input type="checkbox"><span>Скан паспорта сделан сегодня<span data-title="Если скан сделан не сегодня, заявку вернут. Проверьте свойства файла (нажмите правой кнопкой на файле, свойства, создан).">?</span></span></label></li>
-			<li><label><input type="checkbox"><span>Скан паспорта представлен в цветном виде</span></label></li>
 			<li><label><input type="checkbox"><span>В скане есть страницы первого разворота, страница с адресом регистрации</span></label></li>
-   			<li><label><input type="checkbox"><span>Сканированные страницы читаемы, нет засвеченной, затенённой, размытой области</span></label></li>
-   			<li><label><input type="checkbox"><span>Сканированные страницы сняты полностью, не обрезаны</span></label></li>
-   			<li><label><input type="checkbox"><span>По фотографии в паспорте можно идентифицировать Клиента</span></label></li>
+ 			<li><label><input type="checkbox"><span>Сканированные страницы сняты полностью, не обрезаны, нет нечитаемых областей</span></label></li>
+ 			<li><label><input type="checkbox"><span>По фотографии в паспорте можно идентифицировать Клиента</span></label></li>
 		</ul>
 	</section>
 
@@ -184,9 +182,8 @@
 		<h2>Скан дополнительного документа</h2>
 		<div class="info">В качестве дополнительного документа принимаются: Заграничный паспорт, ИНН, СНИЛС, Водительское удостоверение.</div>
 		<ul>
-			<li><label><input type="checkbox"><span>Сканированный документ представлен в цветном виде и полностью</span></label></li>
-			<li><label><input type="checkbox"><span>Сканированные страницы читаемы, нет засвеченной, затенённой, размытой области</span></label></li>
-			<li><label><input type="checkbox"><span>Сканированные страницы сняты полностью, не обрезаны</span></label></li>
+      <li><label><input type="checkbox"><span>Отсканированы все страницы документа</span></label></li>
+ 			<li><label><input type="checkbox"><span>Сканированные страницы сняты полностью, не обрезаны, нет нечитаемых областей</span></label></li>
 			<li><label><input type="checkbox"><span>Персональные данные Клиента, включая дату рождения, полностью совпадают с данными в паспорте</span></label></li>
 			<li><label><input type="checkbox"><span>Если предоставлено водительское удостоверение, есть скан и второй его стороны</span></label></li>
 			<li><label><input type="checkbox"><span>Документ (например, ВУ) действующий, срок его действия не истёк.</span></label></li>
@@ -254,7 +251,7 @@
 		<section id="pts_section">
 			<h2>Паспорт транспортного средства</h2>
 			<ul>
-				<li data-on="pts;nopts"><label><input type="checkbox"><span>Сканы полные и читаемые</span></label></li>
+   			<li><label><input type="checkbox"><span>Документ отсканирован полностью, не обрезан, нет нечитаемых областей</span></label></li>
 				<li data-on="dcowner;pts"><label><input type="checkbox"><span>Последним собственником в ПТС указан Дилерский центр</span></label></li>
 				<li data-on="dcowner;epts"><label><input type="checkbox"><span>Последним собственником в ЭПТС указан Дилерский центр</span></label></li>
 		    <li data-on="nopts"><label><input type="checkbox"><span>В предоставленном взамен ЭПТС документе указаны: мощность, объём двигателя и VIN автомобиля, документ пронумерован.</span></label></li>
@@ -264,10 +261,11 @@
 		<section data-on="notdcowner">
 			<h2>Договор комиссии</h2>
 			<ul>
+        <li><label><input type="checkbox"><span>Отсканированы все страницы документа</span></label></li>
+ 			  <li><label><input type="checkbox"><span>Сканированные страницы сняты полностью, не обрезаны, нет нечитаемых областей</span></label></li>
 				<li><label><input type="checkbox"><span>Данные по комиссионеру и комитенту внесены верно</span></label></li>
 				<li><label><input type="checkbox"><span>Данные транспортного средства в Договоре совпадают <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span></span></label></li>
 				<li><label><input type="checkbox"><span>Присутствуют печати комиссионера, подписи и реквизиты сторон</span></label></li>
-				<li><label><input type="checkbox"><span>Сканы содержат все страницы, все данные читаемы</span></label></li>
 				<li data-on="pts|epts"><label><input type="checkbox"><span>Собственник в <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС | копии старого ПТС</span> и комитент в договоре комиссии совпадают. Или приложены документы, подтверждающие переход ТС от собственника к собственнику независимо от их количества. Договоры купли-продажи — <b>предметные</b> (см. ниже) или есть акты приёма-передачи.</span></label></li>
 				<li><label><input type="checkbox"><span>Есть акт приёма-передачи данных авто и все указанные выше данные в нём присутствуют.</span></label></li>
 			</ul>
