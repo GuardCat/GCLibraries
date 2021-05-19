@@ -108,7 +108,7 @@ function director( ) {
 		reset = panel.querySelector("button.clearIt"),
 		updateMessage =
 `Приложение обновлено.
-Данные старой версии от ${zeroTo( oldDate.getDate( ) )}.${zeroTo( oldDate.getMonth( ) + 1 )}.${oldDate.getFullYear( )} удалены, чек-лист будет очищен.
+Данные старой версии ${ updatedLocal > 0 ? "от " + zeroTo( oldDate.getDate( ) ) + "." + zeroTo( oldDate.getMonth( ) + 1 ) + "." + oldDate.getFullYear( ) : ""} удалены, чек-лист будет очищен.
 Изменения:
 v1.28: ~ теперь не нужно проверять качество скана ЭПТС
 v1.27: + добавлена проверка наличия документов на оплату ПВ
