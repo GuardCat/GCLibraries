@@ -36,7 +36,9 @@ span[data-title]:hover::after {
 	font-size: 12px;
 	display: block;
 	border-radius: 5px;
-  margin: -40px auto auto 0;
+	left:auto;
+	top:auto;
+  /*margin: -40px auto auto 0;*/
 	text-align: left;
 	padding: 5px;
 	color: white;

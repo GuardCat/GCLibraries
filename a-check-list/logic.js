@@ -88,8 +88,8 @@ class TieChecker {
 
 function director( ) {
 	const
-		version = "v1.27",
-		updatedFact = 1621433538295,
+		version = "v1.28",
+		updatedFact = 1621435527719,
 		updatedLocal = +window.localStorage.getItem("checklist_auto_updated"),
 		oldDate = new Date(updatedLocal),
 		newDate = new Date(updatedFact),
@@ -110,8 +110,8 @@ function director( ) {
 `Приложение обновлено.
 Данные старой версии от ${zeroTo( oldDate.getDate( ) )}.${zeroTo( oldDate.getMonth( ) + 1 )}.${oldDate.getFullYear( )} удалены, чек-лист будет очищен.
 Изменения:
-+ добавлена проверка наличия документов на оплату ПВ
-* улучшена проверка сканов: убраны и объединены пункты
+v1.28: ~ теперь не нужно проверять качество скана ЭПТС
+v1.27: + добавлена проверка наличия документов на оплату ПВ
 `
 		renewAll = ( ) => {
 			let numOffVidgets;
