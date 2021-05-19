@@ -99,7 +99,7 @@ li {
 
 main {
 	display: flex;
-	flex-wrap:	wrap;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 }
@@ -230,7 +230,6 @@ button.clearIt:active {
 	width: 50%;
 	min-width: 100px;
 }
-
 
 .dealTerms table td label {
 	display: block;
