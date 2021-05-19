@@ -88,8 +88,8 @@ class TieChecker {
 
 function director( ) {
 	const
-		version = "1.25b",
-		updatedFact = 1621418205543,
+		version = "1.26b",
+		updatedFact = 1621420898084,
 		updatedLocal = +window.localStorage.getItem("checklist_auto_updated"),
 		oldDate = new Date(updatedLocal),
 		newDate = new Date(updatedFact),
@@ -108,8 +108,11 @@ function director( ) {
 		reset = panel.querySelector("button.clearIt"),
 		updateMessage =
 `Приложение обновлено.
-Сохранения версии от ${zeroTo( oldDate.getDate( ) )}.${zeroTo( oldDate.getMonth( ) + 1 )}.${oldDate.getFullYear( )} удалены, во избежание неверного отображения.
-Чек-лист будет очищен.`
+Данные старой версии от ${zeroTo( oldDate.getDate( ) )}.${zeroTo( oldDate.getMonth( ) + 1 )}.${oldDate.getFullYear( )} удалены, чек-лист будет очищен.
+Изменения:
++ добавлена проверка наличия документов на оплату ПВ
+* улучшена проверка сканов: убраны и объединены пункты
+`
 		renewAll = ( ) => {
 			let numOffVidgets;
 			tieClasses.forEach( t => t.renewStatus( ) );
