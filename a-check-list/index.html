@@ -6,9 +6,11 @@
  		<title>Проверка документов для сделки авто</title>
 		<link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+ 	</head>
 
+ 	<body>
     <!-- Yandex.Metrika counter -->
-    <script type="text/javascript" >
+    <script>
        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
@@ -21,9 +23,7 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/74145826" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
- 	</head>
 
- 	<body>
 		<h1>Сделка авто. Документы</h1>
     <div class="version">—</div>
 
@@ -148,10 +148,12 @@
 		<li data-on="nocvu"><label><input type="checkbox"><span>У лица, забирающего авто, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лица.</span></label></li>
     <li data-on="is3|nocvu"><label><input type="checkbox"><span>Ни у одного 3 лица<span data-title="При наличии долгов хотя бы у одного 3 лица, сделка не может проводиться">?</span>, указанного в полисе КАСКО, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лиц.</span></label></li>
 
-		<div class="info">Проверьте наличие залога у клиента <span data-on="is3">и третьих лиц, вписанных в КАСКО, </span>по адресу <a href="https://www.reestr-zalogov.ru/search/">www.reestr-zalogov.ru/search/</a>.
-      При переходе на сайт кликните <span class="marked">по&nbsp;информации&nbsp;о&nbsp;залогодателе</span> и введите данные проверяемого лица.
-    </div>
-    <li><label><input type="checkbox"><span>У клиента в <a href="https://www.reestr-zalogov.ru/search/">реестре залогов</a> менее 2 ТС, зарегистрированных 3 и менее месяцев назад<span data-title="Например, сегодня 20 мая. Считаются ТС, зарегистрированные 20 февраля или позднее.">?</span></span></label></li>
+
+    <li>
+      <div class="info">Проверьте наличие залога у клиента <span data-on="is3">и третьих лиц, вписанных в КАСКО, </span>по адресу <a href="https://www.reestr-zalogov.ru/search/">www.reestr-zalogov.ru/search/</a>.
+        При переходе на сайт кликните <span class="marked">по&nbsp;информации&nbsp;о&nbsp;залогодателе</span> и введите данные проверяемого лица.
+      </div>
+      <label><input type="checkbox"><span>У клиента в <a href="https://www.reestr-zalogov.ru/search/">реестре залогов</a> менее 2 ТС, зарегистрированных 3 и менее месяцев назад<span data-title="Например, сегодня 20 мая. Считаются ТС, зарегистрированные 20 февраля или позднее.">?</span></span></label></li>
 		<li data-on="is3|nocvu"><label><input type="checkbox"><span>Ни у одного 3 лица<span data-title="Если в реестре залогов хотя бы на одно 3 лицо зарегистрировано более 1 ТС 3 месяца назад и позднее, сделка не будет одобрена.">?</span>, в <a href="https://www.reestr-zalogov.ru/search/">реестре залогов</a> менее 2 ТС, которые зарегистрированы 3 и менее месяцев назад.</span></label></li>
 	</ul>
 	</section>
