@@ -112,7 +112,7 @@ function director( ) {
 Изменения:
 v1.28: ~ теперь не нужно проверять качество скана ЭПТС
 v1.27: + добавлена проверка наличия документов на оплату ПВ
-`
+`,
 		renewAll = ( ) => {
 			let numOffVidgets;
 			tieClasses.forEach( t => t.renewStatus( ) );
@@ -143,7 +143,7 @@ v1.27: + добавлена проверка наличия документов
 	renewAll( );
 
 	// Обновим дату версии
-	versionElement.innerHTML = `${version}&nbsp;${zeroTo( newDate.getDate( ) )}.${zeroTo( newDate.getMonth( ) + 1 )}.${newDate.getFullYear( ) - 2000}`
+	versionElement.innerHTML = `${version}&nbsp;${zeroTo( newDate.getDate( ) )}.${zeroTo( newDate.getMonth( ) + 1 )}.${newDate.getFullYear( ) - 2000}`;
 
 	// Сбросим флаги, если ЧЛ был обновлён. Таймаут, чтобы успела отобразиться новая версия до alert
 	setTimeout( ( ) => {
