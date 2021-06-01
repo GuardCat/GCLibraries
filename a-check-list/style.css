@@ -22,12 +22,19 @@ body {
 }
 
 span[data-title] {
-	color:  #278cff;
+	background-color: #278cff;
+	color: white;
+	display: inline-block;
+	width: 14px;
+	line-height: 14px;
+	border-radius: 7px;
+	padding: 0;
+	text-align: center;
 	cursor: help;
 	font-size: 10px;
 	font-weight: 800;
-	display: inline-block;
 	vertical-align: super;
+
 }
 
 span[data-title]:hover::after {
