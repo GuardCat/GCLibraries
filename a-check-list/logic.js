@@ -89,7 +89,8 @@ class TieChecker {
 function director( ) {
 	const
 		version = "v1.28.3",
-		updatedFact = 1621435527719,
+		updatedFact = 1622494800000,
+		allowedUpdateDate = 1621435527719,
 		updatedLocal = +window.localStorage.getItem("checklist_auto_updated"),
 		oldDate = new Date(updatedLocal),
 		newDate = new Date(updatedFact),
@@ -110,6 +111,7 @@ function director( ) {
 `Приложение обновлено.
 Данные старой версии ${ updatedLocal > 0 ? "от " + zeroTo( oldDate.getDate( ) ) + "." + zeroTo( oldDate.getMonth( ) + 1 ) + "." + oldDate.getFullYear( ) : ""} удалены, чек-лист будет очищен.
 Изменения:
+v1.28.3: + ДЦ «Юрал трейд» в исключения по документам на ПВ
 v1.28: ~ теперь не нужно проверять качество скана ЭПТС
 v1.27: + добавлена проверка наличия документов на оплату ПВ
 `,
@@ -147,7 +149,7 @@ v1.27: + добавлена проверка наличия документов
 
 	// Сбросим флаги, если ЧЛ был обновлён. Таймаут, чтобы успела отобразиться новая версия до alert
 	setTimeout( ( ) => {
-		if (updatedFact > updatedLocal) {
+		if (updatedLocal > allowedUpdateDate) {
 			if (checklist.checked.length) alert(updateMessage);
 			reset.click( );
 			window.localStorage.setItem("checklist_auto_updated", updatedFact);
