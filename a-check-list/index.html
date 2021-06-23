@@ -51,7 +51,14 @@
 				<tr>
 					<td><input type="radio" id="isnew" name="condition"><label for="isnew">Новый</label></td>
 					<td><input type="radio" id="isold" name="condition"><label for="isold">Б/у</label></td>
-					<td><input type="radio" id="isoldl" name="condition"><label for="isoldl">Б/у Лада/УАЗ</label></td>
+				</tr>
+			</table>
+
+			<table data-on="isold">
+				<caption>Марка</caption>
+				<tr>
+					<td><input type="radio" id="lada" name="brand"><label for="lada">Лада / УАЗ</label></td>
+					<td><input type="radio" id="nolada" name="brand"><label for="nolada">Другая</label></td>
 				</tr>
 			</table>
 
@@ -63,11 +70,11 @@
 				</tr>
 			</table>
 
-			<table>
+			<table data-on="isnew|isold;lada|isold;nolada">
 				<caption>Сумма кредита</caption>
 				<tr>
-					<td><input type="radio" id="lessmln" name="sum"><label for="lessmln">До <span data-on="isnew|isoldl">1</span><span data-on="isold">1,5</span> млн.</label></td>
-					<td><input type="radio" id="moremln" name="sum"><label for="moremln"><span data-on="isnew|isoldl">1</span><span data-on="isold">1,5</span> млн.+</label></td>
+					<td><input type="radio" id="lessmln" name="sum"><label for="lessmln">До <span data-on="isnew|lada">1</span><span data-on="isold;nolada">1,5</span> млн.</label></td>
+					<td><input type="radio" id="moremln" name="sum"><label for="moremln"><span data-on="isnew|lada">1</span><span data-on="isold;nolada">1,5</span> млн.+</label></td>
 				</tr>
 			</table>
 
@@ -97,14 +104,14 @@
 			</table>
 
 			<table data-on="soz;isnew;epts|soz;isnew;nopts">
-				<caption>Госпрограмма <span data-title="Только на отечественные авто в ККО: Хабаровск, Благовещенск, Екатеринбург, Калуга, Владимир, Пенза">?</span></caption>
+				<caption>Госпрограмма<span data-title="Только на отечественные авто в ККО: Хабаровск, Благовещенск, Екатеринбург, Калуга, Владимир, Пенза">?</span></caption>
 				<tr>
 					<td><input type="radio" id="gp" name="gos"><label for="gp">Есть</label></td>
 					<td><input type="radio" id="nogp" name="gos"><label for="nogp">Нет</label></td>
 				</tr>
 			</table>
 
-			<table>
+			<table data-on="moremln|lessmln">
 				<caption>Как приобретается КАСКО</caption>
 				<tr>
 					<td data-on="moremln"><input type="radio" id="kaskonal" name="kasko"><label for="kaskonal">За наличные</label></td>
@@ -141,10 +148,11 @@
 		<li data-on="isnew;epts"><label><input type="checkbox"><span>ЭПТС</span></label></li>
 		<li data-on="nopts"><label><input type="checkbox"><span>Товарно-транспортная накладная (ТТН) или Форма учёта ТС (ФУТС) или Гарантийное письмо ДЦ</span></label></li>
 		<li data-on="moremln|kaskokred"><label><input type="checkbox"><span>Полис КАСКО</span></label></li>
-    <li data-on="kaskokred"><label><input type="checkbox"><span>Счет на оплату КАСКО, купленного в кредит </span></label></li>
-    <li data-on="kaskonal"><label><input type="checkbox"><span>Документ об оплате КАСКО наличными </span></label></li>
+    	<li data-on="kaskokred"><label><input type="checkbox"><span>Счет на оплату КАСКО, купленного в кредит </span></label></li>
+    	<li data-on="kaskonal"><label><input type="checkbox"><span>Документ об оплате КАСКО наличными </span></label></li>
+		<li data-on="gp"><label><input type="checkbox"><span>Заявление на оплату субсидии</span>
 		<li><label><input type="checkbox"><span>Счета на оплату доп. услуг, входящих в сумму кредита</span></label></li>
-    <li><label><input type="checkbox"><span>Документы на оплату всей суммы ПВ. Допускаются: <u>кассовый чек, выписка из онлайн банка / платёжное поручение с отметкой «Исполнено»</u>, договор трейд-ин с актом приёма-передачи, приходный ордер <b>с печатью ДЦ</b>.<span data-title="Принимаются ТОЛЬКО подчёркнутые документы из ДЦ:«Юрал трэйд», «Правовая культура», «Авангард Пискарёвский», «Трудовая инициатива», «АвтоРим», ГК «Локо Авто».">Исключения</span></span></label></li>
+    	<li><label><input type="checkbox"><span>Документы на оплату всей суммы ПВ. Допускаются: <u>кассовый чек, выписка из онлайн банка / платёжное поручение с отметкой «Исполнено»</u>, договор трейд-ин с актом приёма-передачи, приходный ордер <b>с печатью ДЦ</b>.<span data-title="Принимаются ТОЛЬКО подчёркнутые документы из ДЦ:«Юрал трэйд», «Правовая культура», «Авангард Пискарёвский», «Трудовая инициатива», «АвтоРим», ГК «Локо Авто».">Исключения</span></span></label></li>
 		<li><label><input type="checkbox"><span>Для всех документов подготовлены скан-копии, все сканы читаемы, нет размытых и обрезанных страниц</span></label></li>
 	</ul>
 	</section>
@@ -230,7 +238,9 @@
 			<h2>Оплата остатка стоимости ТС</h2>
 			<div class="info">На оплату остаточной стоимости автомобиля, а также дополнительных опций и продуктов, включенных в тело кредита, должны быть предоставлены счета.</div>
 			<ul>
-				<li><label><input type="checkbox"><span>Суммы в документе совпадают с реальными</span></label></li>
+				<li data-on="gp"><label><input type="checkbox"><span>Сумма в заявлении на перевод со счёта клиента ДЦ остаточной стоимости ТС указана как: <span class="marked">Остаток стоимости ТС - ПВ клиента (без учёта субсидии)</span>, не равна сумме в Счёте!</span></label></li>
+				<li data-on="gp"><label><input type="checkbox"><span>В заявлении на перевод со счёта клиента ДЦ остаточной стоимости ТС НДС рассчитан как: <span class="marked">Общий НДС (в Счёте ДЦ) - НДС от субсидии</span>.</span></label></li>
+				<li data-on="isnew;nogp|isnew;nosoz|isold"><label><input type="checkbox"><span>Сумма в заявлении на перевод со счёта клиента дилеру оплаты остаточной стоимости совпадает со Счётом.</span></label></li>
 				<li><label><input type="checkbox"><span>Данные автомобиля совпадают с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span></span></label></li>
 				<li><label><input type="checkbox"><span>Паспортные данные клиента совпадают с паспортом</span></label></li>
 				<li><label><input type="checkbox"><span>Указаны реквизиты юридического лица (ДЦ)</span></label></li>
@@ -265,7 +275,16 @@
 				<li data-on="dcowner;pts"><label><input type="checkbox"><span>Последним собственником в ПТС указан Дилерский центр</span></label></li>
 				<li data-on="dcowner;epts"><label><input type="checkbox"><span>Последним собственником в ЭПТС указан Дилерский центр</span></label></li>
 		    <li data-on="nopts"><label><input type="checkbox"><span>В предоставленном взамен ЭПТС документе указаны: мощность, объём двигателя и VIN автомобиля, документ пронумерован.</span></label></li>
+			<li data-on="nopts;gp"><label><input type="checkbox"><span>Проверено: ЭПТС выпущен. Если ЭПТС не выпущен, участие в госпрограмме невозможно!</span></label></li>
+			<li data-on="nopts;gp"><label><input type="checkbox"><span>Напомнили Дилеру, что ЭПТС необходимо предоставить КЭ в течение 1–2 дней после сделки.<span data-title="КЭ направляет ЭПТС на СОЗ. Это обязательно!">?</span></label></li>
 			</ul>
+		</section>
+
+		<section data-on="gp">
+			<h2>Госпрограмма: заявление на оплату субсидии</h2>
+			<ul>
+				<li><label><input type="checkbox"><span>В заявлении на оплату субсидии указана корректная сумма субсидии: <span class="marked">стоимость ТС * 10%</span> и указан размер НДС от субсидии<span data-title="Рассчитать НДС можно в калькуляторе (xls) в паспорте продукта">?</span></span></label></li>
+        		<li><label><input type="checkbox"><span>В заявлении на оплату субсидии сумма рассчитана только от стоимости ТС, без доп. оборудобвания. Стоимость авто в Зибель не включает доп. оборудование. <span data-title="Доп. оборудование включается отдельным счётом">?</span></span></label></li>
 		</section>
 
 		<section data-on="notdcowner">

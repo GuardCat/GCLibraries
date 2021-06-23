@@ -261,4 +261,5 @@ button.clearIt:active {
 	font-size: 11px !important;
 	font-weight:600;
 	border-radius: 4px;
+	white-space: nowrap;
 }
