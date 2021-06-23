@@ -39,7 +39,7 @@
 		<section class="dealTerms">
 			<h2>Данные по сделке и авто</h2>
       <table>
-				<caption>Проведение сделки</caption>
+			<caption>Проведение сделки</caption>
 				<tr>
 					<td><input type="radio" id="nosoz" name="contract"><label for="nosoz">Полностью</label></td>
 					<td><input type="radio" id="soz" name="contract"><label for="soz">Через СОЗ</label></td>
@@ -51,6 +51,7 @@
 				<tr>
 					<td><input type="radio" id="isnew" name="condition"><label for="isnew">Новый</label></td>
 					<td><input type="radio" id="isold" name="condition"><label for="isold">Б/у</label></td>
+					<td><input type="radio" id="isoldl" name="condition"><label for="isoldl">Б/у Лада/УАЗ</label></td>
 				</tr>
 			</table>
 
@@ -65,8 +66,8 @@
 			<table>
 				<caption>Сумма кредита</caption>
 				<tr>
-					<td><input type="radio" id="lessmln" name="sum"><label for="lessmln">До 1 млн.</label></td>
-					<td><input type="radio" id="moremln" name="sum"><label for="moremln">1 млн. +</label></td>
+					<td><input type="radio" id="lessmln" name="sum"><label for="lessmln">До <span data-on="isnew|isoldl">1</span><span data-on="isold">1,5</span> млн.</label></td>
+					<td><input type="radio" id="moremln" name="sum"><label for="moremln"><span data-on="isnew|isoldl">1</span><span data-on="isold">1,5</span> млн.+</label></td>
 				</tr>
 			</table>
 
@@ -92,6 +93,14 @@
 					<td><input type="radio" id="epts" name="ptst"><label for="epts">Электронный</label></td>
 					<td data-on="isnew"><input type="radio" id="nopts" name="ptst"><label for="nopts">Отсутствует</label></td>
 					<td><input type="radio" id="pts" name="ptst"><label for="pts">Бумажный</label></td>
+				</tr>
+			</table>
+
+			<table data-on="soz;isnew;epts|soz;isnew;nopts">
+				<caption>Госпрограмма <span data-title="Только на отечественные авто в ККО: Хабаровск, Благовещенск, Екатеринбург, Калуга, Владимир, Пенза">?</span></caption>
+				<tr>
+					<td><input type="radio" id="gp" name="gos"><label for="gp">Есть</label></td>
+					<td><input type="radio" id="nogp" name="gos"><label for="nogp">Нет</label></td>
 				</tr>
 			</table>
 
