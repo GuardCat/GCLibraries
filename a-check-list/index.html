@@ -158,7 +158,7 @@
 				<li data-on="moremln|kaskokred"><label><input type="checkbox"><span>Полис КАСКО</span></label></li>
 				<li data-on="kaskokred"><label><input type="checkbox"><span>Счет на оплату КАСКО, купленного в кредит </span></label></li>
 				<li data-on="kaskonal"><label><input type="checkbox"><span>Документ об оплате КАСКО наличными </span></label></li>
-				<li data-on="gp"><label><input type="checkbox"><span>Заявление на оплату субсидии</span>
+				<li data-on="gp"><label><input type="checkbox"><span>Заявление на оплату субсидии</span></label></li>
 				<li><label><input type="checkbox"><span>Счета на оплату доп. услуг, входящих в сумму кредита</span></label></li>
 				<li><label><input type="checkbox"><span>Документы на оплату всей суммы ПВ. Допускаются: <u>кассовый чек, выписка из онлайн банка / платёжное поручение с отметкой «Исполнено»</u>, договор трейд-ин с актом приёма-передачи, приходный ордер <b>с печатью ДЦ</b>.<span data-title="Принимаются ТОЛЬКО подчёркнутые документы из ДЦ:«Юрал трэйд», «Правовая культура», «Авангард Пискарёвский», «Трудовая инициатива», «АвтоРим», ГК «Локо Авто».">Исключения</span></span></label></li>
 				<li><label><input type="checkbox"><span>Для всех документов подготовлены скан-копии, все сканы читаемы, нет размытых и обрезанных страниц</span></label></li>
@@ -247,8 +247,10 @@
 			<h2>Оплата остатка стоимости ТС</h2>
 			<div class="info">На оплату остаточной стоимости автомобиля, а также дополнительных опций и продуктов, включенных в тело кредита, должны быть предоставлены счета.</div>
 			<ul>
-				<li data-on="gp"><label><input type="checkbox"><span>Сумма в заявлении на перевод со счёта клиента ДЦ остаточной стоимости ТС указана как: <span class="marked">Остаток стоимости ТС - ПВ клиента (без учёта субсидии)</span>, не равна сумме в счёте!</span></label></li>
-				<li data-on="gp"><label><input type="checkbox"><span>В заявлении на перевод со счёта клиента ДЦ остаточной стоимости ТС НДС рассчитан как: <span class="marked">Общий НДС (в счёте ДЦ) - НДС от субсидии</span>.</span></label></li>
+				<li><label><input type="checkbox"><span>В заявлении на оплату субсидии указана корректная сумма субсидии: <span class="marked">стоимость ТС * 10%</span> и указан размер НДС от субсидии<span data-title="Рассчитать НДС можно в калькуляторе (xls) в паспорте продукта">?</span></span></label></li>
+				<li><label><input type="checkbox"><span>В заявлении на оплату субсидии сумма рассчитана только от стоимости ТС, без доп. оборудобвания. Стоимость авто в Зибель не включает доп. оборудование. <span data-title="Доп. оборудование включается отдельным счётом">?</span></span></label></li>
+				<li data-on="gp"><label><input type="checkbox"><span>Сумма в заявлении на перевод со счёта клиента на счёт ДЦ остаточной стоимости ТС указана как: <span class="marked">Остаток стоимости ТС - ПВ клиента (без учёта субсидии)</span>, не равна сумме в счёте!</span></label></li>
+				<li data-on="gp"><label><input type="checkbox"><span>В заявлении на перевод со счёта клиента на счёт ДЦ остаточной стоимости ТС НДС рассчитан как: <span class="marked">Общий НДС (в счёте ДЦ) - НДС от субсидии</span>.</span></label></li>
 				<li data-on="isnew;nogp|isnew;nosoz|isold"><label><input type="checkbox"><span>Сумма в заявлении на перевод со счёта клиента дилеру оплаты остаточной стоимости совпадает со счётом.</span></label></li>
 				<li><label><input type="checkbox"><span>Данные автомобиля совпадают с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span></span></label></li>
 				<li><label><input type="checkbox"><span>Паспортные данные клиента совпадают с паспортом</span></label></li>
@@ -285,15 +287,8 @@
 				<li data-on="dcowner;epts"><label><input type="checkbox"><span>Последним собственником в ЭПТС указан Дилерский центр</span></label></li>
 				<li data-on="nopts"><label><input type="checkbox"><span>В предоставленном взамен ЭПТС документе указаны: мощность, объём двигателя и VIN автомобиля, документ пронумерован.</span></label></li>
 				<li data-on="nopts;gp"><label><input type="checkbox"><span>Проверено: ЭПТС выпущен. Проверьте <a href="https://portal.elpts.ru/portal/index" target="_blank">здесь</a>. Если ЭПТС не выпущен, участие в госпрограмме невозможно!</span></label></li>
-				<li data-on="nopts;gp"><label><input type="checkbox"><span>Напомнили Дилеру, что ЭПТС необходимо предоставить КЭ в течение 1–2 дней после сделки.<span data-title="КЭ направляет ЭПТС на СОЗ. Это обязательно!">?</span></label></li>
+				<li data-on="nopts;gp"><label><input type="checkbox"><span>Напомнили Дилеру, что ЭПТС необходимо предоставить КЭ в течение 1–2 дней после сделки.<span data-title="КЭ направляет ЭПТС на СОЗ. Это обязательно!">?</span></span></label></li>
 			</ul>
-		</section>
-
-		<section data-on="gp">
-			<h2>Госпрограмма: заявление на оплату субсидии</h2>
-			<ul>
-				<li><label><input type="checkbox"><span>В заявлении на оплату субсидии указана корректная сумма субсидии: <span class="marked">стоимость ТС * 10%</span> и указан размер НДС от субсидии<span data-title="Рассчитать НДС можно в калькуляторе (xls) в паспорте продукта">?</span></span></label></li>
-				<li><label><input type="checkbox"><span>В заявлении на оплату субсидии сумма рассчитана только от стоимости ТС, без доп. оборудобвания. Стоимость авто в Зибель не включает доп. оборудование. <span data-title="Доп. оборудование включается отдельным счётом">?</span></span></label></li>
 		</section>
 
 		<section data-on="notdcowner">
