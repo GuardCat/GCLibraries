@@ -88,9 +88,9 @@ class TieChecker {
 
 function director( ) {
 	const
-		version = "v1.3",
-		updatedFact = 1624452392118,
-		allowedUpdateDate = 1624452392118,
+		version = "v1.31",
+		updatedFact = 1628080944454,
+		allowedUpdateDate = 1628080944454,
 		updatedLocal = +window.localStorage.getItem("checklist_auto_updated"),
 		oldDate = new Date(updatedLocal),
 		newDate = new Date(updatedFact),
@@ -111,9 +111,9 @@ function director( ) {
 `Приложение обновлено.
 Данные старой версии ${ updatedLocal > 0 ? "от " + zeroTo( oldDate.getDate( ) ) + "." + zeroTo( oldDate.getMonth( ) + 1 ) + "." + oldDate.getFullYear( ) : ""} удалены, чек-лист будет очищен.
 Изменения:
+v1.31: - удалена ГП
 v1.3: + добавлена ГП и Лада / УАЗ
 v1.28.3: + ДЦ «Юрал трейд» в исключения по документам на ПВ
-v1.28: ~ теперь не нужно проверять качество скана ЭПТС
 `,
 		renewAll = ( ) => {
 			let numOffVidgets;
