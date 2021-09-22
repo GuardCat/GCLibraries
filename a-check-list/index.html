@@ -114,13 +114,13 @@
 		<table data-on="moremln|lessmln">
 			<caption>Как приобретается КАСКО</caption>
 			<tr>
-				<td data-on="moremln"><input type="radio" id="kaskonal" name="kasko"><label for="kaskonal">За наличные</label></td>
+				<td><input type="radio" id="kaskonal" name="kasko"><label for="kaskonal">За наличные</label></td>
 				<td data-on="lessmln"><input type="radio" id="nokasko" name="kasko"><label for="nokasko">Нет КАСКО</label></td>
 				<td><input type="radio" id="kaskokred" name="kasko"><label for="kaskokred">В кредит</label></td>
 			</tr>
 		</table>
 
-		<table data-on="iscvu;kaskokred|iscvu;kaskonal">
+		<table data-on="iscvu;kaskokred|iscvu;kaskonal;moremln">
 			<caption>3 лица в КАСКО</caption>
 			<tr>
 				<td><input type="radio" id="is3" name="3"><label for="is3">Вписаны</label></td>
@@ -134,11 +134,11 @@
 		<section>
 			<h2>Проверка наличия документов</h2>
 			<ul>
+				<div class="info" data-on="lessmln;kaskonal">Обратите внимание, при выбранной сумме сделки, при покупке КАСКО за наличные, прикладывать полис необязательно, можно убрать его из пакета документов и выбрать в чек-листе «Нет КАСКО»</div>
 				<li><label><input type="checkbox"><span>Согласие на обработку персональных данных</span></label></li>
 				<li><label><input type="checkbox"><span>Фотография Клиента</span></label></li>
 				<li><label><input type="checkbox"><span><b>Цветной</b> скан паспорта</span></label></li>
-				<li data-on="nocvu;kaskokred;kaskonal"><label><input type="checkbox"><span>Скан водительского удостоверения 3 лица, вписанного в КАСКО</span></label></li>
-				<li data-on="nocvu;nokasko"><label><input type="checkbox"><span>Скан КАСКО <b>НЕ приложен</b> или есть скан ВУ 3 лица, вписанного в КАСКО.</span></label></li>
+				<li data-on="nocvu;kaskokred|nocvu;kaskonal"><label><input type="checkbox"><span>Скан водительского удостоверения 3 лица, вписанного в КАСКО</span></label></li>
 				<li data-on="nocvu"><label><input type="checkbox"><span><b>Цветной</b> скан второго документа клиента</span></label></li>
 				<li data-on="iscvu"><label><input type="checkbox"><span><b>Цветной</b> скан водительского удостоверения клиента</span></label></li>
 				<li><label><input type="checkbox"><span>Договор купли-продажи</span></label></li>
@@ -150,7 +150,7 @@
 				<li data-on="nopts"><label><input type="checkbox"><span>Товарно-транспортная накладная (ТТН) или Форма учёта ТС (ФУТС) или Гарантийное письмо ДЦ</span></label></li>
 				<li data-on="moremln|kaskokred"><label><input type="checkbox"><span>Полис КАСКО</span></label></li>
 				<li data-on="kaskokred"><label><input type="checkbox"><span>Счет на оплату КАСКО, купленного в кредит </span></label></li>
-				<li data-on="kaskonal"><label><input type="checkbox"><span>Документ об оплате КАСКО наличными </span></label></li>
+				<li data-on="moremln;kaskonal"><label><input type="checkbox"><span>Документ об оплате КАСКО наличными </span></label></li>
 				<li><label><input type="checkbox"><span>Счета на оплату доп. услуг, входящих в сумму кредита</span></label></li>
 				<li><label><input type="checkbox"><span>Документы на оплату всей суммы ПВ. Допускаются: <u>кассовый чек, выписка из онлайн банка / платёжное поручение с отметкой «Исполнено»</u>, договор трейд-ин с актом приёма-передачи, приходный ордер <b>с печатью ДЦ</b>.<span data-title="Принимаются ТОЛЬКО подчёркнутые документы из ДЦ:«Юрал трэйд», «Правовая культура», «Авангард Пискарёвский», «Трудовая инициатива», «АвтоРим», ГК «Локо Авто».">Исключения</span></span></label></li>
 				<li><label><input type="checkbox"><span>Для всех документов подготовлены скан-копии, все сканы читаемы, нет размытых и обрезанных страниц</span></label></li>
