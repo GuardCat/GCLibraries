@@ -13,12 +13,12 @@ body {
 }
 
 .version {
-	font-size: 10px;
+	font-size: 9px;
 	position: absolute;
-	right:30px;
+	left:22px;
 	top: 42px;
 	line-height: 20px;
-	color: white;
+	color: #b2e4ff;
 }
 
 span[data-title] {
@@ -26,9 +26,10 @@ span[data-title] {
 	color: white;
 	display: inline-block;
 	min-width: 10px;
-	padding: 0 2px 0 2px;
-	line-height: 14px;
-	border-radius: 7px;
+	padding: 0.1px 3px 0.1px 3px;
+	line-height: 15px;
+	height: 15px;
+	border-radius: 10px;
 	text-align: center;
 	cursor: help;
 	font-size: 10px;
@@ -224,8 +225,13 @@ button.clearIt:active {
 	min-width: 200px;
 	margin: 10px;
 	border-spacing: 0px;
+	padding: 0px;
 	border: 1px solid #2196F3;
 	border-radius:	4px;
+}
+
+.dealTerms table tr {
+	padding: 0;
 }
 
 .dealTerms table td {
@@ -247,6 +253,15 @@ button.clearIt:active {
 .dealTerms table td input:checked+label {
 	background-color: #278cff;
 	color: white;
+	box-shadow: 0 0 0 1px #2196f3;
+}
+
+.dealTerms table td:nth-child(1) input:checked+label {
+	border-radius: 4px 0 0 4px;
+}
+
+.dealTerms table td:last-child input:checked+label {
+	border-radius: 0 4px 4px 0;
 }
 
 .dealTerms table td input:checked+label > span[data-title] {
