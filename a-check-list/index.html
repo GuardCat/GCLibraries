@@ -136,6 +136,14 @@
 			</tr>
 		</table>
 
+		<table data-on="noavtoodobr">
+			<caption>Затребовано согласие? <span data-title="Если есть ошибки в Согласии, Верификатор может выставить отлагательное условие на новое, корректно оформленное Согласие.">?</span></caption>
+			<tr>
+				<td><input type="radio" id="needsog" name="sog"><label for="needsog">Затребовано</label></td>
+				<td><input type="radio" id="nosog" name="sog"><label for="nosog">Нет</label></td>
+			</tr>
+		</table>
+
 	</section>
 
 	<main class="off">
@@ -143,7 +151,7 @@
 			<h2>Проверка наличия документов</h2>
 			<div class="info" data-on="lessmln;kaskonal">Обратите внимание, при выбранной сумме сделки, при покупке КАСКО за наличные, прикладывать полис необязательно, можно убрать его из пакета документов и выбрать в чек-листе «Нет КАСКО»</div>
 			<ul>
-				<li><label><input type="checkbox"><span>Согласие на обработку персональных данных/</span></label></li>
+				<li data-on="avtoodobr|needsog"><label><input type="checkbox"><span>Согласие на обработку персональных данных.</span></label></li>
 				<li><label><input type="checkbox"><span>Фотография Клиента из салона.</span></label></li>
 				<li><label><input type="checkbox"><span><b>Цветной</b> скан паспорта.</span></label></li>
 				<li data-on="nocvu;kaskokred|nocvu;kaskonal"><label><input type="checkbox"><span>Скан водительского удостоверения 3 лица, вписанного в КАСКО.</span></label></li>
@@ -160,7 +168,7 @@
 				<li data-on="kaskokred"><label><input type="checkbox"><span>Счет на оплату КАСКО, купленного в кредит.</span></label></li>
 				<li data-on="moremln;kaskonal"><label><input type="checkbox"><span>Документ об оплате КАСКО наличными.</span></label></li>
 				<li><label><input type="checkbox"><span>Счета на оплату доп. услуг, входящих в сумму кредита.</span></label></li>
-				<li><label><input type="checkbox"><span>Документы на оплату всей суммы ПВ. Допускаются: кассовый чек, выписка из онлайн банка / платёжное поручение с отметкой «Исполнено»<span data-on="whitedc">, договор трейд-ин с актом приёма-передачи, приходный ордер <b>с печатью ДЦ</b></span>.</span></label></li>
+				<li data-on="blackdc"><label><input type="checkbox"><span>Документы на оплату всей суммы ПВ. Допускаются: кассовый чек, выписка из онлайн банка / платёжное поручение с отметкой «Исполнено», договор трейд-ин с актом приёма-передачи.</b></span>.</span></label></li>
 				<li><label><input type="checkbox"><span>Для всех документов подготовлены скан-копии, все сканы читаемы, нет размытых и обрезанных страниц.</span></label></li>
 			</ul>
 		</section>
@@ -181,8 +189,8 @@
 			</ul>
 		</section>
 
-		<section class="checksection" id="custCheck">
-			<h2>Проверка Соглсия об обработке персональных данных</h2>
+		<section class="checksection" id="custCheck" data-on="avtoodobr|needsog">
+			<h2>Проверка Согласия об обработке персональных данных</h2>
 			<ul>
 				<li><label><input type="checkbox"><span>Проставлены отметки о согласии везде, где нужно. Допускается пропустить только пункт о рассылке.</span></label></li>
 				<li><label><input type="checkbox"><span>Паспортные данные клиента указаны верно (можно не проверять место выдачи, код подразделения и адрес).</span></label></li>

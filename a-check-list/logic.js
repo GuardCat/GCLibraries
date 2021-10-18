@@ -88,8 +88,8 @@ class TieChecker {
 
 function director( ) {
 	const
-		version = "v1.4",
-		updatedFact = 1634293507406,
+		version = "v1.4.1",
+		updatedFact = 1634556091192,
 		allowedUpdateDate = 1634293507406,
 		updatedLocal = +window.localStorage.getItem("checklist_auto_updated"),
 		oldDate = new Date(updatedLocal),
