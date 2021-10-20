@@ -97,8 +97,8 @@
 		<table>
 			<caption>ДЦ из ЧС?<span data-title="ДЦ с усиленным контролем:«Юрал трэйд», «Правовая культура», «Авангард Пискарёвский», «Трудовая инициатива», «АвтоРим», ГК «Локо Авто».">cписок</span></caption>
 			<tr>
-				<td><input type="radio" id="blackdc" name="bdc"><label for="blackdc">Да</label></td>
 				<td><input type="radio" id="whitedc" name="bdc"><label for="whitedc">Нет</label></td>
+				<td><input type="radio" id="blackdc" name="bdc"><label for="blackdc">Да</label></td>
 			</tr>
 		</table>
 
@@ -128,7 +128,7 @@
 			</tr>
 		</table>
 
-		<table data-on="iscvu;kaskokred|iscvu;kaskonal;moremln">
+		<table data-on="iscvu;kaskokred|iscvu;kaskonal">
 			<caption>3 лица в КАСКО</caption>
 			<tr>
 				<td><input type="radio" id="is3" name="3"><label for="is3">Вписаны</label></td>
@@ -137,7 +137,7 @@
 		</table>
 
 		<table data-on="noavtoodobr">
-			<caption>Затребовано согласие? <span data-title="Если есть ошибки в Согласии, Верификатор может выставить отлагательное условие на новое, корректно оформленное Согласие.">?</span></caption>
+			<caption>Затребовано Согласие? <span data-title="Если есть ошибки в Согласии на обработку персональных данных, Верификатор может выставить отлагательное условие на новое, корректно оформленное Согласие.">?</span></caption>
 			<tr>
 				<td><input type="radio" id="needsog" name="sog"><label for="needsog">Затребовано</label></td>
 				<td><input type="radio" id="nosog" name="sog"><label for="nosog">Нет</label></td>
@@ -167,7 +167,7 @@
 				<li data-on="moremln|kaskokred"><label><input type="checkbox"><span>Полис КАСКО.</span></label></li>
 				<li data-on="kaskokred"><label><input type="checkbox"><span>Счет на оплату КАСКО, купленного в кредит.</span></label></li>
 				<li data-on="moremln;kaskonal"><label><input type="checkbox"><span>Документ об оплате КАСКО наличными.</span></label></li>
-				<li><label><input type="checkbox"><span>Счета на оплату доп. услуг, входящих в сумму кредита.</span></label></li>
+				<li><label><input type="checkbox"><span>Счета на оплату доп. услуг, входящих в сумму кредита (при наличии).</span></label></li>
 				<li data-on="blackdc"><label><input type="checkbox"><span>Документы на оплату всей суммы ПВ. Допускаются: кассовый чек, выписка из онлайн банка / платёжное поручение с отметкой «Исполнено», договор трейд-ин с актом приёма-передачи.</b></span>.</span></label></li>
 				<li><label><input type="checkbox"><span>Для всех документов подготовлены скан-копии, все сканы читаемы, нет размытых и обрезанных страниц.</span></label></li>
 			</ul>
@@ -183,7 +183,7 @@
 					<div class="info">Проверьте наличие залога у клиента <span data-on="is3">и третьих лиц, вписанных в КАСКО, </span>по адресу <a href="https://www.reestr-zalogov.ru/search/">www.reestr-zalogov.ru/search/</a>.
 						При переходе на сайт кликните <span class="marked">по&nbsp;информации&nbsp;о&nbsp;залогодателе</span> и введите данные проверяемого лица.
 					</div>
-					<label><input type="checkbox"><span>У клиента в <a href="https://www.reestr-zalogov.ru/search/">реестре залогов</a> менее 2 ТС, зарегистрированных 3 и менее месяцев назад<span data-title="Например, сегодня 20 мая. Считаются ТС, зарегистрированные 20 февраля или позднее.">?</span></span></label>
+					<label><input type="checkbox"><span>У клиента в <a href="https://www.reestr-zalogov.ru/search/">реестре залогов</a> <b>максимум 1</b> ТС, зарегистрированное 3 и менее месяцев назад<span data-title="Например, сегодня 20 мая. Считаются ТС, зарегистрированные 20 февраля или позднее.">?</span></span></label>
 				</li>
 				<li data-on="is3|nocvu"><label><input type="checkbox"><span>Ни у одного 3 лица<span data-title="Если в реестре залогов хотя бы на одно 3 лицо зарегистрировано более 1 ТС 3 месяца назад и позднее, сделка не будет одобрена.">?</span>, в <a href="https://www.reestr-zalogov.ru/search/">реестре залогов</a> менее 2 ТС, которые зарегистрированы 3 и менее месяцев назад.</span></label></li>
 			</ul>
@@ -242,7 +242,7 @@
 				<li><label><input type="checkbox"><span>ФИО клиента, дата рождения, серия и номер паспорта, дата его выдачи в ДКП соответствуют паспорту.</span></label></li>
 				<li><label><input type="checkbox"><span>В нужных местах есть подписи клиента и представителя салона.</span></label></li>
 				<li><label><input type="checkbox"><span>Подпись Клиента везде соответствует паспорту.</span></label></li>
-				<li><label><input type="checkbox"><span>Указана сумма цифрами или прописью.</span></label></li>
+				<li><label><input type="checkbox"><span>В ДКП указана сумма.</span></label></li>
 				<li><label><input type="checkbox"><span>Если сумма указана и цифрами и прописью, значения одинаковы.</span></label></li>
 				<li><label><input type="checkbox"><span>Стоимость транспортного средства в ДКП, совпадает со стоимостью в Siebel.</span></label></li>
 				<li><label><input type="checkbox"><span>Есть реквизиты и печати юридического лица.</span></label></li>
@@ -285,7 +285,7 @@
 			<div class="info">Требуется обязательно при сумме кредита от 1 млн. рублей или при любой сумме, если полис покупается в кредит.</div>
 			<ul>
 				<li><label><input type="checkbox"><span>ФИО клиента, его дата рождения, серия и номер паспорта указаны и соответствуют паспорту.</span></label></li>
-				<li data-on="moremln"><label><input type="checkbox"><span>Страховая сумма полностью покрывает <b>сумму кредита</b>.</span></label></li>
+				<li data-on="moremln"><label><input type="checkbox"><span>Сумма Страхового покрытия больше или равна сумме кредита.</span></label></li>
 				<li><label><input type="checkbox"><span>Марка и модель ТС указаны и совпадают с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
 				<li><label><input type="checkbox"><span>Идентификационный номер (VIN) или номер кузова указан и совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
 				<li><label><input type="checkbox"><span>Год выпуска указан и совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
@@ -296,7 +296,6 @@
 				<li data-on="moremln"><label><input type="checkbox"><span>В рисках указано: «Ущерб (ТОТАЛ)» или прописано повреждение/гибель ТС в результате действия страхователя, лиц, допущенных к управлению, природных и техногенных факторов, действий третьих лиц.</span><span data-title="Важно! Если не указан ущерб по любой причине (ТОТАЛ), должны быть прописаны все указанные причины!">?</span></label></li>
 				<li data-on="moremln"><label><input type="checkbox"><span>В рисках указано Хищение (угон).</span></label></li>
 				<li data-on="moremln"><label><input type="checkbox"><span>Выгодоприобретателем по рискам ущерб (ТОТАЛ), угон/хищение указан АО «ОТП Банк».</span></label></li>
-				<li data-on="moremln"><label><input type="checkbox"><span>Сумма Страхового покрытия больше или равна сумме кредита.</span></label></li>
 				<li data-on="moremln"><label><input type="checkbox"><span>Страхователем в полисе указан клиент.</span></label></li>
 				<li><label><input type="checkbox"><span>Есть печать страховщика (может быть ч/б факсимиле).</span></label></li>
 			</ul>
@@ -377,10 +376,10 @@
 				Файлы выгружаем по одному, <b>кнопку РАСПЕЧАТАТЬ ДОКУМЕНТЫ не нажимаем</b> до подтверждения верификатора, что сделка целесообразна. И проверки наличия и качества подписей клиента в документах.
 			</div>
 			<ul>
-				<li><label><input type="checkbox"><span>Письмо подготовлено.</span></label></li>
+				<li><label><input type="checkbox"><span>Письмо в ДЦ подготовлено.</span></label></li>
 				<li><label><input type="checkbox"><span>Верификатор подтвердил целесообразность сделки.</span></label></li>
 				<li><label><input type="checkbox"><span>Если верификатором запрошена спецификация, номер ДКП в ней и данные автомобиля совпадают с документами.</span></label></li>
-				<li><label><input type="checkbox"><span>На 6 шаге в Зибель снята галочка «Карта перекрёстных продаж»<./span></label></li>
+				<li><label><input type="checkbox"><span>На 6 шаге в Зибель снята галочка «Карта перекрёстных продаж»</span></label></li>
 				<li><label><input type="checkbox"><span>На 7 шаге выгружены документы <b>по одному</b>.</span></label></li>
 				<li><label><input type="checkbox"><span>Направлено письмо в ДЦ с документами на подписание клиентом.</span></label></li>
 				<li><label><input type="checkbox"><span>В подписанных документах присутствуют необходимые подписи клиента, заполнены все заявления.</span></label></li>
