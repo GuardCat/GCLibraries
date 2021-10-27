@@ -2,7 +2,7 @@ function CSVToJSON(csv) {
 	const rows = csv.split("\r\n"), captions = rows[0].split(";");
 	let	result = [], cells, row;
 	
-	for (let rowCursor = 1; rowCursor < rows.length; rowCursor++ ) { /* From one because the zero row has captions */
+	for (let rowCursor = 1; rowCursor < rows.length; rowCursor++ ) {
 		cells = rows[rowCursor].split(";");
 		row = {}
 		
