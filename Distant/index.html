@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Переход к оформлению Cash</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+	<h1>Кредит на карту</h1>
+
+	<section>
+		<form id="main">
+			<div>
+				<input type="text" id="login">
+				<label>Ваш логин</label>
+			</div>
+			<div>
+				<input type="text" id="TT">
+				<label>Код ТТ (только цифры)</label>
+			</div>
+		</form>
+		<input type="button" value="Перейти" id="go">
+	</section>
+	
+</body>
+
+<script>
+	( function ( ) {
+		const 
+			go = document.querySelector("#go"),
+			login = document.querySelector("#login"),
+			tt = document.querySelector("#TT")
+		;
+		go.addEventListener("click", openQuest.bind(null, login, tt), false);
+		function openQuest(login, tt) {
+			document.location.href=`https://cash.otpbank.ru/?utm_source=MMO&utm_medium=${tt.value}&utm_campaign=${login.value}`;
+		}
+	} ) ( )
+</script>
+
+</html>
