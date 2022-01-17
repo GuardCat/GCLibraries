@@ -19,24 +19,8 @@ h1 {
 	margin-top: 0;
 }
 
-h2 {
-	font-size: 18px;
-	color: #4B5B6D;
-	margin:	0 0 10px 0;
-	width: 100%;
-	height: 45px;
-	line-height: 45px;
-	text-indent: 20px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	background-color: #CDE5FF;
-	box-shadow: 7px 7px 32px 2px rgba(0, 0, 0, 0.04);
-	border-radius: 10px 10px 0px 0px;
-}
-
 section {
 	width: 380px;
-	box-shadow: 7px 7px 32px 2px rgba(0, 0, 0, 0.1);
 	border-radius: 5px;
 	margin-top: 20px;
 	margin-left: 5px;
@@ -45,14 +29,42 @@ section {
 	flex-wrap: wrap;
 	justify-content:flex-start;
 	align-items: center;
+	box-shadow: 7px 7px 32px 2px rgba(0, 0, 0, 0.08);
 }
 
 div {
 	padding: 10px;
 }
 
+input[type='text'] {
+	border-radius: 5px;
+	height: 20px;
+	border: 1px solid #278CFF;
+}
+
 input[type='button']{
 	position: relative;
+	border: 0px;
+	color: white;
+	border-radius: 5px;
+	padding: 5px;
+	box-shadow: 7px 7px 32px 2px rgba(0, 0, 0, 0.08);
+
+}
+input#go {
+	background-color: #278CFF;
 	top: 40px;
-	left: 300px;
+	left: 182px;
+}
+input#copy {
+	background-color: #4B5B6D;
+	top: 40px;
+	left: 0px;
+}
+
+input#copyField {
+	z-index: -1;
+	position: relative;
+	top: -1000px;
+	left: -1000px;
 }
