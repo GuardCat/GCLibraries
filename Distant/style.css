@@ -61,10 +61,3 @@ input#copy {
 	top: 40px;
 	left: 0px;
 }
-
-input#copyField {
-	z-index: -1;
-	position: relative;
-	top: -1000px;
-	left: -1000px;
-}

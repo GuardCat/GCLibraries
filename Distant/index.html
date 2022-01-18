@@ -15,58 +15,19 @@
 	<section>
 		<form id="main">
 			<div>
-				<input type="text" id="login">
+				<input type="text" id="login" data-reg="[^W\dN]">
 				<label>Ваш логин</label>
 			</div>
 			<div>
-				<input type="text" id="TT">
+				<input type="text" id="TT" data-reg="\D">
 				<label>Код ТТ (только цифры)</label>
 			</div>
 		</form>
 		<input type="button" value="Скопировать ссылку" id="copy">
 		<input type="button" value="Перейти" id="go">
 	</section>
-	<input id="copyField" type="text">
 </body>
 
-<script>
-	( function ( ) {
-		const 
-			go = document.querySelector("#go"),
-			login = document.querySelector("#login"),
-			tt = document.querySelector("#TT"),
-			copyField = document.querySelector("#copyField"),
-			copyButton = document.querySelector("#copy")
-		;
-		
-		tt.value = localStorage.getItem("tt") || "";
-		login.value = localStorage.getItem("login") || "";
-
-		go.addEventListener("click", openLink.bind(null, login, tt), false);
-		copyButton.addEventListener("click", copyLink.bind(null, login, tt), false);
-
-		function openLink(login, tt) {
-			saveToLS(login, tt);
-			document.location.href = generateLink(login, tt);
-		}
-
-		function copyLink(login, tt) {
-			copyField.value = generateLink(login, tt);
-			copyField.select( );
-			document.execCommand("copy");
-			saveToLS(login, tt);
-			alert(`Скопировано: ${copyField.value}`);
-		}
-
-		function generateLink(login, tt) {
-			return `https://cash.otpbank.ru/?utm_source=MMO&utm_medium=${tt.value}&utm_campaign=${login.value}`;
-		}
-
-		function saveToLS(login, tt) {
-			localStorage.setItem("tt", tt.value);
-			localStorage.setItem("login", login.value);
-		}
-	} ) ( )
-</script>
+<script src="logic.js"></script>
 
 </html>
