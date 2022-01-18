@@ -6,6 +6,7 @@ function direktor( ) {
 		login = document.querySelector("#login"),
 		tt = document.querySelector("#TT"),
 		copyButton = document.querySelector("#copy"),
+		ttReg = /\D/g,
 		loginRegs = [ 
 			/^W\d+N{0,1}\d+$/i,
 			/^W\d+N$/i,
@@ -19,9 +20,12 @@ function direktor( ) {
 	tt.value = localStorage.getItem("tt") || "";
 	login.value = localStorage.getItem("login") || "";
 
-	login.addEventListener("keyup", (e) => preventWrongEntering(e, loginRegs), false)
+	login.addEventListener( "keyup", (e) => preventWrongEntering(e, loginRegs), false )
+	login.addEventListener( "change", ( ) => checkInput(login, loginRegs[0], minLoginLength), false )
 	login.addEventListener("keyup", raiseLetters, false)
+	
 	tt.addEventListener("keyup", delWrongSym, false)
+	tt.addEventListener( "change", ( ) => checkInput(go, loginRegs[0], minLoginLength), false )
 
 	go.addEventListener("click", ( ) => {
 		if ( checkInput(login, loginRegs[0], minLoginLength) && checkInput(tt, /^\d+$/, minTTLength) ) openLink(login, tt);
@@ -30,16 +34,19 @@ function direktor( ) {
 	copyButton.addEventListener("click", ( ) => {
 		if ( checkInput(login, loginRegs[0], minLoginLength)  && checkInput(tt, /^\d+$/, minTTLength) )  copyLink(login, tt);
 	}, false);
+
 }
 
 function preventWrongEntering(e, regs) {
 	const text = e.target.value;
-	if ( regs.some( r => r.test(text) ) ) return true;
-	e.target.value = text.slice(0, -1);
+	if ( regs.some( r => r.test(text) ) ) {
+		e.target.setAttribute("oldValue", text)
+		return true;
+	}
+	e.target.value = e.target.getAttribute("oldValue");
 }
 
-function delWrongSym(e) {
-	const reg = new RegExp( e.target.getAttribute("data-reg"), "gi" )
+function delWrongSym(e, reg = /\.+/) {
 	e.target.value = e.target.value.replace(reg, "");
 }
 
