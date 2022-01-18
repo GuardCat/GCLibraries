@@ -61,3 +61,7 @@ input#copy {
 	top: 40px;
 	left: 0px;
 }
+
+.wrong {
+	border: 1px solid red !important;
+}

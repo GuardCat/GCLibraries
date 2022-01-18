@@ -6,18 +6,36 @@ function direktor( ) {
 		login = document.querySelector("#login"),
 		tt = document.querySelector("#TT"),
 		copyButton = document.querySelector("#copy"),
-		loginReg = /^W\d+N{0,1}\d+$/
+		loginRegs = [ 
+			/^W\d+N{0,1}\d+$/i,
+			/^W\d+N$/i,
+			/^W\d+$/i,
+			/^W\d{0,}$/i
+		],
+		minLoginLength = 4,
+		minTTLength = 4
 	;
 	
 	tt.value = localStorage.getItem("tt") || "";
 	login.value = localStorage.getItem("login") || "";
 
-	login.addEventListener("keyup", delWrongSym, false)
+	login.addEventListener("keyup", (e) => preventWrongEntering(e, loginRegs), false)
 	login.addEventListener("keyup", raiseLetters, false)
 	tt.addEventListener("keyup", delWrongSym, false)
 
-	go.addEventListener("click", openLink.bind(null, login, tt), false);
-	copyButton.addEventListener("click", copyLink.bind(null, login, tt), false);
+	go.addEventListener("click", ( ) => {
+		if ( checkInput(login, loginRegs[0], minLoginLength) && checkInput(tt, /^\d+$/, minTTLength) ) openLink(login, tt);
+	}, false);
+
+	copyButton.addEventListener("click", ( ) => {
+		if ( checkInput(login, loginRegs[0], minLoginLength)  && checkInput(tt, /^\d+$/, minTTLength) )  copyLink(login, tt);
+	}, false);
+}
+
+function preventWrongEntering(e, regs) {
+	const text = e.target.value;
+	if ( regs.some( r => r.test(text) ) ) return true;
+	e.target.value = text.slice(0, -1);
 }
 
 function delWrongSym(e) {
@@ -32,6 +50,16 @@ function raiseLetters(e) {
 function openLink(login, tt) {
 	saveToLS(login, tt);
 	document.location.href = generateLink(login, tt);
+}
+
+function checkInput(input, reg, min = 0) {
+	const text = input.value
+	if ( reg.test(text) && text.length >= min) {
+		input.classList.remove("wrong")
+		return true;
+	}
+	input.classList.add("wrong");
+	return false;
 }
 
 function copyLink(login, tt) {
