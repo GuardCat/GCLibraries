@@ -16,7 +16,7 @@ class Validator {
 	}
 
 	validateLastSym( ) {
-		if ( this.regs.some( reg => reg.test(this.input.value) ) ) {
+		if ( this.regs.some( reg => reg.test(this.input.value) ) || this.input.value === "" ) {
 			this.oldValue = this.input.value;
 			this.input.classList.contains("wrong") ? this.setClass( ) :	this.setState( );
 			return true;
@@ -57,7 +57,7 @@ function direktor( ) {
 		tt = document.querySelector("#tt"),
 		copyButton = document.querySelector("#copy"),
 		buttons = [copyButton, go],
-		ttRegs = [/^\d{10,16}$/, /^\d{,16}$/],
+		ttRegs = [/^\d{10,16}$/, /^\d{0,16}$/],
 		loginRegs = [ 
 			/^W\d+N{0,1}\d+$/i,
 			/^W\d+N$/i,
