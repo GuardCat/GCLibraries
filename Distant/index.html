@@ -13,18 +13,19 @@
 	<h1>Кредит на карту</h1>
 
 	<section>
-		<form id="main">
+		<form id="main" action="https://cash.otpbank.ru/"> 
+			<input type="hidden" value="MMO" name="utm_source">
 			<div>
-				<input type="text" id="login" value="W" maxlength="12" >
+				<input type="text" required id="login" minlength="4" maxlength="12" pattern="^[Ww]\d+[Nn]{0,1}\d+$" name="utm_campaign">
 				<label>Ваш логин</label>
 			</div>
 			<div>
-				<input type="text" id="tt" maxlength="16">
+				<input type="text" required id="tt" minlength="10" maxlength="16" pattern="^\d{10,16}$" name="utm_medium">
 				<label>Код ТТ (только цифры)</label>
 			</div>
-		</form>
 		<input type="button" value="Скопировать ссылку" id="copy">
-		<input type="button" value="Перейти" id="go">
+		<input type="submit" value="Перейти" id="go">
+	</form>
 	</section>
 </body>
 
