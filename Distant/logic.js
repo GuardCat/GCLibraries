@@ -57,7 +57,7 @@ function direktor( ) {
 		tt = document.querySelector("#tt"),
 		copyButton = document.querySelector("#copy"),
 		buttons = [copyButton, go],
-		ttRegs = [/^\d{12,20}$/, /^\d+$/],
+		ttRegs = [/^\d{10,16}$/, /^\d{,16}$/],
 		loginRegs = [ 
 			/^W\d+N{0,1}\d+$/i,
 			/^W\d+N$/i,
@@ -65,7 +65,7 @@ function direktor( ) {
 			/^W\d{0,}$/i
 		],
 		indicators = [
-			new Validator( {input: login, regs: loginRegs, minLen: 4, maxLen: 12, startValue: localStorage.getItem("login")} ),
+			new Validator( {input: login, regs: loginRegs, minLen: 4, maxLen: login.getAttribute("maxlength"), startValue: localStorage.getItem("login")} ),
 			new Validator( {input: tt, regs: ttRegs, startValue: localStorage.getItem("tt")} )
 		]
 	;
