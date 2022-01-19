@@ -38,6 +38,7 @@ function direktor( ) {
 	login.addEventListener("change", raiseLetters, false);
 	document.addEventListener( "keyup", ( ) => setButtonsState( form.checkValidity( ), buttons ) );
 	copyButton.addEventListener("click", ( ) => copyLink(login, tt), false);
+	setButtonsState( form.checkValidity( ), buttons );
 }
 
 function setButtonsState(state, buttons) {
