@@ -5,9 +5,10 @@ class Validator {
 		this.regs = regs;
 		this.minLen = minLen;
 		this.maxLen = maxLen;
-		this.oldValue = input.value;
+		this.oldValue = startValue;
 		this.buttons = buttons;
 		if (startValue) input.value = startValue;
+		this.setState( );
 
 		input.addEventListener("keyup", this.validateLastSym.bind(this), false);
 		input.addEventListener("blur", this.setClass.bind(this), false);
@@ -26,18 +27,13 @@ class Validator {
 	}
 
 	setClass( ) {
-		this.setState( );
-		if(this._good) {
-			if( this.input.classList.contains("wrong") ) {
-				this.input.classList.remove("wrong");
-				document.dispatchEvent( new CustomEvent("stateChanged") );
-			}
-			return this._good;
-		} 
-		if( !this.input.classList.contains("wrong") ) {
+		const changed = this.setState( ) === this.input.classList.contains("wrong");
+		if(this._good) { 
+			this.input.classList.remove("wrong")
+		} else {
 			this.input.classList.add("wrong");
-			document.dispatchEvent( new CustomEvent("stateChanged") );
 		}
+		if (changed) document.dispatchEvent( new CustomEvent("stateChanged") );
 		return this._good;
 	}
 
@@ -48,7 +44,7 @@ class Validator {
 	}
 
 	get good( ) {
-		this.setClass( );
+		//if (this._good) localStorage.setItem(this.input.id, this.input.value)
 		return this._good
 	}
 
@@ -58,7 +54,7 @@ function direktor( ) {
 	const 
 		go = document.querySelector("#go"),
 		login = document.querySelector("#login"),
-		tt = document.querySelector("#TT"),
+		tt = document.querySelector("#tt"),
 		copyButton = document.querySelector("#copy"),
 		buttons = [copyButton, go],
 		ttRegs = [/^\d{12,20}$/, /^\d+$/],
@@ -76,7 +72,10 @@ function direktor( ) {
 		
 	login.addEventListener("keyup", raiseLetters, false);
 
-	document.addEventListener("stateChanged", ( ) => setButtonsState( indicators.every(i => i.good), buttons ), false);
+	document.addEventListener("stateChanged", ( ) => {
+		console.log("tested");
+	setButtonsState( indicators.every(i => i.good), buttons );
+}, false);
 
 	go.addEventListener("click", ( ) => {
 		const state = indicators.every(i => i.good);
