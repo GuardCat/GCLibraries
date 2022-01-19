@@ -44,7 +44,7 @@ class Validator {
 	}
 
 	get good( ) {
-		//if (this._good) localStorage.setItem(this.input.id, this.input.value)
+		if (this._good) localStorage.setItem(this.input.id, this.input.value)
 		return this._good
 	}
 
@@ -72,10 +72,7 @@ function direktor( ) {
 		
 	login.addEventListener("keyup", raiseLetters, false);
 
-	document.addEventListener("stateChanged", ( ) => {
-		console.log("tested");
-	setButtonsState( indicators.every(i => i.good), buttons );
-}, false);
+	document.addEventListener("stateChanged", ( ) => setButtonsState( indicators.every(i => i.good), buttons ), false);
 
 	go.addEventListener("click", ( ) => {
 		const state = indicators.every(i => i.good);
