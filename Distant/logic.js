@@ -1,4 +1,58 @@
-direktor( );
+
+class Validator {
+	constructor({input, regs, minLen = 0, maxLen = +Infinity, startValue, buttons = []}) {
+		this.input = input;
+		this.regs = regs;
+		this.minLen = minLen;
+		this.maxLen = maxLen;
+		this.oldValue = input.value;
+		this.buttons = buttons;
+		if (startValue) input.value = startValue;
+
+		input.addEventListener("keyup", this.validateLastSym.bind(this), false);
+		input.addEventListener("blur", this.setClass.bind(this), false);
+		input.addEventListener("change", this.setClass.bind(this), false);
+	}
+
+	validateLastSym( ) {
+		if ( this.regs.some( reg => reg.test(this.input.value) ) ) {
+			this.oldValue = this.input.value;
+			this.input.classList.contains("wrong") ? this.setClass( ) :	this.setState( );
+			return true;
+		}
+		this.input.value = this.oldValue;
+		this.setState( );
+		return false;
+	}
+
+	setClass( ) {
+		this.setState( );
+		if(this._good) {
+			if( this.input.classList.contains("wrong") ) {
+				this.input.classList.remove("wrong");
+				document.dispatchEvent( new CustomEvent("stateChanged") );
+			}
+			return this._good;
+		} 
+		if( !this.input.classList.contains("wrong") ) {
+			this.input.classList.add("wrong");
+			document.dispatchEvent( new CustomEvent("stateChanged") );
+		}
+		return this._good;
+	}
+
+	setState( ) {
+		const state = ( this.regs[0].test(this.input.value) && this.input.value.length >= this.minLen && this.input.value.length <= this.maxLen );
+		this._good = state;
+		return state;
+	}
+
+	get good( ) {
+		this.setClass( );
+		return this._good
+	}
+
+}
 
 function direktor( ) {
 	const 
@@ -6,48 +60,46 @@ function direktor( ) {
 		login = document.querySelector("#login"),
 		tt = document.querySelector("#TT"),
 		copyButton = document.querySelector("#copy"),
-		ttReg = /\D/g,
+		buttons = [copyButton, go],
+		ttRegs = [/^\d{12,20}$/, /^\d+$/],
 		loginRegs = [ 
 			/^W\d+N{0,1}\d+$/i,
 			/^W\d+N$/i,
 			/^W\d+$/i,
 			/^W\d{0,}$/i
 		],
-		minLoginLength = 4,
-		minTTLength = 4
+		indicators = [
+			new Validator( {input: login, regs: loginRegs, minLen: 4, maxLen: 12, startValue: localStorage.getItem("login")} ),
+			new Validator( {input: tt, regs: ttRegs, startValue: localStorage.getItem("tt")} )
+		]
 	;
-	
-	tt.value = localStorage.getItem("tt") || "";
-	login.value = localStorage.getItem("login") || "";
+		
+	login.addEventListener("keyup", raiseLetters, false);
 
-	login.addEventListener( "keyup", (e) => preventWrongEntering(e, loginRegs), false )
-	login.addEventListener( "change", ( ) => checkInput(login, loginRegs[0], minLoginLength), false )
-	login.addEventListener("keyup", raiseLetters, false)
-	
-	tt.addEventListener("keyup", delWrongSym, false)
-	tt.addEventListener( "change", ( ) => checkInput(go, loginRegs[0], minLoginLength), false )
+	document.addEventListener("stateChanged", ( ) => setButtonsState( indicators.every(i => i.good), buttons ), false);
 
 	go.addEventListener("click", ( ) => {
-		if ( checkInput(login, loginRegs[0], minLoginLength) && checkInput(tt, /^\d+$/, minTTLength) ) openLink(login, tt);
+		const state = indicators.every(i => i.good);
+		setButtonsState(state, buttons);
+		if (state) openLink(login, tt);
 	}, false);
 
 	copyButton.addEventListener("click", ( ) => {
-		if ( checkInput(login, loginRegs[0], minLoginLength)  && checkInput(tt, /^\d+$/, minTTLength) )  copyLink(login, tt);
+		const state = indicators.every(i => i.good);
+		setButtonsState(state, buttons);
+		if (state) copyLink(login, tt);
 	}, false);
 
 }
 
-function preventWrongEntering(e, regs) {
-	const text = e.target.value;
-	if ( regs.some( r => r.test(text) ) ) {
-		e.target.setAttribute("oldValue", text)
-		return true;
-	}
-	e.target.value = e.target.getAttribute("oldValue");
-}
-
-function delWrongSym(e, reg = /\.+/) {
-	e.target.value = e.target.value.replace(reg, "");
+function setButtonsState(state, buttons) {
+	buttons.forEach( b => {
+		if (state) { 
+			b.removeAttribute("disabled");
+		} else {
+			b.setAttribute("disabled", ""); 
+		}
+	} )
 }
 
 function raiseLetters(e) {
@@ -59,15 +111,6 @@ function openLink(login, tt) {
 	document.location.href = generateLink(login, tt);
 }
 
-function checkInput(input, reg, min = 0) {
-	const text = input.value
-	if ( reg.test(text) && text.length >= min) {
-		input.classList.remove("wrong")
-		return true;
-	}
-	input.classList.add("wrong");
-	return false;
-}
 
 function copyLink(login, tt) {
 	const url = generateLink(login, tt);
@@ -82,3 +125,5 @@ function saveToLS(login, tt) {
 	localStorage.setItem("tt", tt.value);
 	localStorage.setItem("login", login.value);
 }
+
+direktor( );

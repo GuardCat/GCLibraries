@@ -36,29 +36,35 @@ div {
 	padding: 10px;
 }
 
-input[type='text'] {
+input[type='text'], input[type='number'] {
 	border-radius: 5px;
 	height: 20px;
 	border: 1px solid #278CFF;
+	outline: none;
 }
 
 input[type='button']{
 	position: relative;
 	border: 0px;
 	color: white;
-	border-radius: 5px;
-	padding: 5px;
+	border-radius: 25px;
+	padding: 10px;
 	box-shadow: 7px 7px 32px 2px rgba(0, 0, 0, 0.08);
 
 }
 input#go {
 	background-color: #278CFF;
-	top: 40px;
-	left: 182px;
+	top: 45px;
+	left: 161px;
 }
+
+input:disabled {
+	background-color:silver !important;
+}
+
 input#copy {
 	background-color: #4B5B6D;
-	top: 40px;
+	top: 45px;
 	left: 0px;
 }
 
