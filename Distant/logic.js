@@ -36,9 +36,12 @@ function direktor( ) {
 	new Validator( {input: tt, regs: ttRegs, startValue: localStorage.getItem("tt")} );
 		
 	login.addEventListener("change", raiseLetters, false);
-	document.addEventListener( "keyup", ( ) => setButtonsState( form.checkValidity( ), buttons ) );
+	login.addEventListener( "keyup", ( ) => setButtonsState( form.checkValidity( ), buttons ) );
+	tt.addEventListener( "keyup", ( ) => setButtonsState( form.checkValidity( ), buttons ) );
 	copyButton.addEventListener("click", ( ) => copyLink(login, tt), false);
-	setButtonsState( form.checkValidity( ), buttons );
+	
+	//console.log(login.value.length && tt.value.length)
+	if (login.value.length && tt.value.length) setButtonsState( form.checkValidity( ), buttons );
 }
 
 function setButtonsState(state, buttons) {
