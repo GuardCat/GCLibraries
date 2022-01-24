@@ -14,6 +14,7 @@ class Validator {
 			this.oldValue = this.input.value;
 			localStorage.setItem( this.input.id, this.input.value.toUpperCase( ) );
 		} else {
+			if ( !this.regs.some( reg => reg.test(this.oldValue) ) ) this.oldValue = "";
 			this.input.value = this.oldValue;
 		}
 	}
@@ -40,8 +41,7 @@ function direktor( ) {
 	tt.addEventListener( "keyup", ( ) => setButtonsState( form.checkValidity( ), buttons ) );
 	copyButton.addEventListener("click", ( ) => copyLink(login, tt), false);
 	
-	//console.log(login.value.length && tt.value.length)
-	if (login.value.length && tt.value.length) setButtonsState( form.checkValidity( ), buttons );
+	setButtonsState( form.checkValidity( ), buttons );
 }
 
 function setButtonsState(state, buttons) {
