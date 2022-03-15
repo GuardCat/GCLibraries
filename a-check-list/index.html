@@ -62,14 +62,6 @@
 			</tr>
 		</table>
 
-		<table data-on="isold">
-			<caption>Марка</caption>
-			<tr>
-				<td><input type="radio" id="lada" name="brand"><label for="lada">Лада / УАЗ</label></td>
-				<td><input type="radio" id="nolada" name="brand"><label for="nolada">Другая</label></td>
-			</tr>
-		</table>
-
 		<table>
 			<caption>Владелец авто</caption>
 			<tr>
@@ -78,16 +70,16 @@
 			</tr>
 		</table>
 
-		<table data-on="isnew|isold;lada|isold;nolada">
+		<table>
 			<caption>Сумма кредита</caption>
 			<tr>
-				<td><input type="radio" id="lessmln" name="sum"><label for="lessmln">До <span data-on="isnew|lada">1</span><span data-on="isold;nolada">1,5</span> млн.</label></td>
-				<td><input type="radio" id="moremln" name="sum"><label for="moremln"><span data-on="isnew|lada">1</span><span data-on="isold;nolada">1,5</span> млн.+</label></td>
+				<td><input type="radio" id="lessmln" name="sum"><label for="lessmln">До <span data-on="isnew">1</span><span data-on="isold">1,5</span> млн.</label></td>
+				<td><input type="radio" id="moremln" name="sum"><label for="moremln"><span data-on="isnew">1</span><span data-on="isold">1,5</span> млн.+</label></td>
 			</tr>
 		</table>
 
 		<table>
-			<caption>Одобрение<span data-title="Проверял ли верификатор заявку? Если нет, выбирайте «автоодобрение»">?</span></caption>
+			<caption>Одобрение <span data-title="Проверял ли верификатор заявку? Если нет, выбирайте «автоодобрение»">?</span></caption>
 			<tr>
 				<td><input type="radio" id="avtoodobr" name="avtoodobr"><label for="avtoodobr">Автоодобр.</label></td>
 				<td><input type="radio" id="noavtoodobr" name="avtoodobr"><label for="noavtoodobr">Верификатор</label></td>
@@ -95,7 +87,7 @@
 		</table>
 
 		<table>
-			<caption>ДЦ из ЧС?<span data-title="ДЦ с усиленным контролем:«Юрал трэйд», «Правовая культура», «Авангард Пискарёвский», «Трудовая инициатива», «АвтоРим», ГК «Локо Авто».">cписок</span></caption>
+			<caption>ДЦ из ЧС <span data-title="ДЦ с усиленным контролем:«Юрал трэйд», «Правовая культура», «Авангард Пискарёвский», «Трудовая инициатива», «АвтоРим», ГК «Локо Авто».">cписок</span></caption>
 			<tr>
 				<td><input type="radio" id="whitedc" name="bdc"><label for="whitedc">Нет</label></td>
 				<td><input type="radio" id="blackdc" name="bdc"><label for="blackdc">Да</label></td>
@@ -137,7 +129,7 @@
 		</table>
 
 		<table data-on="noavtoodobr">
-			<caption>Затребовано Согласие? <span data-title="Если есть ошибки в Согласии на обработку персональных данных, Верификатор может выставить отлагательное условие на новое, корректно оформленное Согласие.">?</span></caption>
+			<caption>Затребовано Согласие <span data-title="Если есть ошибки в Согласии на обработку персональных данных, Верификатор может выставить отлагательное условие на новое, корректно оформленное Согласие.">?</span></caption>
 			<tr>
 				<td><input type="radio" id="needsog" name="sog"><label for="needsog">Затребовано</label></td>
 				<td><input type="radio" id="nosog" name="sog"><label for="nosog">Нет</label></td>
@@ -173,7 +165,6 @@
 				<li data-on="kaskokred"><label><input type="checkbox"><span>Счет на оплату КАСКО, купленного в кредит.</span></label></li>
 				<li data-on="moremln;kaskonal"><label><input type="checkbox"><span>Документ об оплате КАСКО наличными.</span></label></li>
 				<li><label><input type="checkbox"><span>Счета на оплату доп. услуг, входящих в сумму кредита (при наличии).</span></label></li>
-				<li data-on="blackdc"><label><input type="checkbox"><span>Документы на оплату всей суммы ПВ. Допускаются: кассовый чек, выписка из онлайн банка / платёжное поручение с отметкой «Исполнено», договор трейд-ин с актом приёма-передачи.</b></span>.</span></label></li>
 				<li><label><input type="checkbox"><span>Для всех документов подготовлены скан-копии, все сканы читаемы, нет размытых и обрезанных страниц.</span></label></li>
 			</ul>
 		</section>
@@ -278,8 +269,6 @@
 				<li><label><input type="checkbox"><span>Есть подпись главного бухгалтера или руководителя (при наличии qr-кода необязательно).</span></label></li>
 				<li><label><input type="checkbox"><span>Если приложен приходный кассовый ордер, он корректно заполнен.</span></label></li>
 				<li data-on="blackdc"><label><input type="checkbox"><span>В чеках / квитанциях по КАСКО присутствует номер договора КАСКО, номер полиса и ФИО клиента.</span></label></li>
-				<li data-on="blackdc"><label><input type="checkbox"><span>В чеке / квитанции на ПВ указаны сумма, дата, салон по сделке.</span></label></li>
-				<li data-on="blackdc"><label><input type="checkbox"><span>В чеке / квитанции на ПВ указано ФИО клиента или VIN | номер кузова ТС или номер ДКП или номер счёта по ПВ.</span></label></li>
 			</ul>
 			<div class="info">В случае выявления ошибок направьте пакет документов на доработку в автосалон.
 			</div>
