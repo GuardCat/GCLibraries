@@ -49,6 +49,10 @@ class Checklist {
 		return this.checkboxes.filter( box => box.checked && box.type === "checkbox");
 	}
 
+	get notCheckedBoxes( ) {
+		return this.checkboxes.filter( box => !box.checked && box.type === "checkbox");
+	}
+
 	get checkedNums( ) {
 		let result = [ ];
 		this.checkboxes.forEach( (box,i) => {
@@ -88,7 +92,7 @@ class TieChecker {
 
 function director( ) {
 	const
-		version = "v1.4.4",
+		version = "v1.5",
 		updatedFact = 1634742102977,
 		allowedUpdateDate = 1634741486419,
 		updatedLocal = +window.localStorage.getItem("checklist_auto_updated"),
@@ -101,9 +105,11 @@ function director( ) {
 		termsCount = dealTerms.querySelectorAll("table").length,
 
 		main = document.body.querySelector("main"),
+		disclaimer = document.body.querySelector("aside"),
 		versionElement = document.body.querySelector(".version"),
 		hidingSections = [...main.querySelectorAll("section[id]")], /* Считаем, что все section с id нуждаются в скрытии при отсутствии элементов*/
 		checklist = new Checklist( document.body.querySelectorAll("input"), document.body, ".off" ),
+		monitor = document.querySelector("#notCheckedMonitor"),
 		panel = document.querySelector(".panel"),
 		counter = panel.querySelector(".counter"),
 		reset = panel.querySelector("button.clearIt"),
@@ -116,10 +122,16 @@ v1.31: - удалена ГП
 v1.3: + добавлена ГП и Лада / УАЗ
 `,
 		renewAll = ( ) => {
-			let numOffVidgets;
+			let numOffVidgets, checklistVisible;
 			tieClasses.forEach( t => t.renewStatus( ) );
- 			numOffVidgets = dealTerms.querySelectorAll("table.off").length;
-			showIfTermsSet(termsCount - numOffVidgets, dealTerms.querySelectorAll("input:checked").length, main);
+ 			numOffVidgets = dealTerms.querySelectorAll("table.off").length; // Количество виджетов, которые неактуальны для сделки, их не учитываем.
+			checklistVisible = showIfTermsSet( termsCount - numOffVidgets, dealTerms.querySelectorAll("input:checked").length, main );
+			const notCheckedWidgets = Array.from( dealTerms.querySelectorAll("table:not(.off)") ).reduce( (result, element) => { 
+				if ( element.querySelector("input:checked") ) return result;
+				return `${result} <li>${element.caption.innerText}</li> `;
+		  	}, "" );
+			showIfTermsSet(1, 1 - +checklistVisible, disclaimer); // Если чек-лист показываем, предупреждение скрываем и наоборот.
+			monitor.innerHTML = checklistVisible ? "" : notCheckedWidgets;
 			hidingSections.forEach( el => hideIfEmpty(el) );
 			renewCounter(counter, checklist);
 		}
@@ -157,12 +169,13 @@ v1.3: + добавлена ГП и Лада / УАЗ
 	}, 100 );
 }
 
-function showIfTermsSet(termsLen, checkedLen, questionary) {
+function showIfTermsSet(termsLen, checkedLen, element) {
 	if (termsLen === checkedLen) {
-		questionary.classList.remove("off");
-	} else {
-		questionary.classList.add("off");
+		element.classList.remove("off");
+		return true;
 	}
+	element.classList.add("off");
+	return false;
 }
 
 function hideIfEmpty(el) {
