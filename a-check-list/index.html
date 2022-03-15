@@ -33,18 +33,35 @@
 		</table>
 
 		<table>
-			<caption>Автомобиль</caption>
+			<caption>Тип автомобиля</caption>
 			<tr>
 				<td><input type="radio" id="isnew" name="condition"><label for="isnew">Новый</label></td>
 				<td><input type="radio" id="isold" name="condition"><label for="isold">Б/у</label></td>
 			</tr>
 		</table>
-
+		
 		<table>
-			<caption>Владелец авто</caption>
+			<caption>Паспорт ТС</caption>
 			<tr>
-				<td><input type="radio" id="dcowner" name="owner"><label for="dcowner">ДЦ</label></td>
-				<td><input type="radio" id="notdcowner" name="owner"><label for="notdcowner">Не ДЦ</label></td>
+				<td><input type="radio" id="epts" name="ptst"><label for="epts">Электронный</label></td>
+				<td data-on="isnew"><input type="radio" id="nopts" name="ptst"><label for="nopts">Нет ПТС</label></td>
+				<td><input type="radio" id="pts" name="ptst"><label for="pts">Бумажный</label></td>
+			</tr>
+		</table>
+
+		<table data-on="epts;isold">
+			<caption>Растаможивание</caption>
+			<tr>
+				<td><input type="radio" id="rast" name="rastam"><label for="rast">Растаможен</label></td>
+				<td><input type="radio" id="norast" name="rastam"><label for="norast">Местный</label></td>
+			</tr>
+		</table>
+		
+		<table data-on="pts;isold">
+			<caption>ДЦ вписан в ПТС</caption>
+			<tr>
+				<td><input type="radio" id="dcowner" name="owner"><label for="dcowner">Вписан</label></td>
+				<td><input type="radio" id="notdcowner" name="owner"><label for="notdcowner">Не вписан</label></td>
 			</tr>
 		</table>
 
@@ -65,14 +82,6 @@
 		</table>
 
 		<table>
-			<caption>ДЦ из ЧС <span data-title="ДЦ с усиленным контролем:«Юрал трэйд», «Правовая культура», «Авангард Пискарёвский», «Трудовая инициатива», «АвтоРим», ГК «Локо Авто».">cписок</span></caption>
-			<tr>
-				<td><input type="radio" id="whitedc" name="bdc"><label for="whitedc">Нет</label></td>
-				<td><input type="radio" id="blackdc" name="bdc"><label for="blackdc">Да</label></td>
-			</tr>
-		</table>
-
-		<table>
 			<caption>ВУ клиента</caption>
 			<tr>
 				<td><input type="radio" id="iscvu" name="cvu"><label for="iscvu">Есть</label></td>
@@ -81,15 +90,6 @@
 		</table>
 
 		<table>
-			<caption>Паспорт ТС</caption>
-			<tr>
-				<td><input type="radio" id="epts" name="ptst"><label for="epts">Электронный</label></td>
-				<td data-on="isnew"><input type="radio" id="nopts" name="ptst"><label for="nopts">Нет ПТС</label></td>
-				<td><input type="radio" id="pts" name="ptst"><label for="pts">Бумажный</label></td>
-			</tr>
-		</table>
-
-		<table data-on="moremln|lessmln">
 			<caption>Как приобретается КАСКО</caption>
 			<tr>
 				<td><input type="radio" id="kaskonal" name="kasko"><label for="kaskonal">За наличные</label></td>
@@ -126,24 +126,31 @@
 			<h2>Проверка наличия документов</h2>
 			<div class="info" data-on="lessmln;kaskonal">Обратите внимание, при выбранной сумме сделки, при покупке КАСКО за наличные, прикладывать полис необязательно, можно убрать его из пакета документов и выбрать в чек-листе «Нет КАСКО»</div>
 			<ul>
-				<li data-on="avtoodobr|needsog"><label><input type="checkbox"><span>Согласие на обработку персональных данных.</span></label></li>
-				<li><label><input type="checkbox"><span>Фотография Клиента из салона.</span></label></li>
+				
 				<li><label><input type="checkbox"><span><b>Цветной</b> скан паспорта.</span></label></li>
+				<li><label><input type="checkbox"><span>Фотография Клиента из салона.</span></label></li>
+				<li data-on="avtoodobr|needsog"><label><input type="checkbox"><span>Согласие на обработку персональных данных.</span></label></li>
+				<li><label><input type="checkbox"><span>Договор купли-продажи.</span></label></li>
 				<li data-on="nocvu;kaskokred|nocvu;kaskonal"><label><input type="checkbox"><span>Скан водительского удостоверения 3 лица, вписанного в КАСКО.</span></label></li>
 				<li data-on="nocvu"><label><input type="checkbox"><span><b>Цветной</b> скан второго документа клиента.</span></label></li>
 				<li data-on="iscvu"><label><input type="checkbox"><span><b>Цветной</b> скан водительского удостоверения клиента.</span></label></li>
-				<li><label><input type="checkbox"><span>Договор купли-продажи.</span></label></li>
-				<li data-on="notdcowner"><label><input type="checkbox"><span><b>Цветной</b> скан Договора комиссии.</span></label></li>
-				<li data-on="isold;pts"><label><input type="checkbox"><span><b>Цветной</b> скан ПТС.</span></label></li>
-				<li data-on="isold;epts"><label><input type="checkbox"><span>ЭПТС + СТС или ЭПТС + ДКП (не агентский/комиссии) с предыдущим собственником или скан старого ПТС в цвете.</span></label></li>
+				<li data-on="epts"><label><input type="checkbox"><span>ЭПТС.</span></label></li>
 				<li data-on="isnew;pts"><label><input type="checkbox"><span>Скан ПТС.</span></label></li>
-				<li data-on="isnew;epts"><label><input type="checkbox"><span>ЭПТС.</span></label></li>
 				<li data-on="nopts"><label><input type="checkbox"><span>Товарно-транспортная накладная (ТТН) или Форма учёта ТС (ФУТС) или Гарантийное письмо ДЦ.</span></label></li>
+				<li data-on="notdcowner;pts"><label><input type="checkbox"><span>Скан договора между Дилером и прежним владельцем.</span></label></li>
+				<li data-on="isold;pts"><label><input type="checkbox"><span><b>Цветной</b> скан ПТС.</span></label></li>
+				<li data-on="isold;epts;norast"><label><input type="checkbox"><span>Скан СТС прежнего владельца</span></label></li>
+				<li data-on="isold;epts;norast"><label><input type="checkbox"><span>Скан договора между Дилером и владельцем по СТС.</span></label></li>
+				<li data-on="isold;epts;rast"><label><input type="checkbox"><span>Документы с таможни по авто. Все, что клиент может предоставить.</span></label></li>
+				<li data-on="isold;epts;rast"><label><input type="checkbox"><span>Договор с тем, кто ввёз авто в РФ: агентский договор или договор комиссии <b>ИЛИ</b> Договор выкупа авто Дилером.</span></label></li>
 				<li data-on="moremln|kaskokred"><label><input type="checkbox"><span>Полис КАСКО.</span></label></li>
 				<li data-on="kaskokred"><label><input type="checkbox"><span>Счет на оплату КАСКО, купленного в кредит.</span></label></li>
 				<li data-on="moremln;kaskonal"><label><input type="checkbox"><span>Документ об оплате КАСКО наличными.</span></label></li>
-				<li><label><input type="checkbox"><span>Счета на оплату доп. услуг, входящих в сумму кредита (при наличии).</span></label></li>
-				<li><label><input type="checkbox"><span>Для всех документов подготовлены скан-копии, все сканы читаемы, нет размытых и обрезанных страниц.</span></label></li>
+				<li><label><input type="checkbox"><span>Счет на оплату остатка стоимости авто.</span></label></li>
+				<li><label><input type="checkbox"><span>Счет на оплату доп. оборудования (если оно есть), в счёт кредита. Может быть включен в счёт на оплату остатка стоимости.</span></label></li>
+				<li><label><input type="checkbox"><span>Счета на оплату доп. услуг (если они есть), в счёт кредита.</span></label></li>
+				<li><label><input type="checkbox"><span>Суммы во всех счетах + суммы допов Банка = Сумма кредита</span></label></li>
+				<li><label><input type="checkbox"><span>Все скан-копии читаемы, отсканированы полностью, не обрезаны, нет размытых участков.</span></label></li>
 			</ul>
 		</section>
 
@@ -189,7 +196,6 @@
 			<ul>
 				<li><label><input type="checkbox"><span>Скан паспорта сделан сегодня<span data-title="Если скан сделан не сегодня, заявку вернут.">?</span></span></label></li>
 				<li><label><input type="checkbox"><span>В скане есть страницы первого разворота, страница с адресом регистрации.</span></label></li>
-				<li><label><input type="checkbox"><span>Сканированные страницы сняты полностью, не обрезаны, нет нечитаемых областей.</span></label></li>
 				<li><label><input type="checkbox"><span>По фотографии в паспорте можно идентифицировать Клиента.</span></label></li>
 			</ul>
 		</section>
@@ -246,7 +252,6 @@
 				<li><label><input type="checkbox"><span>Указаны реквизиты юридического лица (ДЦ), наименование салона-продавца.</span></label></li>
 				<li><label><input type="checkbox"><span>Есть подпись главного бухгалтера или руководителя (при наличии qr-кода необязательно).</span></label></li>
 				<li><label><input type="checkbox"><span>Если приложен приходный кассовый ордер, он корректно заполнен.</span></label></li>
-				<li data-on="blackdc"><label><input type="checkbox"><span>В чеках / квитанциях по КАСКО присутствует номер договора КАСКО, номер полиса и ФИО клиента.</span></label></li>
 			</ul>
 			<div class="info">В случае выявления ошибок направьте пакет документов на доработку в автосалон.
 			</div>
@@ -284,15 +289,14 @@
 		</section>
 
 		<section data-on="notdcowner">
-			<h2>Договор комиссии / агентские договоры</h2> 
+			<h2>Договор комиссии / агентский договор</h2> 
 			<ul>
 				<li><label><input type="checkbox"><span>Отсканированы все страницы документа.</span></label></li>
-				<li><label><input type="checkbox"><span>Сканированные страницы сняты полностью, не обрезаны, нет нечитаемых областей.</span></label></li>
-				<li><label><input type="checkbox"><span>Данные по комиссионеру и комитенту внесены верно.</span></label></li>
+				<li><label><input type="checkbox"><span>Данные сторон договора внесены верно.</span></label></li>
 				<li><label><input type="checkbox"><span>Данные транспортного средства в Договоре совпадают <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
 				<li><label><input type="checkbox"><span>Присутствуют печати комиссионера, подписи и реквизиты сторон.</span></label></li>
 				<li data-on="pts|epts"><label><input type="checkbox"><span>Собственник в <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС | копии старого ПТС</span> и комитент в договоре комиссии совпадают. Или приложены документы, подтверждающие переход ТС от собственника к собственнику независимо от их количества. Договоры купли-продажи — <b>предметные</b> (см. ниже) или есть акты приёма-передачи.</span></label></li>
-				<li><label><input type="checkbox"><span>Есть акт приёма-передачи данных авто и все указанные выше данные в нём присутствуют.</span></label></li>
+				<li><label><input type="checkbox"><span>Есть акт приёма-передачи авто и все указанные выше данные в нём присутствуют.</span></label></li>
 			</ul>
 			<div class="info">Договор считается предметным, если в нём однозначно определён автомобиль, например указан его VIN номер.</div>
 		</section>
@@ -308,36 +312,27 @@
 			</ul>
 		</section>
 
-		<section data-on="nosoz">
-			<h2>Отправка письма на II этап</h2>
+		<section>
+			<h2>Отправка письма</h2>
 			<div class="info">
-				<div>Письмо на второй этап верификации отправляется с личной почты.</div>
 				<div><b>кому:</b> <a href="mailto:autoverification@otpbank.ru">autoverification@otpbank.ru</a></div>
-				<div><b>копия:</b> sdelka1@RUSGEN, sdelka2@RUSGEN</div>
-				<div><b>тема письма:</b>ID 2-1RQD3Y8F<span data-title="Номер заявки">?</span>. ФИО Заемщика</div>
+				<div><b>тема письма:</b>Фамилия И.О. заёмщика. Номер заявки</div>
 				<div>Для объединения и изменения формата файлов используем PDFCreator.</div>
-				<div>В теле письма приветствуем коллег, пишем что ожидаем ответа по сделке.</div>
-			</div>
-			<ul>
-				<li><label><input type="checkbox"><span>В теле письма прописаны допы Банка: СЖ, автокарта, ГЭП и т.д.</span></label></li>
-				<li><label><input type="checkbox"><span>Подготовлены файлы в формате pdf. При отправке отдельных файлов в JPG, имена документов содержат наименование документа и имеют в конце номер страницы: ДПК1.jpg, ДПК2.jpg.</span></label></li>
-				<li><label><input type="checkbox"><span>Письмо отправлено.</span></label></li>
-			</ul>
-		</section>
-
-		<section data-on="soz">
-			<h2>Отправка письма в СОЗ</h2>
-			<div class="info">
-				<div><b>кому:</b> <a href="mailto:autopos@otpbank.ru">autopos@otpbank.ru</a></div>
-				<div><b>тема письма:</b>Сделка. Фамилия И.О. заёмщика.</div>
-				<div>Для объединения и изменения формата файлов используем PDFCreator.</div>
-				<div>В теле письма приветствуем коллег, пишем что ожидаем ответа по сделке.</div>
 			</div>
 			<ul>
 				<li><label><input type="checkbox"><span>Подготовлены файлы в формате pdf. При отправке отдельных файлов в JPG, имена документов содержат наименование документа и имеют в конце номер страницы: ДПК1.jpg, ДПК2.jpg.</span></label></li>
-				<li><label><input type="checkbox"><span>В теле письма прописаны допы Банка (СЖ, автокарта).</span></label></li>
+				<li><label><input type="checkbox"><span>В теле письма указан тариф.</span></label></li>
+				<li><label><input type="checkbox"><span>В теле письма указан срок кредита.</span></label></li>
+				<li><label><input type="checkbox"><span>В теле письма указаны допы банка.</span></label></li>
+				<li><label><input type="checkbox"><span>В теле письма указан пробег.</span></label></li>
+				<li><label><input type="checkbox"><span>В теле письма указаны допы дц с указанием провайдеров и категории допов: Страхование жизни, Телемедицина пр.</span></label></li>
+				<li><label><input type="checkbox"><span>В теле письма указаны ФИО КЭ и ТТ.</span></label></li>
+				<li><label><input type="checkbox"><span>В теле письма указан номер телефона клиента.</span></label></li>
+				<li><label><input type="checkbox"><span>В теле письма указан номер карты, если в сделке есть дебетовая карта.</span></label></li>
+				<li><label><input type="checkbox"><span>В теле письма указан срок кредита.</span></label></li>
 				<li><label><input type="checkbox"><span>Если цена автомобиля, доп. продуктов изменилась, это указано в теле письма. Или все суммы равны суммам в заявке.</span></label></li>
 				<li><label><input type="checkbox"><span>Письмо отправлено.</span></label></li>
+				<li><label><input type="checkbox"><span>В рабочий чат «СДЕЛКА» продублировали информацию: «Направлены документы на сделку, клиент ФИО, номер заявки»</span></label></li>
 			</ul>
 		</section>
 
@@ -374,8 +369,25 @@
 				<img src="snow.png" alt="Скриншот из system now">
 			</div>
 		</section>
-	</main>
 
+	<section>
+		<h2>Отправка письма на оплату</h2>
+		<div class="info">
+			<div><b>кому:</b> <a href="mailto:autoverification@otpbank.ru">autoverification@otpbank.ru</a></div>
+			<div><b>тема письма:</b>Документы на оплату. Фамилия И.О. заёмщика. Номер заявки</div>
+			<div>Во вложении — один архив zip / 7zip. В архиве — 2 PDF документа: </div>
+			<ol>
+			<li><b>PDF1:</b> ИУ 4 страницы и заявление на перевод</li>
+			<li><b>PDF2:</b> Счета на оплату</li>
+			</ol>
+		</div>
+		<ul>
+			<li><label><input type="checkbox"><span>Приложен архив с двумя PDF документами, указанными выше.</span></label></li>
+			<li><label><input type="checkbox"><span>В теле письма указана действующая электропочта клиента(!)</span></label></li>
+			<li><label><input type="checkbox"><span>В теле письма указано корректное кодовое слово клиента(!)</span></label></li>
+		</ul>
+	</section>
+</main>
 	<script src="logic.js"></script>
 		<!-- Yandex.Metrika counter -->
 		<script>
