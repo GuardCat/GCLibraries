@@ -94,7 +94,7 @@ function director( ) {
 	const
 		version = "v1.5",
 		updatedFact = 1634742102977,
-		allowedUpdateDate = 1634741486419,
+		allowedUpdateDate = 1634742102977,
 		updatedLocal = +window.localStorage.getItem("checklist_auto_updated"),
 		oldDate = new Date(updatedLocal),
 		newDate = new Date(updatedFact),
@@ -117,9 +117,9 @@ function director( ) {
 `Приложение обновлено.
 Данные старой версии ${ updatedLocal > 0 ? "от " + zeroTo( oldDate.getDate( ) ) + "." + zeroTo( oldDate.getMonth( ) + 1 ) + "." + oldDate.getFullYear( ) : ""} удалены, чек-лист будет очищен.
 Изменения:
+v1.4: полностью обновлены документы и требования к письмам.
 v1.4: + детализированы требования РГО. x Исправлены ошибки (остатки ГП)
 v1.31: - удалена ГП
-v1.3: + добавлена ГП и Лада / УАЗ
 `,
 		renewAll = ( ) => {
 			let numOffVidgets, checklistVisible;
