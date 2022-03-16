@@ -136,13 +136,13 @@
 				<li data-on="iscvu"><label><input type="checkbox"><span><b>Цветной</b> скан водительского удостоверения клиента.</span></label></li>
 				<li data-on="epts"><label><input type="checkbox"><span>ЭПТС.</span></label></li>
 				<li data-on="isnew;pts"><label><input type="checkbox"><span>Скан ПТС.</span></label></li>
-				<li data-on="nopts"><label><input type="checkbox"><span>Товарно-транспортная накладная (ТТН) или Форма учёта ТС (ФУТС) или Гарантийное письмо ДЦ.</span></label></li>
+				<li data-on="nopts"><label><input type="checkbox"><span>Информационное письмо ДЦ или Товарно-транспортная накладная (ТТН) или Форма учёта ТС (ФУТС).</span></label></li>
 				<li data-on="notdcowner;pts"><label><input type="checkbox"><span>Скан договора между Дилером и прежним владельцем.</span></label></li>
 				<li data-on="isold;pts"><label><input type="checkbox"><span><b>Цветной</b> скан ПТС.</span></label></li>
 				<li data-on="isold;epts;norast"><label><input type="checkbox"><span>Скан СТС прежнего владельца</span></label></li>
 				<li data-on="isold;epts;norast"><label><input type="checkbox"><span>Скан договора между Дилером и владельцем по СТС.</span></label></li>
-				<li data-on="isold;epts;rast"><label><input type="checkbox"><span>Документы с таможни по авто. Все, что клиент может предоставить.</span></label></li>
-				<li data-on="isold;epts;rast"><label><input type="checkbox"><span>Договор с тем, кто ввёз авто в РФ: агентский договор или договор комиссии <b>ИЛИ</b> Договор выкупа авто Дилером.</span></label></li>
+				<li data-on="isold;epts;rast"><label><input type="checkbox"><span>Таможенные документы по авто. Все, что дилер может предоставить.</span></label></li>
+				<li data-on="isold;epts;rast"><label><input type="checkbox"><span>Договор с тем, кто ввёз авто в РФ: агентский, комиссии <b>ИЛИ</b> Договор выкупа авто Дилером.</span></label></li>
 				<li data-on="moremln|kaskokred"><label><input type="checkbox"><span>Полис КАСКО.</span></label></li>
 				<li data-on="kaskokred"><label><input type="checkbox"><span>Счет на оплату КАСКО, купленного в кредит.</span></label></li>
 				<li data-on="moremln;kaskonal"><label><input type="checkbox"><span>Документ об оплате КАСКО наличными.</span></label></li>
@@ -159,7 +159,7 @@
 			<ul>
 				<li data-on="avtoodobr"><label><input type="checkbox"><span>У клиента при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или клиент предоставил справку о погашении данной задолженности с верными данными клиента.</span></label></li>
 				<li data-on="nocvu"><label><input type="checkbox"><span>У лица, забирающего авто, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лица.</span></label></li>
-				<li data-on="is3|nocvu"><label><input type="checkbox"><span>Ни у одного 3 лица<span data-title="При наличии долгов хотя бы у одного 3 лица, сделка не может проводиться">?</span>, указанного в полисе КАСКО, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лиц.</span></label></li>
+				<li data-on="is3|kaskokred;nocvu|kaskonal;nocvu"><label><input type="checkbox"><span>Ни у одного 3 лица<span data-title="При наличии долгов хотя бы у одного 3 лица, сделка не может проводиться">?</span>, указанного в полисе КАСКО, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лиц.</span></label></li>
 				<li>
 					<div class="info">Проверьте наличие залога у клиента <span data-on="is3">и третьих лиц, вписанных в КАСКО, </span>по адресу <a href="https://www.reestr-zalogov.ru/search/">www.reestr-zalogov.ru/search/</a>.
 						При переходе на сайт кликните <span class="marked">по&nbsp;информации&nbsp;о&nbsp;залогодателе</span> и введите данные проверяемого лица.
@@ -213,7 +213,7 @@
 
 		<section>
 			<h2>Договор купли-продажи (ДКП)</h2>
-			<div class="info">Информация в ДКП <b>обязательно</b> должна совпадать с данными из <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийного письма ДЦ</span>. Сверьте совпадение каждого пункта в ДКП и ПТС / СТС.
+			<div class="info">Информация в ДКП <b>обязательно</b> должна совпадать с данными из <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационного письма ДЦ / ТТН / ФУТС</span>. Сверьте совпадение каждого пункта в ДКП и ПТС / СТС.
 				В случае обнаружения расхождений, отправьте договор на доработку с исправлением ошибок. <b>Важно! Проверяйте инфо сразу и в ДКП и в акте приёма-передачи к нему!</b>
 				<div>Допустимо указание части данных в шапке ДКП и части — в конце договора  — раздел с реквизитами сторон, при этом в конце договора должны быть указаны основные персональные данные.</div>
 			</div>
@@ -226,14 +226,14 @@
 				<li><label><input type="checkbox"><span>Если сумма указана и цифрами и прописью, значения одинаковы.</span></label></li>
 				<li><label><input type="checkbox"><span>Стоимость транспортного средства в ДКП, совпадает со стоимостью в Siebel.</span></label></li>
 				<li><label><input type="checkbox"><span>Есть реквизиты и печати юридического лица.</span></label></li>
-				<li><label><input type="checkbox"><span>Марка и модель совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
-				<li><label><input type="checkbox"><span>Тип транспортного средства совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
-				<li><label><input type="checkbox"><span>Идентификационный номер (VIN) или номер кузова совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ.</span></span></label></li>
-				<li><label><input type="checkbox"><span>Год выпуска совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
-				<li><label><input type="checkbox"><span>Номер двигателя совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
-				<li><label><input type="checkbox"><span>Цвет транспортного средства совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
-				<li><label><input type="checkbox"><span>Номер паспорта транспортного средства, кем и когда выдан совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
-				<li><label><input type="checkbox"><span>В приложенном к ДКП акт приема-передачи транспортного средства вышеуказанные данные по автомобилю также соответствуют <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
+				<li><label><input type="checkbox"><span>Марка и модель совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС</span>.</span></label></li>
+				<li><label><input type="checkbox"><span>Тип транспортного средства совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС</span>.</span></label></li>
+				<li><label><input type="checkbox"><span>Идентификационный номер (VIN) или номер кузова совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС.</span></span></label></li>
+				<li><label><input type="checkbox"><span>Год выпуска совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС</span>.</span></label></li>
+				<li><label><input type="checkbox"><span>Номер двигателя совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС</span>.</span></label></li>
+				<li><label><input type="checkbox"><span>Цвет транспортного средства совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС</span>.</span></label></li>
+				<li><label><input type="checkbox"><span>Номер паспорта транспортного средства, кем и когда выдан совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС</span>.</span></label></li>
+				<li><label><input type="checkbox"><span>В приложенном к ДКП акт приема-передачи транспортного средства вышеуказанные данные по автомобилю также соответствуют <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС</span>.</span></label></li>
 			</ul>
 			<div class="info">
 				В случае указания в ДКП / акте недостоверных данных транспортного средства или данных Клиента, сделка признается недействительной.
@@ -244,7 +244,7 @@
 			<h2>Оплата остатка стоимости ТС</h2>
 			<div class="info">На оплату остаточной стоимости автомобиля, а также дополнительных опций и продуктов, включенных в тело кредита, должны быть предоставлены счета.</div>
 			<ul>
-				<li><label><input type="checkbox"><span>Данные автомобиля совпадают с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
+				<li><label><input type="checkbox"><span>Данные автомобиля совпадают с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС</span>.</span></label></li>
 				<li><label><input type="checkbox"><span>Паспортные данные клиента совпадают с паспортом.</span></label></li>
 				<li><label><input type="checkbox"><span>Сумма в документах корректная, если указана прописью и цифрами, совпадает.</span></label></li>
 				<li><label><input type="checkbox"><span>Корректно указана дата и наименование салона по сделке.</span></label></li>
@@ -263,9 +263,9 @@
 			<ul>
 				<li><label><input type="checkbox"><span>ФИО клиента, его дата рождения, серия и номер паспорта указаны и соответствуют паспорту.</span></label></li>
 				<li data-on="moremln"><label><input type="checkbox"><span>Сумма Страхового покрытия больше или равна сумме кредита.</span></label></li>
-				<li><label><input type="checkbox"><span>Марка и модель ТС указаны и совпадают с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
-				<li><label><input type="checkbox"><span>Идентификационный номер (VIN) или номер кузова указан и совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
-				<li><label><input type="checkbox"><span>Год выпуска указан и совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
+				<li><label><input type="checkbox"><span>Марка и модель ТС указаны и совпадают с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС</span>.</span></label></li>
+				<li><label><input type="checkbox"><span>Идентификационный номер (VIN) или номер кузова указан и совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС</span>.</span></label></li>
+				<li><label><input type="checkbox"><span>Год выпуска указан и совпадает с <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС</span>.</span></label></li>
 				<li><label><input type="checkbox"><span>Сумма страховой премии совпадает с суммой в чеке / квитанции.</span></label></li>
 				<li><label><input type="checkbox"><span>Есть подпись клиента.</span></label></li>
 				<li data-on="nocvu"><label><input type="checkbox"><span>В списке лиц, допущенных к управлению, указано лицо, забирающее авто из ДЦ (ФИО и дата рождения).</span></label></li>
@@ -293,7 +293,7 @@
 			<ul>
 				<li><label><input type="checkbox"><span>Отсканированы все страницы документа.</span></label></li>
 				<li><label><input type="checkbox"><span>Данные сторон договора внесены верно.</span></label></li>
-				<li><label><input type="checkbox"><span>Данные транспортного средства в Договоре совпадают <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">ФУТС / ТТН / Гарантийным письмом ДЦ</span>.</span></label></li>
+				<li><label><input type="checkbox"><span>Данные транспортного средства в Договоре совпадают <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС</span>.</span></label></li>
 				<li><label><input type="checkbox"><span>Присутствуют печати комиссионера, подписи и реквизиты сторон.</span></label></li>
 				<li data-on="pts|epts"><label><input type="checkbox"><span>Собственник в <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС | копии старого ПТС</span> и комитент в договоре комиссии совпадают. Или приложены документы, подтверждающие переход ТС от собственника к собственнику независимо от их количества. Договоры купли-продажи — <b>предметные</b> (см. ниже) или есть акты приёма-передачи.</span></label></li>
 				<li><label><input type="checkbox"><span>Есть акт приёма-передачи авто и все указанные выше данные в нём присутствуют.</span></label></li>
@@ -313,23 +313,23 @@
 		</section>
 
 		<section>
-			<h2>Отправка письма</h2>
+			<h2>Отправка письма на II этап верификации</h2>
 			<div class="info">
 				<div><b>кому:</b> <a href="mailto:autoverification@otpbank.ru">autoverification@otpbank.ru</a></div>
 				<div><b>тема письма:</b>Фамилия И.О. заёмщика. Номер заявки</div>
 				<div>Для объединения и изменения формата файлов используем PDFCreator.</div>
 			</div>
 			<ul>
-				<li><label><input type="checkbox"><span>Подготовлены файлы в формате pdf. При отправке отдельных файлов в JPG, имена документов содержат наименование документа и имеют в конце номер страницы: ДПК1.jpg, ДПК2.jpg.</span></label></li>
+				<li><label><input type="checkbox"><span>Подготовлены файлы в формате pdf. При отправке отдельных файлов в JPG, имена документов содержат наименование документа и имеют в конце номер страницы, например: ДКП1.jpg, ДКП2.jpg.</span></label></li>
 				<li><label><input type="checkbox"><span>В теле письма указан тариф.</span></label></li>
 				<li><label><input type="checkbox"><span>В теле письма указан срок кредита.</span></label></li>
 				<li><label><input type="checkbox"><span>В теле письма указаны допы банка.</span></label></li>
 				<li><label><input type="checkbox"><span>В теле письма указан пробег.</span></label></li>
+				<li><label><input type="checkbox"><span>В теле письма тип коробки передач: АКПП или МКПП.</span></label></li>
 				<li><label><input type="checkbox"><span>В теле письма указаны допы дц с указанием провайдеров и категории допов: Страхование жизни, Телемедицина пр.</span></label></li>
 				<li><label><input type="checkbox"><span>В теле письма указаны ФИО КЭ и ТТ.</span></label></li>
 				<li><label><input type="checkbox"><span>В теле письма указан номер телефона клиента.</span></label></li>
 				<li><label><input type="checkbox"><span>В теле письма указан номер карты, если в сделке есть дебетовая карта.</span></label></li>
-				<li><label><input type="checkbox"><span>В теле письма указан срок кредита.</span></label></li>
 				<li><label><input type="checkbox"><span>Если цена автомобиля, доп. продуктов изменилась, это указано в теле письма. Или все суммы равны суммам в заявке.</span></label></li>
 				<li><label><input type="checkbox"><span>Письмо отправлено.</span></label></li>
 				<li><label><input type="checkbox"><span>В рабочий чат «СДЕЛКА» продублировали информацию: «Направлены документы на сделку, клиент ФИО, номер заявки»</span></label></li>
