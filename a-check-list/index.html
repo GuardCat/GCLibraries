@@ -157,16 +157,25 @@
 		<section class="checksection">
 			<h2>Проверка клиента</h2>
 			<ul>
-				<li data-on="avtoodobr"><label><input type="checkbox"><span>У клиента при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или клиент предоставил справку о погашении данной задолженности с верными данными клиента.</span></label></li>
-				<li data-on="nocvu"><label><input type="checkbox"><span>У лица, забирающего авто, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лица.</span></label></li>
-				<li data-on="is3|kaskokred;nocvu|kaskonal;nocvu"><label><input type="checkbox"><span>Ни у одного 3 лица<span data-title="При наличии долгов хотя бы у одного 3 лица, сделка не может проводиться">?</span>, указанного в полисе КАСКО, при поиске на <a href="https://fssp.gov.ru/">fssp.ru</a> нет задолженностей или предоставлена справка о погашении данной задолженности с верными данными 3 лиц.</span></label></li>
-				<li>
-					<div class="info">Проверьте наличие залога у клиента <span data-on="is3">и третьих лиц, вписанных в КАСКО, </span>по адресу <a href="https://www.reestr-zalogov.ru/search/">www.reestr-zalogov.ru/search/</a>.
-						При переходе на сайт кликните <span class="marked">по&nbsp;информации&nbsp;о&nbsp;залогодателе</span> и введите данные проверяемого лица.
-					</div>
-					<label><input type="checkbox"><span>У клиента в <a href="https://www.reestr-zalogov.ru/search/">реестре залогов</a> <b>максимум 1</b> ТС, зарегистрированное 3 и менее месяцев назад<span data-title="Например, сегодня 20 мая. Считаются ТС, зарегистрированные 20 февраля или позднее.">?</span></span></label>
-				</li>
-				<li data-on="is3|nocvu"><label><input type="checkbox"><span>У каждого 3 лица<span data-title="Если в реестре залогов хотя бы на одно 3 лицо зарегистрировано более 1 ТС 3 месяца назад и позднее, сделка не будет одобрена.">?</span>, в <a href="https://www.reestr-zalogov.ru/search/">реестре залогов</a> <b>максимум 1</b> ТС, зарегистрированное 3 и менее месяцев назад.</span></label></li>
+				<li data-on="avtoodobr"><label><input type="checkbox"><span>Проверили клиента на <a href="https://fssp.gov.ru/">fssp.ru</a>.</span></label></li>
+				<li data-on="nocvu"><label><input type="checkbox"><span>Лицо, забирающее авто, проверили на <a href="https://fssp.gov.ru/">fssp.ru</a>.</span></label></li>
+				<li data-on="is3|kaskokred;nocvu|kaskonal;nocvu"><label><input type="checkbox"><span>Проверили каждое 3 лицо в  полисе КАСКО на <a href="https://fssp.gov.ru/">fssp.ru</a>.</span></label></li>
+				<div class="info" data-on="avtoodobr|is3|nocvu">
+					<h3>Стоп-факторы при проверке на fssp.ru</h3>
+						<ul class="classic">
+							<li>Статья 33 Место совершения исполнительных действий и применения мер принудительного исполнения, без возможности определить предмет ИП и сумму</li>
+							<li>Закрытый долг по статье 47 п.7  "Признание должника банкротом, направление исполнительного документа арбитражному управляющему".</li>
+							<li>Арест имущества / Выселение / Арест счетов / Наложение ареста / Конфискация<span data-title="Кроме «Конфискация орудия совершения или предмета административного правонарушения, изъятие из оборота», «Обеспечительная мера неимущественного характера»">Кроме</span></li>
+					</ul>
+					<span>Если случай неясный, вы сомневаетесь, задайте вопрос сотруднику Сектора обработки заявок в рабочем чате!</span>
+				</div>
+				<li data-on="avtoodobr|is3|nocvu"><label><input type="checkbox"><span>При проверке на <a href="https://fssp.gov.ru/">fssp.ru</a>, ни в одном случае не выявлены стоп-факторы.</span></label></li>
+
+				<div class="info">Проверьте наличие залога у клиента <span data-on="is3">и третьих лиц, </span>по адресу <a href="https://www.reestr-zalogov.ru/search/">www.reestr-zalogov.ru/search/</a>.
+					При переходе на сайт кликните <span class="marked">по&nbsp;информации&nbsp;о&nbsp;залогодателе</span> и введите данные проверяемого лица.
+				</div>
+				<li><label><input type="checkbox"><span>У клиента <span data-on="is3|nocvu">и 3 лиц </span>в <a href="https://www.reestr-zalogov.ru/search/">реестре залогов</a> <b>не более 2</b> ТС</span></label></li>
+				<li><label><input type="checkbox"><span>У клиента <span data-on="is3|nocvu">и 3 лиц </span>в <a href="https://www.reestr-zalogov.ru/search/">реестре залогов</a> нет залогов, оформленных <b>3 и менее месяцев назад</b> ТС</span></label></li>
 			</ul>
 		</section>
 

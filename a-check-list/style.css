@@ -17,9 +17,10 @@ aside > h2 {
 	color: white;
 	font-weight: normal;
 }
-aside ul {
+aside ul, ul.classic {
 	list-style-type: disc;
 }
+
 aside.alarm {
 	width: 95%;
 	max-width: 1024px;
