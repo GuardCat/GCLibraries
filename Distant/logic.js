@@ -7,6 +7,7 @@ class Validator {
 		if (startValue) input.value = startValue;
 
 		input.addEventListener("keyup", this.validateLastSym.bind(this), false);
+		input.addEventListener("paste", this.validateLastSym.bind(this), false);
 	}
 
 	validateLastSym( ) {
@@ -35,10 +36,11 @@ function direktor( ) {
 		];
 	new Validator( {input: login, regs: loginRegs, startValue: localStorage.getItem("login")} );
 	new Validator( {input: tt, regs: ttRegs, startValue: localStorage.getItem("tt")} );
-		
+	
+	form.addEventListener( "paste", (e) => { setTimeout( ( ) => setButtonsState( form.checkValidity( ), buttons ), 0) } );
 	login.addEventListener("change", raiseLetters, false);
-	login.addEventListener( "keyup", ( ) => setButtonsState( form.checkValidity( ), buttons ) );
-	tt.addEventListener( "keyup", ( ) => setButtonsState( form.checkValidity( ), buttons ) );
+	form.addEventListener( "keyup", ( ) => setButtonsState( form.checkValidity( ), buttons ) );
+
 	copyButton.addEventListener("click", ( ) => copyLink(login, tt), false);
 	
 	setButtonsState( form.checkValidity( ), buttons );
