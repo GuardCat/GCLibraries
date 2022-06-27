@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Помощник обработки опросов</title>
+    <style type="text/css">
+        body {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+        textarea {
+            width: 350px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+<form id="variants">
+    <h1>Ответы на опрос с множеством вариантов</h1>
+    <table>
+        <tbody>
+            <tr><td colspan="2"><label for="variantsSource">Вставьте все ответы</label></td></tr>
+            <tr><td colspan="2"><textarea id="variantsSource"></textarea></td></tr>
+            <tr><td colspan="2"><label for="variantsResult">Здесь будет результат</label></td></tr>
+            <tr><td colspan="2"><textarea id="variantsResult"></textarea></td></tr>
+            <tr><td><input type="submit" value="Отфильтровать"></td><td><input type="button" value="Список" id="listGenButton"></td></tr>
+        </tbody>
+    </table>
+</form>
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <h2>Здесь будет список вариантов</h2>
+            </td>
+            <td><h2>Текст</h2></td>
+        </tr>
+        <tr>
+            <td><div id="listWrapper"></div></td>
+            <td><textarea id="listText" cols="30" rows="10"></textarea></td>
+        </tr>
+    </tbody>
+</table>
+<script>
+    director( );
+    function director( ) {
+        document.getElementById("variants").addEventListener("submit", fillVariants, false);
+        document.getElementById("listGenButton").addEventListener("click", addNewList, false); 
+    }
+
+    function fillVariants(e) {
+        const result = filterVariants( document.getElementById("variantsSource").value ).sort( ).join( String.fromCharCode(13) );
+        document.getElementById("variantsResult").value = result;
+        navigator.clipboard && navigator.clipboard.writeText(result).then( ( ) => console.log("Скопировано") );
+        e.preventDefault( );
+    }
+
+    function addNewList( ) {
+        const
+            text = document.getElementById("variantsResult").value,
+            wrapper = document.getElementById("listWrapper")
+        ;
+        let html, listElem =  document.getElementById("list");
+        listElem && listElem.remove( );
+        if (!text) return false;
+
+        html = generateList(text);
+        wrapper.insertAdjacentHTML("beforeEnd", html);
+        listElem = document.getElementById("list")
+        document.getElementById("listText").value = "";
+
+        listElem.addEventListener("click", generateTextList, false);
+    }
+
+    function generateTextList( ) {
+        const inputs = document.getElementById("list").querySelectorAll("input[type=checkbox]");
+        document.getElementById("listText").value = getCheckedInputsLabelText(inputs).join("; ");
+        navigator.clipboard && navigator.clipboard.writeText( document.getElementById("listText").value ).then( ( ) => console.log("Скопировано") );
+    }
+
+    // Чистые функции
+    function getCheckedInputsLabelText(inputs) {
+        const arr = Array.from(inputs);
+        console.log(arr);
+        return arr
+            .filter(input => input.checked)
+            .map(input => input.nextSibling.textContent)
+        ;
+    }
+    
+    function filterVariants(text) {
+        return Array.from(
+            new Set( 
+                text.split(/\n/)
+                    .map( e => e.split("; ") )
+                    .flat(1)
+                    .filter(e => e.length > 0)
+            )
+        );
+    }
+
+    function generateList(text, id="list") {
+        const arr = text.split(/\n/);
+        let html = `<table id=${id}><tbody>`
+        arr.forEach( e => {
+            html += `<tr><td><label><input type='checkbox' />${e}</label></td></tr>`
+        } )
+        return html + "</tbody></table>";
+    }
+</script>
+</body>
+</html>
