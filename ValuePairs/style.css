@@ -1,3 +1,84 @@
+body {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+input[type='button'] {
+	border-radius: 5px;
+	border: 0px;
+	padding: 5px;
+	margin: 5px;
+}
+
+form {
+	width: 100%;
+	display: flex;
+}
+
+input[type='text'] {
+	border-radius: 5px;
+	border: 1px solid gray;
+	padding: 5px;
+	margin: 5px;
+	min-width: 50%;
+}
+
 .hidden {
 	display: none;
+}
+
+table {
+	min-width: 50%;
+	margin-top: 20px;
+}
+
+th {
+	text-align: left;
+	border-bottom: 2px solid gray;
+	font-size: 14pt;
+	text-transform: uppercase;
+}
+
+td {
+	border-radius: 5px;
+	padding: 5px;
+	text-transform: uppercase;
+}
+
+section {
+	width:100%;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 20px 0px 20px 20px;
+}
+
+h1, h2 {
+	width: 100%;
+	text-transform: uppercase;
+}
+
+h1 {
+	background-color:darkcyan;
+	color: white;
+	margin: 0;
+	padding: 10px;
+}
+
+input.deleter {
+	border-radius: 100%;
+	background-color: red;
+	color: white;
+	width: 20px;
+	height: 20px;
+	font-family:  monospace;
+	font-weight: bolder;
+	line-height: 5px;
+	padding: 0px;
+}
+
+input.value {
+	text-transform: uppercase;
+	padding: 10px;
+	border-radius: 50px;
 }
