@@ -6,14 +6,17 @@ const
 	recalcButton =  document.getElementById("recalc"),
 	reset =  document.getElementById("reset"),
 	fPairButton = document.getElementById("FirstOfThePair"),
-	sPairButton = document.getElementById("SecondOfThePair")
+	sPairButton = document.getElementById("SecondOfThePair"),
+	recalcGUI =  document.getElementById("recalcGUI"),
+	regularGUI =  document.getElementById("regularGUI")
 ;
 
-function pairize(arr, fn) {
+async function pairize(arr, fn) {
 	arr.forEach( (first, i, arr) => {
 		slice = arr.slice(i + 1);
-			slice.forEach(second => {
-				fn(first, second)
+			slice.forEach( async second => {
+				await fn(first, second)
+				console.log(first);
 		});
 	} );
 }
@@ -24,7 +27,7 @@ document.getElementById("enterIt").onsubmit = (e) => {
 }
 
 class Base {
-	constructor ( { vField, addButton, monitor, recalcButton, lsKey, pairize, fPairButton, sPairButton }) {
+	constructor ( { vField, addButton, monitor, recalcButton, lsKey, pairize, fPairButton, sPairButton, recalcGUI, regularGUI }) {
 		this.vField = vField;
 		this.addButton = addButton;
 		this.monitor = monitor;
@@ -33,6 +36,8 @@ class Base {
 		this.pairize = pairize;
 		this.sPairButton = sPairButton;
 		this.fPairButton = fPairButton;
+		this.recalcGUI = recalcGUI;
+		this.regularGUI = regularGUI;
 		
 		this.readBase( );
 	
@@ -44,8 +49,14 @@ class Base {
 			this.addItem(this.vField.value);
 		} );
 
-		recalcButton.addEventListener("click", ( ) => this.recalcSums);
-
+		recalcButton.addEventListener( "click", async ( ) => {
+			this.regularGUI.classList.add("hidden");
+			this.recalcGUI.classList.remove("hidden");
+			await this.pairize(this.base, this.recalcSums.bind(this) );
+			this.regularGUI.classList.remove("hidden");
+			this.recalcGUI.classList.add("hidden");
+			this.saveBase( );
+		} );
 
 	}
 
@@ -71,7 +82,19 @@ class Base {
 	}
 
 	async recalcSums(first, second) {
-		this.sPairButton.
+		this.sPairButton.value = first.desc;
+		this.fPairButton.value = second.desc;
+		return new Promise( resolve => {
+			this.sPairButton.onclick = ( ) => {
+				first.sum += 1
+				resolve(true);
+			}
+
+			this.fPairButton.onclick = ( ) => {
+				second.sum += 1
+				resolve(true);
+			}
+		})
 	}
 
 	reloadMonitor( ) {
@@ -98,4 +121,4 @@ class Base {
 	}
 }
 
-let base = new Base( {vField, addButton, monitor, recalcButton, lsKey, pairize} );
+let base = new Base( {vField, addButton, monitor, recalcButton, lsKey, pairize, recalcGUI, regularGUI, sPairButton, fPairButton} );
