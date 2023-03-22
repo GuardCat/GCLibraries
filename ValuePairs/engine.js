@@ -4,8 +4,19 @@ const
 	addButton = document.getElementById("addValButton"),
 	monitor = document.getElementById("monitor").querySelector("tbody"),
 	recalcButton =  document.getElementById("recalc"),
-	reset =  document.getElementById("reset")
+	reset =  document.getElementById("reset"),
+	fPairButton = document.getElementById("FirstOfThePair"),
+	sPairButton = document.getElementById("SecondOfThePair")
 ;
+
+function pairize(arr, fn) {
+	arr.forEach( (first, i, arr) => {
+		slice = arr.slice(i + 1);
+			slice.forEach(second => {
+				fn(first, second)
+		});
+	} );
+}
 
 document.getElementById("enterIt").onsubmit = (e) => {
 	e.preventDefault( );
@@ -13,24 +24,28 @@ document.getElementById("enterIt").onsubmit = (e) => {
 }
 
 class Base {
-	constructor ( { vField, addButton, monitor, recalcButton, lsKey }) {
+	constructor ( { vField, addButton, monitor, recalcButton, lsKey, pairize, fPairButton, sPairButton }) {
 		this.vField = vField;
 		this.addButton = addButton;
 		this.monitor = monitor;
 		this.recalcButton = recalcButton;
 		this.lsKey = lsKey;
+		this.pairize = pairize;
+		this.sPairButton = sPairButton;
+		this.fPairButton = fPairButton;
 		
 		this.readBase( );
-		this.reloadMonitor( );
-		
+	
 		addButton.addEventListener("click", ( ) => { 
 			this.addItem(this.vField.value);
 		} );
-
 		vField.addEventListener("keyup", (e) => {
 			if ( !(e.keyCode === 13) ) return false;
 			this.addItem(this.vField.value);
 		} );
+
+		recalcButton.addEventListener("click", ( ) => this.recalcSums);
+
 
 	}
 
@@ -38,13 +53,25 @@ class Base {
 		this.base.push( {desc, sum: 0} );
 		this.vField.value = "";
 		this.saveBase( );
-		this.reloadMonitor( );
 	}
 
 	delItem(index = 0) {
 		this.base.splice(index, 1);
 		this.saveBase( );
-		this.reloadMonitor( );
+	}
+
+	addSum(index = 0) {
+		this.base[index].sum += 1
+		this.saveBase( );
+	}
+
+	resetSums( ) {
+		this.base.forEach( field => field.sum = 0 );
+		this.saveBase( );
+	}
+
+	async recalcSums(first, second) {
+		this.sPairButton.
 	}
 
 	reloadMonitor( ) {
@@ -62,11 +89,13 @@ class Base {
 	readBase( ) {
 		const rawBase = localStorage.getItem(this.lsKey);
 		this.base = rawBase ? JSON.parse( rawBase ) : [ ];
+		this.reloadMonitor( );
 	}
 
 	saveBase( ) {
 		localStorage.setItem( this.lsKey, JSON.stringify(this.base) );
+		this.reloadMonitor( );
 	}
 }
 
-let base = new Base( {vField, addButton, monitor, recalcButton, lsKey} );
+let base = new Base( {vField, addButton, monitor, recalcButton, lsKey, pairize} );
