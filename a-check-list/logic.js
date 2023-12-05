@@ -92,9 +92,9 @@ class TieChecker {
 
 function director( ) {
 	const
-		version = "v1.5.2",
-		updatedFact = 1648046693114,
-		allowedUpdateDate = 1648046693114,
+		version = "v1.6",
+		updatedFact = 1701775042695,
+		allowedUpdateDate = 1701775042695,
 		updatedLocal = +window.localStorage.getItem("checklist_auto_updated"),
 		oldDate = new Date(updatedLocal),
 		newDate = new Date(updatedFact),
@@ -117,9 +117,9 @@ function director( ) {
 `Приложение обновлено.
 Данные старой версии ${ updatedLocal > 0 ? "от " + zeroTo( oldDate.getDate( ) ) + "." + zeroTo( oldDate.getMonth( ) + 1 ) + "." + oldDate.getFullYear( ) : ""} удалены, чек-лист будет очищен.
 Изменения:
+v1.6: уточнены данные по сумме кредита и убран блок является ли владельцем ДЦ.
 v1.5.2: уточнены условия проверки на fssp и в реестре залогов.
 v1.5.1: полностью обновлены документы и требования к письмам.
-v1.4: + детализированы требования РГО. x Исправлены ошибки (остатки ГП)
 `,
 		renewAll = ( ) => {
 			let numOffVidgets, checklistVisible;

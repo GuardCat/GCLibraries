@@ -57,19 +57,12 @@
 			</tr>
 		</table>
 		
-		<table data-on="pts;isold">
-			<caption>ДЦ вписан в ПТС</caption>
-			<tr>
-				<td><input type="radio" id="dcowner" name="owner"><label for="dcowner">Вписан</label></td>
-				<td><input type="radio" id="notdcowner" name="owner"><label for="notdcowner">Не вписан</label></td>
-			</tr>
-		</table>
 
 		<table>
 			<caption>Сумма кредита</caption>
 			<tr>
-				<td><input type="radio" id="lessmln" name="sum"><label for="lessmln">До <span data-on="isnew">1</span><span data-on="isold">1,5</span> млн.</label></td>
-				<td><input type="radio" id="moremln" name="sum"><label for="moremln"><span data-on="isnew">1</span><span data-on="isold">1,5</span> млн.+</label></td>
+				<td><input type="radio" id="lessmln" name="sum"><label for="lessmln">До <span data-on="isnew">1</span><span data-on="isold">2,5</span> млн.</label></td>
+				<td><input type="radio" id="moremln" name="sum"><label for="moremln"><span data-on="isnew">1</span><span data-on="isold">2,5</span> млн.+</label></td>
 			</tr>
 		</table>
 
@@ -137,7 +130,6 @@
 				<li data-on="epts"><label><input type="checkbox"><span>ЭПТС.</span></label></li>
 				<li data-on="isnew;pts"><label><input type="checkbox"><span>Скан ПТС.</span></label></li>
 				<li data-on="nopts"><label><input type="checkbox"><span>Информационное письмо ДЦ или Товарно-транспортная накладная (ТТН) или Форма учёта ТС (ФУТС).</span></label></li>
-				<li data-on="notdcowner;pts"><label><input type="checkbox"><span>Скан договора между Дилером и прежним владельцем.</span></label></li>
 				<li data-on="isold;pts"><label><input type="checkbox"><span><b>Цветной</b> скан ПТС.</span></label></li>
 				<li data-on="isold;epts;norast"><label><input type="checkbox"><span>Скан СТС прежнего владельца</span></label></li>
 				<li data-on="isold;epts;norast"><label><input type="checkbox"><span>Скан договора между Дилером и владельцем по СТС.</span></label></li>
@@ -291,23 +283,8 @@
 			<h2>Паспорт транспортного средства</h2>
 			<ul>
 				<li data-on="pts"><label><input type="checkbox"><span>Документ отсканирован полностью, не обрезан, нет нечитаемых областей.</span></label></li>
-				<li data-on="dcowner;pts"><label><input type="checkbox"><span>Последним собственником в ПТС указан Дилерский центр.</span></label></li>
-				<li data-on="dcowner;epts"><label><input type="checkbox"><span>Последним собственником в ЭПТС указан Дилерский центр.</span></label></li>
 				<li data-on="nopts"><label><input type="checkbox"><span>В предоставленном взамен ЭПТС документе указаны: мощность, объём двигателя и VIN автомобиля, документ пронумерован.</span></label></li>
 			</ul>
-		</section>
-
-		<section data-on="notdcowner">
-			<h2>Договор комиссии / агентский договор</h2> 
-			<ul>
-				<li><label><input type="checkbox"><span>Отсканированы все страницы документа.</span></label></li>
-				<li><label><input type="checkbox"><span>Данные сторон договора внесены верно.</span></label></li>
-				<li><label><input type="checkbox"><span>Данные транспортного средства в Договоре совпадают <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС</span><span data-on="nopts">Информационным письмом ДЦ / ТТН / ФУТС</span>.</span></label></li>
-				<li><label><input type="checkbox"><span>Присутствуют печати комиссионера, подписи и реквизиты сторон.</span></label></li>
-				<li data-on="pts|epts"><label><input type="checkbox"><span>Собственник в <span data-on="pts">ПТС</span><span data-on="epts">ЭПТС | копии старого ПТС</span> и комитент в договоре комиссии совпадают. Или приложены документы, подтверждающие переход ТС от собственника к собственнику независимо от их количества. Договоры купли-продажи — <b>предметные</b> (см. ниже) или есть акты приёма-передачи.</span></label></li>
-				<li><label><input type="checkbox"><span>Есть акт приёма-передачи авто и все указанные выше данные в нём присутствуют.</span></label></li>
-			</ul>
-			<div class="info">Договор считается предметным, если в нём однозначно определён автомобиль, например указан его VIN номер.</div>
 		</section>
 
 		<section data-on="nosoz">
