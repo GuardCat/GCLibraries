@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Первая страничка на Flask</title>
+	<style type = "text/css">
+		body {
+			font-family: Calibri;
+		}
+		table {
+			border: 1px solid silver;
+			border-radius: 15px;
+			border-collapse: collapse;
+			overflow: hidden;
+			box-shadow: 0 0 1px gray inset;
+			min-width: 600px;
+		}
+		td, th {
+			border: 0.5px solid silver;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Список файлов</h1>
+	<table>
+	<tr>
+		<th>Файл</th>
+		<th>Время изм.</th>
+		<th>День изм.</th>
+		<th>Мес.</th>
+		<th>Разм.</th>
+		<th>Владелец</th>
+		<th>Группа</th>
+		<th>?</th>
+		<th>Права</th>
+	{% for a in result  %}
+		<tr>
+		{% if loop.index != 1 %}
+		{% for b in a  %}
+    		<td> {{ b }} </td>
+    	{% endfor  %}
+		{% endif %}
+    	</tr>
+	{% endfor  %}
+	</table>
+</body>
+</html>
