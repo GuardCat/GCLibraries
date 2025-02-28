@@ -1,6 +1,7 @@
 body {
 	font-family: Calibri;
 	font-size: 15pt;
+	background-color:  rgb(241, 241, 241);
 }
 table {
 	border: 1px solid silver;
@@ -10,6 +11,7 @@ table {
 	box-shadow: 0 0 1px gray inset;
 	max-width: 400px;
 	width: 100%;
+	background-color: white;
 }
 td, th {
 	border-bottom: 0.5px solid silver;
