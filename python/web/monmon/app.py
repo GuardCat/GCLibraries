@@ -21,11 +21,11 @@ def get_data():
 	res["data"] = [
 		("Питание", r.randrange(1000, 1000000)),
 		("Проезд", r.randrange(1000, 1000000)),
-		("Фонд жилья", r.randrange(1000, 1000000))
+		("Фонд жилья", -1000)
 	]
 	res["date"] = [("2025-02-25")]
 	res["balance"] = [("Сбер Моментум", r.randrange(1000, 1000000))]
-'''
+	'''
 	return res
 
 
@@ -35,14 +35,18 @@ def format_data(arr):
 		"Фонд жилья": "Отложено",
 		"Сбер Моментум": "Баланс на сбере"
 	}
+	to_hide = ["Стрижка Эрика"]
 	for el in arr:
 		l_res = []
+		if el[0] in to_hide:
+			continue
 		if el[0] in names:
 			l_res.append(names[el[0]])
 		else:
 			l_res.append(el[0])
 		l_res.append(f"{el[1]:_.0f}".replace("_", " "))
 		res.append(l_res)
+	
 	return res
 
 @app.route('/Hdhfbmbkhuk83yhsjdsbfmnb--sdLLlksdjsdjkfjkfdsjljdl')
