@@ -45,3 +45,7 @@ h1 {
 main {
 	padding: 10px;
 }
+
+tr.negative td {
+	background-color: rgb(252, 227, 227);
+}

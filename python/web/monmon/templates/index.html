@@ -14,7 +14,7 @@
 		{% for b in a  %}<td> {{ b }} </td>{% endfor  %}
 	{% endfor  %}</tr>
 	
-	{% for a in data %}<tr>
+	{% for a in data %}<tr {% if a[1][0] == "-" %} class="negative" {% endif %}>
 		{% for b in a  %}<td> {{ b }} </td>{% endfor  %}
     	</tr>
 	{% endfor  %}
