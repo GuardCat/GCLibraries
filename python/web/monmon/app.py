@@ -3,24 +3,35 @@ import sqlite3
 import random as r
 
 app = Flask(__name__)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+
 
 def get_data():
+	res = {}
 	#connect = sqlite3.connect("/home/guardcat/dbs/money/money.db")
 	#cursor = connect.cursor()
 	#cursor.execute("SELECT * from v_by_bud_html")
-	#data = cursor.fetchall()
+	#res["data"] = cursor.fetchall()
+	#cursor.execute("SELECT MAX(date) from transact")
+	#res["date"] = cursor.fetchall()
+	#cursor.execute("SELECT name, sum(real_sum) FROM transact INNER JOIN accounts ON account_id = accounts.id WHERE account_id = '5'")
+	#res["balance"] = cursor.fetchall()
 	#connect.close()
-	data = [
+	res["data"] = [
 		("Питание", r.randrange(1000, 1000000)),
 		("Проезд", r.randrange(1000, 1000000)),
 		("Фонд жилья", r.randrange(1000, 1000000))
 	]
-	return data
+	res["date"] = [("2025-02-25")]
+	res["balance"] = [("Сбер Моментум", r.randrange(1000, 1000000))]
+	return res
+
 
 def format_data(arr):
 	res = []
 	names = {
-		"Фонд жилья": "Отложено"
+		"Фонд жилья": "Отложено",
+		"Сбер Моментум": "Баланс на сбере"
 	}
 	for el in arr:
 		l_res = []
@@ -34,7 +45,9 @@ def format_data(arr):
 
 @app.route('/Hdhfbmbkhuk83yhsjdsbfmnb--sdLLlksdjsdjkfjkfdsjljdl')
 def home():
-	data = format_data(get_data())
-	return render_template("index.html", data=data, date="26.02.2025")
-
+	arr = get_data()
+	arr["data"] = format_data(arr["data"])
+	arr["balance"] = format_data(arr["balance"])
+	date = ".".join(reversed(arr["date"][0].split("-")[1:]))
+	return render_template("index.html", data=arr["data"], date=date, balance=arr["balance"])
 app.run()
