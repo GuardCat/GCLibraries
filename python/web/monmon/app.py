@@ -17,19 +17,21 @@ def get_data():
 	cursor.execute("SELECT name, sum(real_sum) FROM transact INNER JOIN accounts ON account_id = accounts.id WHERE account_id = '5'")
 	res["balance"] = cursor.fetchall()
 	connect.close()
-	'''
-	res["data"] = [
-		("Питание", r.randrange(1000, 1000000)),
-		("Проезд", r.randrange(1000, 1000000)),
-		("Фонд жилья", -1000)
-	]
-	res["date"] = [("2025-02-25")]
-	res["balance"] = [("Сбер Моментум", r.randrange(1000, 1000000))]
-	'''
 	return res
 
 
-def format_data(arr):
+def get_fake_data():
+    res = {}
+    res["data"] = [
+        ("Питание", r.randrange(1000, 1000000)),
+        ("Проезд", r.randrange(1000, 1000000)),
+        ("Фонд жилья", -1000)
+    ]
+    res["date"] = [("2025-02-25")]
+    res["balance"] = [("Сбер Моментум", r.randrange(1000, 1000000))]
+    return res
+
+def format_data(arr, hide_them=True):
 	res = []
 	names = {
 		"Фонд жилья": "Отложено",
@@ -38,7 +40,7 @@ def format_data(arr):
 	to_hide = ["Стрижка Эрика"]
 	for el in arr:
 		l_res = []
-		if el[0] in to_hide:
+		if el[0] in to_hide and hide_them:
 			continue
 		if el[0] in names:
 			l_res.append(names[el[0]])
@@ -50,10 +52,11 @@ def format_data(arr):
 	return res
 
 @app.route('/Hdhfbmbkhuk83yhsjdsbfmnb--sdLLlksdjsdjkfjkfdsjljdl')
-def home():
+def minmon():
 	arr = get_data()
 	arr["data"] = format_data(arr["data"])
 	arr["balance"] = format_data(arr["balance"])
 	date = ".".join(reversed(arr["date"][0].split("-")[1:]))
 	return render_template("index.html", data=arr["data"], date=date, balance=arr["balance"])
+
 app.run(port="8080", host="0.0.0.0")
