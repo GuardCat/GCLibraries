@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Баланс бюджета</title>
+	<link rel = "stylesheet" href = "/static/style.css" type="text/css">
+</head>
+<body>
+	<h1>Бюджет</h1>
+	<p>Последние обновления: {{ date }}</p>
+	<table>
+	<tr>
+		<th>Бюджет</th>
+		<th>Баланс</th>
+	{% for a in data %}
+		<tr>
+		{% for b in a  %}
+    		<td> {{ b }} </td>
+    	{% endfor  %}
+    	</tr>
+	{% endfor  %}
+	</table>
+</body>
+</html>

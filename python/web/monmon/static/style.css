@@ -1,0 +1,26 @@
+body {
+	font-family: Calibri;
+	font-size: 15pt;
+}
+table {
+	border: 1px solid silver;
+	border-radius: 15px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 1px gray inset;
+	max-width: 400px;
+	width: 100%;
+}
+td, th {
+	border-bottom: 0.5px solid silver;
+	padding: 10px 20px 10px 20px;
+
+}
+
+td:nth-child(1), th:nth-child(1) {
+	text-align: right;
+}
+
+th:nth-child(2) {
+	text-align: left;
+}
