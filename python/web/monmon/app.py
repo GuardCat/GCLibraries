@@ -50,4 +50,4 @@ def home():
 	arr["balance"] = format_data(arr["balance"])
 	date = ".".join(reversed(arr["date"][0].split("-")[1:]))
 	return render_template("index.html", data=arr["data"], date=date, balance=arr["balance"])
-app.run()
+app.run(port="8080", host="0.0.0.0")
