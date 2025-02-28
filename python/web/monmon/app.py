@@ -8,15 +8,16 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 def get_data():
 	res = {}
-	#connect = sqlite3.connect("/home/guardcat/dbs/money/money.db")
-	#cursor = connect.cursor()
-	#cursor.execute("SELECT * from v_by_bud_html")
-	#res["data"] = cursor.fetchall()
-	#cursor.execute("SELECT MAX(date) from transact")
-	#res["date"] = cursor.fetchall()
-	#cursor.execute("SELECT name, sum(real_sum) FROM transact INNER JOIN accounts ON account_id = accounts.id WHERE account_id = '5'")
-	#res["balance"] = cursor.fetchall()
-	#connect.close()
+	connect = sqlite3.connect("/home/guardcat/dbs/money/money.db")
+	cursor = connect.cursor()
+	cursor.execute("SELECT * from v_by_bud_html")
+	res["data"] = cursor.fetchall()
+	cursor.execute("SELECT MAX(date) from transact")
+	res["date"] = cursor.fetchall()
+	cursor.execute("SELECT name, sum(real_sum) FROM transact INNER JOIN accounts ON account_id = accounts.id WHERE account_id = '5'")
+	res["balance"] = cursor.fetchall()
+	connect.close()
+	'''
 	res["data"] = [
 		("Питание", r.randrange(1000, 1000000)),
 		("Проезд", r.randrange(1000, 1000000)),
@@ -25,7 +26,7 @@ def get_data():
 	res["date"] = [("2025-02-25")]
 	res["balance"] = [("Сбер Моментум", r.randrange(1000, 1000000))]
 	return res
-
+	'''
 
 def format_data(arr):
 	res = []
