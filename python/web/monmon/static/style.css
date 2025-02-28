@@ -4,6 +4,11 @@ body {
 	background-color:  rgb(241, 241, 241);
 	margin: 0;
 }
+
+li {
+    margin: 10px 0 10px 0;
+}
+
 table {
 	border: 1px solid silver;
 	border-radius: 15px;
@@ -19,6 +24,10 @@ td, th {
 
 }
 
+table:nth-child(1) {
+    margin-bottom: 15px;
+}
+
 td:nth-child(1), th:nth-child(1) {
 	text-align: right;
 }
@@ -29,6 +38,10 @@ th:nth-child(2) {
 
 tr:nth-child(1) td {
 	background-color: rgb(241, 213, 255);
+}
+
+table.accs {
+	background-color: rgb(241, 213, 255);    
 }
 
 h1 {

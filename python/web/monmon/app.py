@@ -9,12 +9,12 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 def get_data(view='v_by_bud_html', fetch_all = False):
     res = {}
     one_account = """
-        SELECT name, sum(real_sum)\
+        SELECT name, sum(real_sum)
         FROM transact
         INNER JOIN accounts ON account_id = accounts.id
         WHERE account_id = '5'
     """
-    all_accouns = """
+    all_accounts = """
         SELECT name, sum(real_sum) 
         FROM transact 
         INNER JOIN accounts ON account_id = accounts.id
@@ -70,7 +70,7 @@ def fake():
     arr["data"] = format_data(arr["data"])
     arr["balance"] = format_data(arr["balance"])
     date = ".".join(reversed(arr["date"][0].split("-")[1:]))
-    return render_template("index.html", data=arr["data"], date=date, balance=arr["balance"])
+    return render_template("min.html", data=arr["data"], date=date, balance=arr["balance"])
 
 @app.route('/Hdhfbmbkhuk83yhsjdsbfmnb--sdLLlksdjsdjkfjkfdsjljdl')
 def minmon():
@@ -78,17 +78,19 @@ def minmon():
     arr["data"] = format_data(arr["data"])
     arr["balance"] = format_data(arr["balance"])
     date = ".".join(reversed(arr["date"][0].split("-")[1:]))
-    return render_template("index.html", data=arr["data"], date=date, balance=arr["balance"])
+    return render_template("min.html", data=arr["data"], date=date, balance=arr["balance"])
 
 
 @app.route('/gdjfovbnmHgd-HCTpvdbute-sjnnn628awfgfsa')
 def maxmon():
-    arr = get_data(view="v_by_bud_html_all")
+    arr = get_data(view="v_by_bud_html_all", fetch_all=True)
     arr["data"] = format_data(arr["data"], False)
     arr["balance"] = format_data(arr["balance"], False)
     date = ".".join(reversed(arr["date"][0].split("-")[1:]))
-    return render_template("index.html", data=arr["data"], date=date, balance=arr["balance"])
+    return render_template("max.html", data=arr["data"], date=date, balance=arr["balance"])
 
-
+@app.route('/ebNoa5-zvbj0qHjdv-HVCFjk-5qzkKvd')
+def navigate():
+    return render_template('nav.html')
     
 app.run(port="8080", host="0.0.0.0")

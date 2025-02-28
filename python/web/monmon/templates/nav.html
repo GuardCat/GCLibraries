@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Навигация {% endblock %}
+
+{% block head %} Навигация {% endblock %}
+{% block content %}
+	<ul>
+	    <li>
+	        <a href="{{ url_for('minmon') }}">
+	            Семейный бюджет
+	        </a>
+	    </li>
+        <li>
+	        <a href="{{ url_for('maxmon') }}">
+	            Полный бюджет
+	        </a>
+	    </li>
+	    <li>
+ 	        <a href="{{ url_for('fake') }}">
+ 	            Фейковый бюджет
+ 	        </a>
+ 	    </li>
+	</ul>
+{% endblock %}
