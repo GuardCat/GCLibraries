@@ -13,7 +13,7 @@ def get_data():
 	cursor.execute("SELECT * from v_by_bud_html")
 	res["data"] = cursor.fetchall()
 	cursor.execute("SELECT MAX(date) from transact")
-	res["date"] = cursor.fetchall()
+	res["date"] = cursor.fetchone()
 	cursor.execute("SELECT name, sum(real_sum) FROM transact INNER JOIN accounts ON account_id = accounts.id WHERE account_id = '5'")
 	res["balance"] = cursor.fetchall()
 	connect.close()
@@ -25,8 +25,9 @@ def get_data():
 	]
 	res["date"] = [("2025-02-25")]
 	res["balance"] = [("Сбер Моментум", r.randrange(1000, 1000000))]
+'''
 	return res
-	'''
+
 
 def format_data(arr):
 	res = []
