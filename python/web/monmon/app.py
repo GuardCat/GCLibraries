@@ -36,9 +36,12 @@ def get_data(view='v_by_bud_html', fetch_all = False):
 def get_fake_data():
     res = {}
     res["data"] = [
-        ("Питание", r.randrange(1000, 1000000)),
-        ("Проезд", r.randrange(1000, 1000000)),
-        ("Фонд жилья", -1000)
+        ("Питание", r.randrange(-10000, 100000)),
+        ("Проезд", r.randrange(-10000, 100000)),
+        ("На квартиру", r.randrange(-10000, 100000)),
+        ("На одежду", r.randrange(-10000, 100000)),
+        ("На отпуск", r.randrange(-10000, 100000)),
+        ("Отложено", r.randrange(-10000, 100000))
     ]
     res["date"] = [("2025-02-25")]
     res["balance"] = [("Сбер Моментум", r.randrange(1000, 1000000))]
