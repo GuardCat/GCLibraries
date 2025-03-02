@@ -36,7 +36,7 @@ th:nth-child(2) {
 	text-align: left;
 }
 
-tr:nth-child(1) td {
+table:nth-child(1) tr:nth-child(1) td {
 	background-color: rgb(241, 213, 255);
 }
 
