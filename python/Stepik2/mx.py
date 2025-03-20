@@ -24,22 +24,39 @@ def pow_mx(mx1, exp):
     return mx2
 
 
+def sum_mx(mx1, mx2):
+    wmx1 = len(mx1[0])
+    wmx2 = len(mx2[0])
+    hmx1 = len(mx1)
+    hmx2 = len(mx2)
+
+    if wmx1 != wmx2 or hmx1 != hmx2:
+        return False
+    
+    res = []
+    
+    for r in range(wmx1):
+        res.append([mx1[r][c] + mx2[r][c] for c in range(wmx1)])
+
+    return res
+
+
 def print_mx(mx):
     for row in mx:
         print(*[str(i).ljust(3) for i in row], sep=" ")
 
 def main():
     mx1 = [
-        [1, 0],
-        [4, 1]
+        [2, 1],
+        [0, -1]
     ]
 
     mx2 = [
-        [1, 0],
-        [4, 1]
+        [1, 2],
+        [3, 4]
     ]
 
-    print_mx(pow_mx(mx1, 25))
+    print_mx(sum_mx(mx1, mx2))
 
 if __name__ == "__main__":
     main()
