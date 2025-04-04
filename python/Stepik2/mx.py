@@ -35,7 +35,7 @@ def sum_mx(mx1, mx2):
     
     res = []
     
-    for r in range(wmx1):
+    for r in range(hmx1):
         res.append([mx1[r][c] + mx2[r][c] for c in range(wmx1)])
 
     return res
