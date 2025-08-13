@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quote-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.quote {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    position: relative;
+    line-height: 1.8;
+}
+
+.quote::before {
+    content: "«";
+    font-size: 4rem;
+    color: #667eea;
+    position: absolute;
+    top: -20px;
+    left: -30px;
+    font-family: serif;
+}
+
+.quote::after {
+    content: "»";
+    font-size: 4rem;
+    color: #667eea;
+    position: absolute;
+    bottom: -40px;
+    right: -30px;
+    font-family: serif;
+}
+
+.author {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    font-weight: 600;
+    margin-top: 20px;
+    text-align: right;
+    font-style: normal;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .quote-container {
+        padding: 25px;
+    }
+    
+    .quote {
+        font-size: 1.2rem;
+    }
+    
+    .quote::before,
+    .quote::after {
+        font-size: 3rem;
+    }
+    
+    .quote::before {
+        top: -15px;
+        left: -20px;
+    }
+    
+    .quote::after {
+        bottom: -30px;
+        right: -20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quote-container {
+        padding: 20px;
+    }
+    
+    .quote {
+        font-size: 1.1rem;
+    }
+    
+    .author {
+        font-size: 1rem;
+    }
+}

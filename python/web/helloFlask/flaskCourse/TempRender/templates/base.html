@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or 'Цитаты' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Мудрые слова</h1>
+        </header>
+        
+        <main>
+            <div class="quote-container">
+                <blockquote class="quote">
+                    {{ quote or 'Здесь будет ваша цитата...' }}
+                </blockquote>
+                <div class="author">
+                    — {{ author or 'Неизвестный автор' }}
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Коллекция цитат</p>
+        </footer>
+    </div>
+</body>
+</html>
