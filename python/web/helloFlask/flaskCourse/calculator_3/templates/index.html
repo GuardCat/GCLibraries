@@ -1,0 +1,19 @@
+{% if a is not none and b is not none and o is not none %}
+	{% if o == '+' %}
+		{{a + b}}
+	{% elif o == '-' %}
+		{{a - b}}
+	{% elif o == '*' %}
+		{{a * b}}
+	{% elif o == '**' %}
+		{{a ** b}}
+	{% elif o == ':' %}
+		{% if b > 0  %}
+			{{a / b}}
+		{% else %}
+			Ошибка
+		{% endif %}
+	{% else %}
+		Ошибка
+	{% endif  %}	
+{% endif  %}
