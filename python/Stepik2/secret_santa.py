@@ -2,12 +2,13 @@ import random as r
 
 def get_pairs(arr):
     result = [ ]
-
+    
     for i in range(len(arr)):
-        options = set(arr)
-        options.remove(arr[i])
-        print(result)
-        choice = r.choice(list(options - set(result)))
+        options = list(set(arr) - set(result) - set(arr[i]))
+        if not len(options):
+            options.append(result[-1])
+            result[-1] = arr[i]
+        choice = r.choice([*options])
         result.append(choice)
     return result
 
