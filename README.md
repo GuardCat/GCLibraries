@@ -195,11 +195,12 @@
 
     <div class="gc-card">
       <p class="gc-card-label">Инструмент</p>
-      <h2 class="gc-card-title">Инструмент попарного сравнения</h2>
-      <p class="gc-card-subtitle">Выбери то, что по-настоящему для тебя важно.</p>
+      <h2 class="gc-card-title">Выбор из множества вариантов</h2>
+      <p class="gc-card-subtitle">Сравните варианты попарно и получите рейтинг для обоснованного выбора.</p>
       <a class="gc-button" href="./ValuePairs/pairs.html">Открыть</a>
     </div>
   </section>
 
   <div class="gc-footer">GuardCat inc</div>
 </div>
+

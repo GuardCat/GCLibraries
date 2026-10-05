@@ -1,45 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Ценности</title>
-	<link type="text/css" rel="stylesheet" href="style.css"></link>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#ffffff">
+<title>Выбор из множества вариантов — GuardCat inc</title><link rel="stylesheet" href="style.css">
 </head>
-<body>
-	<h1>Рейтинг ценностей</h1>
-	<section id="regularGUI">
-		<form id="enterIt">
-			<input type="text" id="valueText"><input type="button" id="addValButton" value="Добавить">
-		</form>
-		<section>
-			<input type="button" id="reset" value="Сбросить баллы">
-			<input type="button" id="recalc" value="Пересчёт">
-		</section>
-		<table id="monitor">
-			<thead>
-				<th>Ценность</th>
-				<th>Баллы</th>
-				<th>Действия</th>
-			</thead>
-			<tbody>
-
-			</tbody>
-		</table>
-	</section>
-
-	<section id="recalcGUI" class="hidden">
-		<h2>Выбери одну ценность из двух</h2>
-		<table id="pair">
-			<tbody>
-				<tr>
-					<td><input type="button" class="value" id="FirstOfThePair"></td>
-					<td><input type="button" class="value" id="SecondOfThePair"></td>
-				</tr>
-			</tbody>
-		</table>
-	</section>
-
-	<script src="engine.js"></script>
-</body>
-</html>
+<body><main class="page">
+<header class="hero"><a class="brand" href="../">GuardCat inc <span>/ ValuePairs</span></a>
+<h1>Выбор из множества вариантов</h1>
+<p class="intro">Проще всего выбирать из 2 вариантов. Если их больше, этот инструмент позволит вам попарно сравнивать каждый из них, и в итоге вы получите рейтинг для обоснованного выбора. Так можно выявить, что по-настоящему для вас ценно.</p></header>
+<p id="notice" class="notice hidden" role="status"></p>
+<div class="workspace"><aside class="panel lists-panel" aria-labelledby="listsTitle">
+<div class="panel-heading"><h2 id="listsTitle">Мои списки</h2><button id="newList" class="small">+ Новый</button></div>
+<nav id="lists" aria-label="Сохранённые списки"></nav>
+<p id="storageStatus" class="storage-note">Списки и выборы сохраняются автоматически в этом браузере на устройстве. Очистка данных сайта удалит их.</p></aside>
+<section class="panel content-panel"><div class="list-heading"><div><label class="eyebrow" for="listName">Название списка</label><input id="listName" class="list-name" maxlength="100" placeholder="Например, выбираем работу"></div><button id="deleteList" class="text-button danger">Удалить список</button></div>
+<section id="regularGUI"><form id="enterIt"><label for="valueText">Добавьте варианты для сравнения</label><div class="input-row"><input type="text" id="valueText" maxlength="300" placeholder="Например, работа рядом с домом" autocomplete="off"><button type="submit" id="addValButton" class="primary">Добавить</button></div></form>
+<div class="toolbar"><p id="listSummary" class="muted"></p><div class="actions"><button id="reset" class="text-button">Сбросить выборы</button><button id="recalc" class="primary">Начать сравнение</button></div></div>
+<div id="emptyState" class="empty-state"><div class="empty-icon" aria-hidden="true">↔</div><h3>С чего начнём?</h3><p>Добавьте хотя бы два варианта.<br>Затем выбирайте предпочтительный в каждой паре.</p></div>
+<div id="tableWrap" class="hidden"><table id="monitor"><thead><tr><th scope="col">Вариант</th><th scope="col">Баллы</th><th scope="col"><span class="sr-only">Действия</span></th></tr></thead><tbody></tbody></table></div>
+<p id="ratingNote" class="rating-note hidden"></p></section>
+<section id="recalcGUI" class="hidden" aria-labelledby="pairTitle"><div class="comparison-heading"><p class="eyebrow">Попарное сравнение</p><button id="pause" class="text-button">Продолжить позже</button></div><h2 id="pairTitle">Что вы предпочитаете?</h2><p class="muted">Выберите один из двух вариантов.</p>
+<div class="progress-heading"><span id="progressText" aria-live="polite"></span><span id="progressPercent"></span></div><progress id="progress" value="0" max="1" aria-label="Прогресс сравнения"></progress>
+<div id="pair" class="pair"><button class="value" id="FirstOfThePair"></button><span class="or" aria-hidden="true">или</span><button class="value" id="SecondOfThePair"></button></div><button id="undo" class="text-button">← Отменить последний выбор</button><p class="storage-note">Можно остановиться и вернуться: каждый выбор сохраняется автоматически.</p></section>
+</section></div><footer>Меньше сомнений. Больше ясности.</footer></main><script src="engine.js"></script></body></html>
