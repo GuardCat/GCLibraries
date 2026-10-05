@@ -36,6 +36,12 @@ class Base {
             if (raw) {
                 this.data = JSON.parse(raw);
                 if (!this.validData(this.data)) throw new Error('Invalid saved lists');
+                // Preserve answered pairs from older sessions; shuffle only the rest.
+                this.data.lists.forEach(list => {
+                    if (list.session && !list.session.pairs) {
+                        list.session.pairs = this.shufflePairs(this.makePairs(list.items.length), list.session.history.length);
+                    }
+                });
             } else {
                 const legacyRaw = localStorage.getItem(this.lsKey);
                 const legacy = legacyRaw ? JSON.parse(legacyRaw) : [];
@@ -67,8 +73,16 @@ class Base {
             if (list.session !== null) {
                 const session = list.session;
                 if (!session || !Array.isArray(session.history) || list.items.length < 2) return false;
-                const pairs = [];
-                for (let f = 0; f < list.items.length - 1; f++) for (let s = f + 1; s < list.items.length; s++) pairs.push([f, s]);
+                const pairs = session.pairs === undefined ? this.makePairs(list.items.length) : session.pairs;
+                const total = list.items.length * (list.items.length - 1) / 2;
+                if (!Array.isArray(pairs) || pairs.length !== total) return false;
+                const seen = new Set();
+                for (const pair of pairs) {
+                    if (!Array.isArray(pair) || pair.length !== 2 || pair.some(index => !Number.isInteger(index) || index < 0 || index >= list.items.length) || pair[0] === pair[1]) return false;
+                    const key = Math.min(...pair) + ':' + Math.max(...pair);
+                    if (seen.has(key)) return false;
+                    seen.add(key);
+                }
                 if (session.history.length > pairs.length || session.history.some((winner, i) => !pairs[i].includes(winner))) return false;
                 const scores = list.items.map(() => 0);
                 session.history.forEach(winner => scores[winner]++);
@@ -153,7 +167,8 @@ class Base {
         const session = this.current.session;
         if (!session || session.history.length === this.totalPairs()) {
             if (this.base.some(item => item.sum) && !confirm('Начать новое сравнение? Прежние баллы этого списка будут сброшены.')) return;
-            this.base.forEach(item => item.sum = 0); this.current.session = {history: []};
+            this.base.forEach(item => item.sum = 0);
+            this.current.session = {history: [], pairs: this.shufflePairs(this.makePairs(this.base.length))};
         }
         this.message(''); this.regularGUI.classList.add('hidden'); this.recalcGUI.classList.remove('hidden');
         this.saveBase(); this.resume();
@@ -221,14 +236,32 @@ class Base {
             : this.base.some(item => item.sum) ? 'Баллы из прежней версии сохранены. Начните новое сравнение, чтобы получить полный рейтинг.'
             : 'Каждая пара сравнивается один раз. Выбранный вариант получает 1 балл.';
     }
+    makePairs(count) {
+        const pairs = [];
+        for (let fpos = 0; fpos < count - 1; fpos++) {
+            for (let spos = fpos + 1; spos < count; spos++) pairs.push([fpos, spos]);
+        }
+        return pairs;
+    }
+    shufflePairs(pairs, start = 0) {
+        // Fisher–Yates: every pair appears exactly once, in a random order.
+        for (let i = pairs.length - 1; i > start; i--) {
+            const j = start + Math.floor(Math.random() * (i - start + 1));
+            [pairs[i], pairs[j]] = [pairs[j], pairs[i]];
+        }
+        // Also vary which option appears on the left; save this with the order.
+        for (let i = start; i < pairs.length; i++) {
+            if (Math.random() < 0.5) pairs[i].reverse();
+        }
+        return pairs;
+    }
     [Symbol.iterator]() {
-        let fpos = 0, spos = 0;
-        const max = this.base.length - 1;
+        const pairs = this.current.session?.pairs || this.makePairs(this.base.length);
+        let index = 0;
         return {
             next() {
-                if (max < 1) return {done: true};
-                if (spos < max) { spos++; }
-                else { fpos++; if (fpos >= max) return {done: true}; spos = fpos + 1; }
+                if (index >= pairs.length) return {done: true};
+                const [fpos, spos] = pairs[index++];
                 return {done: false, value: {fpos, spos}};
             }
         };
